@@ -1,16 +1,18 @@
-"use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+"use client"
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 
 export default function Login() {
+  
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       const response = await fetch("api/login", {
         method: "POST",
@@ -26,12 +28,14 @@ export default function Login() {
         setMessage(data.message);
       }
     } catch (err) {
-      setMessage(err.message);
+      setMessage("An error occurred while logging in.");
     }
   };
 
+  
+
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center ">
+    <div className="w-screen h-screen flex flex-col items-center justify-center">
       <form className="flex flex-col border-2 border-black px-5 py-2 rounded-lg gap-5">
         <label htmlFor="email">Email</label>
         <input
@@ -57,6 +61,10 @@ export default function Login() {
         </button>
         <p>{message}</p>
       </form>
+      <p>--------------------Or-------------------</p>
+      <button className="p-3 border-black border-2">
+        Login with Google
+      </button>
 
       <Link className="underline" href="/signup">
         Go to signup
