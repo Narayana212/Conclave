@@ -6,8 +6,6 @@ export const getDataFromToken=(request)=>{
         const jwtToken=request.cookies.get("token").value || ""
         const decodedToken=jwt.verify(jwtToken,"secret")
         return decodedToken
-
-
     }catch(err){
         throw new Error(err.message)
     }

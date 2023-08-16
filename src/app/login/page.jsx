@@ -61,14 +61,7 @@ export default function Login() {
         </button>
         <p>{message}</p>
       </form>
-      <p>--------------------Or-------------------</p>
-      <button className="p-3 border-black border-2">
-        Login with Google
-      </button>
-
-      <Link className="underline" href="/signup">
-        Go to signup
-      </Link>
+      
     </div>
   );
 }

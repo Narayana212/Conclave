@@ -6,6 +6,7 @@ export async function GET(){
         response.cookies.set("token","",{httpOnly:true})
         return response
     }catch(err){
+        console.log(err)
         
     }
 
