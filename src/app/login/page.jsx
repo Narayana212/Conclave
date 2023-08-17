@@ -61,7 +61,10 @@ export default function Login() {
         </button>
         <p>{message}</p>
       </form>
-      
+      <p>--------------------Or-------------------</p>
+      <Link className="underline" href="/signup">
+        Go to signup
+      </Link>
     </div>
   );
 }
