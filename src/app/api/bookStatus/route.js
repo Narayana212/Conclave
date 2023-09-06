@@ -1,5 +1,5 @@
 import { getDataFromToken } from "../../../helpers/getDataFromToken";
-import prisma from "../../../libs/prisma";
+import prisma from "../../../lib/prisma";
 import { NextResponse } from "next/server";
 
 export  async function GET(request) {

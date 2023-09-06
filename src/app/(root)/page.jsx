@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import {Button} from '../../components/ui/button'
 
 export default function Home() {
   const [fullname, setFullName] = useState("");
@@ -79,13 +80,13 @@ export default function Home() {
     }
   };
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center gap-4">
-      <button
-        className="border-2 p-3 rounded-full border-black"
+    <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 bg-slate-400 relative ">
+      <Button
+        className="border-2 p-3  rounded-full border-black"
         onClick={handleLogout}
       >
         Log out
-      </button>
+      </Button>
       <h1 className="text-2xl font-bold">
         Hi {fullname}, you haved Signed in as {email}
       </h1>
@@ -94,6 +95,9 @@ export default function Home() {
         {book?"You have booked the event":"Book the ticket"}
       </button>
       {book&&<button className="border-2 p-3 rounded-full mt-3  border-black"  onClick={cancelTicket}>Cancel book</button>}
+      <div></div>
+
+     
     </div>
   );
 }

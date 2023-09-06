@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/card.jsx", "src/app/(root)/contact/page.jsx", "src/components/ui/heading.jsx"  ],
   "exclude": [
     "node_modules"
   ]
