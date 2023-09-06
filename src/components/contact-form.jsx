@@ -53,10 +53,10 @@ export default function ContactForm() {
     <div className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13]">
       <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24">
         <Image src='/logo.png' alt="logo" width={"200"} height={"200"} className=""/>
-        <h1 className="text-[#F8A254] text-xl font-medium ">
+        <h1 className="text-[#F8A254] lg:text-xl  font-medium ">
           Shiv Nadar Institution of Eminence
         </h1>
-        <h1 className="text-[#F8A254] text-xl font-medium">+91-120-7170100</h1>
+        <h1 className="text-[#F8A254] lg:text-xl font-medium">+91-120-7170100</h1>
       </div>
 
       <div className="flex flex-col w-full lg:w-1/2 order-1 lg:order-2">

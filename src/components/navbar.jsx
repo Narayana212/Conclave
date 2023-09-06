@@ -28,7 +28,7 @@ export default function Navbar() {
     <div className="w-screen h-auto bg-transparent z-50 flex items-center justify-between lg:justify-start lg:gap-5 bg-blue-400 py-5 px-12">
       <div>
         <Link href="/">
-          <Image src="/logo.png" width="200" height="200" alt="logo" />
+          <Image src="/main.png" width="200" height="200" alt="logo" className="mix-blend-lighten"  />
         </Link>
       </div>
       <div className="gap-5 items-start hidden lg:flex">
