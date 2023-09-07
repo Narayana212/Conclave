@@ -85,7 +85,7 @@ export default function Home() {
 
   
   return (
-    <div className="w-screen h-auto flex flex-col relative px-7 bg-[#290E13] ">
+    <div className="w-screen h-auto overflow-hidden flex flex-col relative px-7 bg-[#290E13] ">
       <AboutConclave />
       {!view && <PastSpeakersSlider />}
       

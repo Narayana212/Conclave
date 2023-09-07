@@ -64,21 +64,18 @@ export default function Swiper() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-         
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768, // Adjust this breakpoint as needed
         settings: {
           slidesToShow: 2,
-          
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -86,27 +83,24 @@ export default function Swiper() {
   };
 
   return (
-    <div className=" px-4 lg:px-20">
+    <div className="px-4 lg:px-20">
       <Slider {...settings} className="pt-10 px-10 flex gap-5">
         {SPEAKERS.map((core, index) => (
           <div className="flex flex-col cursor-pointer m-5" key={core.id}>
-            <div className="flex flex-col justify-center items-center px-14 m-5">
+            <div className="flex flex-col justify-center items-center px-4 m-5">
               <div
-                className="flex items-end justify-center px-5 pt-5 relative h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
+                className="flex items-end justify-center px-5 pt-5 relative h-[250px] w-[200px] mx-auto mb-4 overflow-hidden rounded-lg"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
-                  borderRadius: "3.5rem 0 0 0",
+                    borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image src={core.src} alt="test" width={"130"} height={"100"} />
+                <Image src={core.src} alt="test" width={130} height={100} />
               </div>
-              <h1 className="text-[#F8A254] font-bold">RAJNIKANTH</h1>
-              <h1 className="text-white text-semibold">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              </h1>
+              <h1 className="text-[#F8A254] font-bold">{core.name}</h1>
+              <p className="text-white">{core.description}</p>
             </div>
-            
           </div>
         ))}
       </Slider>

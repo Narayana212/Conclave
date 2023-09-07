@@ -75,8 +75,6 @@
   }
 }
 
-
-
 .hover-link::after {
   content: "";
   display: block;
@@ -106,43 +104,37 @@
   cursor: pointer !important;
 }
 
-
-
 .about-conclave-active::after {
   content: "";
   height: 6px;
   border-radius: 20px;
-  background-color: #F8A254;
+  background-color: #f8a254;
   transform: scale(0.5);
   transition: transform 0.3s ease;
-  position:absolute;
+  position: absolute;
   width: 100%;
   top: 0;
-  left:0;
+  left: 0;
 }
 
-@keyframes scroll{
-  0%{
-    transform: translateX(0);
+.animation-scroll {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
   }
-  100%{
-    transform: translateX(-100%);
+  100% {
+    left: -100%;
   }
 }
 
-
-
-section{
-  animation:  swipe 5000ms linear infinite backwards;
-
+.sponsors-span {
+  width: 50%;
+  float: left;
 }
 
-
-@keyframes swipe{
-  0%{
-    transform: translateX(0);
-  }
-  100%{
-    transform: translateX(-100%);
-  }
+.HELLO {
+  float: left;
 }
