@@ -117,24 +117,3 @@
   left: 0;
 }
 
-.animation-scroll {
-  animation: marquee 20s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: -100%;
-  }
-}
-
-.sponsors-span {
-  width: 50%;
-  float: left;
-}
-
-.HELLO {
-  float: left;
-}
