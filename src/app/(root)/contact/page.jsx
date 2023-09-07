@@ -33,7 +33,7 @@ const CORES = [
 
 export default function ContactPage() {
   return (
-    <div className="h-auto w-screen bg-[#290E13]  pl-16 pr-[12rem] overflow-hidden relative lg:pt-12 ">
+    <div className="h-auto w-screen bg-[#290E13]  pl-16 pr-[12rem] overflow-hidden relative lg:pt-12  pt-6">
       <div className="flex flex-wrap justify-center sm:justify-between gap-x-36  gap-y-16  max-w-screen ">
         {CORES.map((core, index) => (
           <div
