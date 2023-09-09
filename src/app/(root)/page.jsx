@@ -88,9 +88,8 @@ export default function Home() {
     <div className="w-screen h-auto overflow-hidden flex flex-col relative px-7 bg-[#290E13] ">
       <AboutConclave />
       {!view && <PastSpeakersSlider />}
-      
       {view && <AllPastSpeakers />}
-      <div className="self-end pr-20 relative active-link cursor-pointer " onClick={()=>setView(!view)} >
+      <div className="self-end pr-10 mt-5 lg:pr-20 relative active-link cursor-pointer " onClick={()=>setView(!view)} >
         <p className="text-white font-semibold">{view?"View less":"View All"}</p>
       </div>
       <Sponsors/>

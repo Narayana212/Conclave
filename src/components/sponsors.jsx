@@ -2,12 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-const sponsors = [
-  { id: 1, src: "/sponsors.png", name: "random" },
-  { id: 2, src: "/sponsors.png", name: "random" },
-  { id: 3, src: "/sponsors.png", name: "random" },
-  { id: 4, src: "/sponsors.png", name: "random" },
-];
+import sponsors from '../data/sponsors'
+
+
 export default function Sponsors() {
   return (
     <div className="pt-10  overflow-hidden px-10 w-full relative p-20    ">
