@@ -33,7 +33,7 @@ export default function AllPastSpeakers() {
                   height={"100"}
                 />
               </div>
-              <h1 className="text-[#F8A254] font-bold mt-2">{speaker.name}</h1>
+              <h1 className="text-[#F8A254] font-bold mt-1">{speaker.name}</h1>
               <h1 className="text-white text-semibold ">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod

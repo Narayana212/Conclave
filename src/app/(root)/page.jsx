@@ -84,8 +84,8 @@ export default function Home() {
   };
 
   
-  return (
-    <div className="w-screen h-auto overflow-hidden flex flex-col relative px-7 bg-[#290E13] ">
+  return ( 
+    <div className=" w-screen h-auto overflow-hidden flex flex-col    relative px-7 bg-[#290E13] ">
       <AboutConclave />
       {!view && <PastSpeakersSlider />}
       {view && <AllPastSpeakers />}
@@ -93,7 +93,9 @@ export default function Home() {
         <p className="text-white font-semibold">{view?"View less":"View All"}</p>
       </div>
       <Sponsors/>
+      <div className="ml-12 lg:ml-0">
       <ContactForm/>
+      </div>
     </div>
   );
 }
