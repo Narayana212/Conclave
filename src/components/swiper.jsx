@@ -4,49 +4,42 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Heading from "./ui/heading";
 
 const SPEAKERS = [
   {
     id: 1,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
     src: "/test.png",
   },
   {
     id: 2,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
     src: "/test.png",
   },
   {
     id: 3,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
     src: "/test.png",
   },
   {
     id: 4,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     src: "/test.png",
   },
   {
     id: 5,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     src: "/test.png",
   },
   {
     id: 6,
     name: "RAJINIKANTH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
     src: "/test.png",
   },
 ];
@@ -59,6 +52,7 @@ export default function Swiper() {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -67,36 +61,37 @@ export default function Swiper() {
         },
       },
       {
-        breakpoint: 768, // Adjust this breakpoint as needed
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 550,
         settings: {
           slidesToShow: 1,
         },
       },
     ],
     autoplaySpeed: 1500,
+    centerPadding: "10px",
   };
 
   return (
     <div className="px-4 lg:px-20">
-      <Slider {...settings} className="pt-10 px-10 flex gap-5">
-        {SPEAKERS.map((core, index) => (
-          <div className="flex flex-col cursor-pointer m-5" key={core.id}>
-            <div className="flex flex-col justify-center items-center px-4 m-5">
+      <Slider {...settings} className="pt-10 px-5 lg:px-10">
+        {SPEAKERS.map((core) => (
+          <div className="flex flex-col cursor-pointer " key={core.id}>
+            <div className="flex flex-col justify-start items-start h-[400px] w-[200px]">
               <div
-                className="flex items-end justify-center px-5 pt-5 relative h-[250px] w-[200px] mx-auto mb-4 overflow-hidden rounded-lg"
+                className="flex items-center justify-center relative h-[270px] w-[200px] overflow-hidden rounded-lg"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
-                    borderRadius: "3.5rem 0 0 0",
+                  borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image src={core.src} alt="test" width={130} height={100} />
+                <Image src={core.src} alt="speaker" width={130} height={100} />
               </div>
               <h1 className="text-[#F8A254] font-bold">{core.name}</h1>
               <p className="text-white">{core.description}</p>
