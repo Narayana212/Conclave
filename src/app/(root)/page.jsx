@@ -1,19 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../../components/ui/button";
 import AboutConclave from "../../components/about-conclave";
 import PastSpeakersSlider from "../../components/past-speakers";
-import AllPastSpeakers from '../../components/all-past-speakers';
-import Sponsors from '../../components/sponsors'
+import AllPastSpeakers from "../../components/all-past-speakers";
+import Sponsors from "../../components/sponsors";
 import ContactForm from "../../components/contact-form";
 
 export default function Home() {
-  const [fullname, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [book, setBook] = useState(false);
   const router = useRouter();
-  const [view,setView]=useState(false)
+  const [view, setView] = useState(false);
+  
 
   const cancelTicket = async () => {
     try {
@@ -83,18 +81,24 @@ export default function Home() {
     }
   };
 
-  
-  return ( 
+ 
+
+  return (
     <div className=" w-screen h-auto overflow-hidden flex flex-col    relative px-7 bg-[#290E13] ">
       <AboutConclave />
       {!view && <PastSpeakersSlider />}
       {view && <AllPastSpeakers />}
-      <div className="self-end pr-10 mt-5 lg:pr-20 relative active-link cursor-pointer " onClick={()=>setView(!view)} >
-        <p className="text-white font-semibold">{view?"View less":"View All"}</p>
+      <div
+        className="self-end pr-10 mt-5 lg:pr-20 relative active-link cursor-pointer "
+        onClick={() => setView(!view)}
+      >
+        <p className="text-white font-semibold">
+          {view ? "View less" : "View All"}
+        </p>
       </div>
-      <Sponsors/>
+      <Sponsors />
       <div className="ml-12 lg:ml-0">
-      <ContactForm/>
+        <ContactForm />
       </div>
     </div>
   );
