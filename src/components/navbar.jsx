@@ -118,7 +118,7 @@ export default function Navbar({ isLogin = true }) {
             <DropdownMenuContent>
               <DropdownMenuLabel>
               {username == "" ? (
-          <Loader2 className="animate-spin text-white" />
+          <Loader2 className="animate-spin text-black" />
         ) : (
           <p >Hi, {username}</p>
         )}
