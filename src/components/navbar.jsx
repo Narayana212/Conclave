@@ -87,7 +87,7 @@ export default function Navbar({ isLogin = true }) {
       </div>
       <div className="gap-5 items-start hidden lg:flex">
         {isLogin ? (
-          <div className="flex gap-3 ">
+          <div className="flex gap-5 ">
             {Links.map((link) => (
               <Link key={link.id} href={link.href}>
                 <p
