@@ -7,7 +7,6 @@ export async function GET(){
         return response
     }catch(err){
         console.log(err)
-        
     }
 
 }

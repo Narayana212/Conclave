@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
 
 
 export default function Login() {
@@ -35,33 +37,34 @@ export default function Login() {
   
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center">
-      <form className="flex flex-col border-2 border-black px-5 py-2 rounded-lg gap-5">
-        <label htmlFor="email">Email</label>
-        <input
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#290F12]">
+      <form className="flex flex-col  text-white border-black px-5 py-2 rounded-lg gap-5">
+        <label htmlFor="email" >Email</label>
+        <Input
           type="email"
           id="email"
+          className="text-black"
           value={email}
-          className="px-5 py-2 border-2 border-black rounded-lg"
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Password</label>
-        <input
+        <Input
           type="password"
           id="password"
+          className="text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="px-5 py-2 border-2 border-black rounded-lg"
+         
         />
-        <button
-          className="border-2 border-black p-2 rounded-lg self-end"
+        <Button
+          className="self-end"
           onClick={handleSubmit}
         >
           Login
-        </button>
+        </Button>
         <p>{message}</p>
       </form>
-      <Link className="underline" href="/signup">
+      <Link className="text-white hover:underline" href="/signup">
         Go to signup
       </Link>
     </div>

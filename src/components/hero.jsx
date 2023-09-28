@@ -20,7 +20,7 @@ export default function Hero() {
             className="w-full h-full opacity-90"
             style={{ background: "#290E13" }}
           >
-            <Navbar />
+            <Navbar isLogin={true} />
             <div className="flex md:hidden flex-col items-center justify-center w-full h-full ">
               <Heading text={"BUSINESS"} styles="text-6xl " />
               <Heading text={"CONCLAVE"} styles="text-6xl" />
