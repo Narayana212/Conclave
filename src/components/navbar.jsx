@@ -117,11 +117,12 @@ export default function Navbar({ isLogin = true }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>
-                {username == "" ? (
-                  <Loader2 className="animate-spin text-white" />
-                ) : (
-                  (Hi, { username })
-                )}
+              {username == "" ? (
+          <Loader2 className="animate-spin text-white" />
+        ) : (
+          <p >Hi, {username}</p>
+        )}
+                
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               {Links.map((link) => (
