@@ -35,7 +35,7 @@ export default function Hero() {
               </div>
               <Heading
                 text={"2023"}
-                styles="text-8xl -ml-20 -mt-[4rem]  rotate-90 "
+                styles="text-8xl -ml-18 -mt-[3rem]  rotate-90 "
               />
             </div>
           </div>
