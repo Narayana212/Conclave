@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -99,13 +100,6 @@ export default function Navbar({ isLogin = true }) {
                 </p>
               </Link>
             ))}
-            <p
-              variant={"link"}
-              className="text-white relative hover-link cursor-pointer"
-              onClick={handleLogout}
-            >
-              Logout
-            </p>
           </div>
         ) : null}
       </div>
@@ -117,12 +111,11 @@ export default function Navbar({ isLogin = true }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>
-              {username == "" ? (
-          <Loader2 className="animate-spin text-black" />
-        ) : (
-          <p >Hi, {username}</p>
-        )}
-                
+                {username == "" ? (
+                  <Loader2 className="animate-spin text-black" />
+                ) : (
+                  <p>Hi, {username}</p>
+                )}
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               {Links.map((link) => (
@@ -144,23 +137,45 @@ export default function Navbar({ isLogin = true }) {
         </>
       )}
 
-      <div className="hidden lg:flex gap-3">
-        {username == "" ? (
-          <Loader2 className="animate-spin text-white" />
-        ) : (
-          <p className="text-white font-semibold">Hi, {username}</p>
-        )}
-        <Link href="/">
-          <InstaSvg />
-        </Link>
+      {isLogin ? (
+        <div className="hidden lg:flex gap-3">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Avatar>
+                <AvatarFallback>{username[0]}</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>
+                {username == "" ? (
+                  <Loader2 className="animate-spin text-black" />
+                ) : (
+                  <p>Hi, {username}</p>
+                )}
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
 
-        <Link href="/">
-          <LinkedinSvg />
-        </Link>
-        <Link href="/">
-          <TwitterSvg />
-        </Link>
-      </div>
+              <DropdownMenuItem onClick={() => handleLogout()}>
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Link href="/">
+            <InstaSvg />
+          </Link>
+
+          <Link href="/">
+            <LinkedinSvg />
+          </Link>
+          <Link href="/">
+            <TwitterSvg />
+          </Link>
+        </div>
+      ) : (
+        <>
+          <Button className="hidden lg:flex">Login</Button>
+        </>
+      )}
     </div>
   );
 }

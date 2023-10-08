@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Heading from "../../../components/ui/heading";
+import Heading from "../../../../components/ui/heading";
 
-import ContactForm from "../../../components/contact-form";
+import ContactForm from "../../../../components/contact-form";
 
 const CORES = [
   {

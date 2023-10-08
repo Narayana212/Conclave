@@ -2,7 +2,6 @@ import React from "react";
 import Heading from "./ui/heading";
 import Navbar from "./navbar";
 import { Button } from "./ui/button";
-import Link from "next/link";
 export default function Hero() {
   return (
     <>
@@ -17,8 +16,8 @@ export default function Hero() {
           }}
         >
           <div
-            className="w-full h-full opacity-90"
-            style={{ background: "#290E13" }}
+            className="w-full h-full opacity-90 bg-[#290E13]"
+           
           >
             <Navbar isLogin={true} />
             <div className="flex md:hidden flex-col items-center justify-center w-full h-full ">
