@@ -13,27 +13,28 @@ export async function POST(request) {
       },
     });
     if (!exitingUser) {
-      return NextResponse.json({ message: "Invalid User" }, { status: 400 });
+      return NextResponse.json({ message: "You have not been register yet" }, { status: 402 });
     }
     const isPassword = await bcrypt.compare(password, exitingUser.password);
-    if (isPassword) {
-      const payload = { email: email, password: password };
-      const jwtToken = jwt.sign(payload, "secret");
-      const response = NextResponse.json(
-        { message: "Login Successfull" },
-        { status: 200 }
-      );
-      response.cookies.set("token", jwtToken, {
-        httpOnly: true,
-      });
-      return response;
-    } else {
-      NextResponse.json({ message: "Password is wrong" }, { status: 400 });
+    if (!isPassword) {
+      return NextResponse.json({ message: "Password is wrong" }, { status: 400 });
     }
+    const payload = { email: email, password: password };
+    const jwtToken = jwt.sign(payload, "secret");
+    const response = NextResponse.json(
+      { message: "Login Successfull" },
+      { status: 200 }
+    );
+    response.cookies.set("token", jwtToken, {
+      httpOnly: true,
+    });
+    return response;
+
+
   } catch (err) {
     console.log(err);
     return NextResponse.json(
-      { message: "SomeThing went wrong" },
+      { message: "Something went wrong" },
       { status: 500 }
     );
   }

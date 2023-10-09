@@ -1,72 +1,93 @@
 "use client"
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { Loader2 } from "lucide-react";
+import { Toaster,toast } from "sonner";
+import Heading from "../../../components/ui/heading";
 
+
+const schema = z.object({
+  email: z.string().email("Invalid email format").min(5, "Too short"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
 
 export default function Login() {
-  
   const router = useRouter();
-  const [message, setMessage] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { register, handleSubmit, setError, formState: { errors } } = useForm();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      const response = await fetch("api/login", {
+      setLoading(true); 
+      const response = await fetch("/api/login", {
         method: "POST",
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(data),
       });
-      const data = await response.json();
+      const responseData = await response.json();
+
       if (response.ok) {
-        setMessage(data.message);
+        toast.success("Login successfully")
         router.push("/");
       } else {
-        setEmail("");
-        setPassword("");
-        setMessage(data.message);
+        toast.error(responseData.message)
       }
     } catch (err) {
-      setMessage("An error occurred while logging in.");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  
-
   return (
+
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#290F12]">
-      <form className="flex flex-col  text-white border-black px-5 py-2 rounded-lg gap-5">
-        <label htmlFor="email" >Email</label>
+       <h1 className="text-orange-500 font-bold">Login Page</h1>
+      <form
+        className="flex flex-col text-white border-black px-5 py-2 rounded-lg gap-5"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <label htmlFor="email">Email</label>
         <Input
           type="email"
           id="email"
           className="text-black"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email", { required: true })}
+          disabled={loading} // Disable input field during loading
         />
+        {errors.email && (
+          <p className="text-red-500">{errors.email.message}</p>
+        )}
+
         <label htmlFor="password">Password</label>
         <Input
           type="password"
           id="password"
           className="text-black"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-         
+          {...register("password", { required: true })}
+          disabled={loading} // Disable input field during loading
         />
+        
+
         <Button
-          className="self-end"
-          onClick={handleSubmit}
+          className={`self-end transition-opacity ${
+            loading ? "opacity-50 cursor-not-allowed" : "opacity-100"
+          }`}
+          type="submit"
+          disabled={loading} // Disable the button during loading
         >
-          Login
+          {loading ?<div className="flex gap-2"> <Loader2 className="animate-spin w-4 h-4 "/>Logging in...</div>: "Login"}
         </Button>
-        <p>{message}</p>
       </form>
+     
       <Link className="text-white hover:underline" href="/signup">
         Go to signup
       </Link>
+      <Toaster richColors closeButton/>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 "use client";
-import { useToast } from "../components/ui/use-toast";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -13,11 +12,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
-import { Loader2, Menu, TwitterIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Loader2, Menu} from "lucide-react";
 import InstaSvg from "../components/svg/insta";
 import LinkedinSvg from "../components/svg/linkedin";
 import TwitterSvg from "../components/svg/twitter";
+import { Toaster,toast } from "sonner";
+
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
@@ -29,22 +29,16 @@ const Links = [
 
 export default function Navbar({ isLogin = true }) {
   const pathname = usePathname();
-  const { toast } = useToast();
-
   const router = useRouter();
-
   const [username, setUsername] = useState("");
-
   async function handleLogout() {
     try {
       const response = await fetch("/api/logout");
       if (response.ok) {
         router.push("/login");
-        toast({
-          title: "Logout Sucessfully",
-        });
+        toast.success("Logout Sucessfully");
       } else {
-        console.log("Login out failed");
+       toast.error("Logout failed please try a")
       }
     } catch (error) {
       throw new Error(error.message);
@@ -132,9 +126,7 @@ export default function Navbar({ isLogin = true }) {
           </DropdownMenu>
         </div>
       ) : (
-        <>
-          <Button className="lg:hidden">Login</Button>
-        </>
+        null
       )}
 
       {isLogin ? (
@@ -172,10 +164,9 @@ export default function Navbar({ isLogin = true }) {
           </Link>
         </div>
       ) : (
-        <>
-          <Button className="hidden lg:flex">Login</Button>
-        </>
+        null
       )}
+      <Toaster richColors closeButton/>
     </div>
   );
 }
