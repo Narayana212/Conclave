@@ -32,11 +32,11 @@ export default function Hero({ isLogin }) {
               <div className="flex flex-col items-start">
                 <Heading text={"BUSINESS"} styles="text-8xl " />
                 <Heading text={"CONCLAVE"} styles="text-8xl" />
-                <Link href="/tickets">
+                <Link href="/tickets" className="self-center -mr-[8rem]">
                   <Button
                     className={`${
                       isLogin ? "" : "hidden"
-                    }  mt-3 -mr-[10rem] self-center mx-auto`}
+                    }  mt-3`}
                   >
                     GET TICKETS
                   </Button>
@@ -45,8 +45,8 @@ export default function Hero({ isLogin }) {
               <Heading
                 text={"2023"}
                 styles={` ${
-                  isLogin ? "-mt-[3.5rem]" : "-mt-[1rem]"
-                } text-7xl -ml-16  rotate-90 `}
+                  isLogin ? "-mt-[2rem]" : "-mt-[0.5rem]"
+                } text-7xl -ml-12  rotate-90 `}
               />
             </div>
           </div>
