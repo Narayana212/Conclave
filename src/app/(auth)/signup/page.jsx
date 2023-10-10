@@ -29,7 +29,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
-  const [username, setUsername] = useState(null);
+  
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const form = useForm({
@@ -63,28 +63,11 @@ export default function Login() {
       setLoading(false);
     }
   };
-  async function getUserData() {
-    try {
-      const response = await fetch("/api/username");
-      const data = await response.json();
-      if (response.ok) {
-        setUsername(data.message.fullName);
-      } else {
-        setUsername("");
-      }
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
+  
 
 
-  useEffect(() => {
-    getUserData();
-  });
-
-  if(username){
-    redirect("/")
-  }
+ 
+ 
 
 
   return (

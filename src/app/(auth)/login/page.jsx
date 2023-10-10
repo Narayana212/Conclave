@@ -16,7 +16,7 @@ const schema = z.object({
 });
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const {
@@ -46,28 +46,8 @@ export default function Login() {
       setLoading(false);
     }
   };
-  async function getUserData() {
-    try {
-      const response = await fetch("/api/username");
-      const data = await response.json();
-      if (response.ok) {
-        setUsername(data.message.fullName);
-      } else {
-        setUsername("");
-      }
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
+  
 
-  useEffect(() => {
-    getUserData();
-  });
-
-  if(username){
-    redirect("/")
-
-  }
 
   return (
     <div className="h-[65vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden">
