@@ -38,7 +38,7 @@ export default function Navbar({ isLogin }) {
         router.push("/login");
         toast.success("Logout Sucessfully");
       } else {
-        toast.error("Logout failed please try a");
+        toast.error(data.message);
       }
     } catch (error) {
       throw new Error(error.message);

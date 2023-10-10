@@ -1,6 +1,6 @@
 const { NextResponse } = require("next/server");
 
-async function GET() {
+export async function GET() {
     try {
         const response = NextResponse.json(
             {
