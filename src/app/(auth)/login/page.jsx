@@ -64,6 +64,7 @@ export default function Login() {
           <Input
             type="email"
             id="email"
+            placeholder="your email"
             className="lg:w-[30vw] bg-transparent  -mt-3"
             {...register("email", { required: true })}
             disabled={loading}
@@ -78,6 +79,7 @@ export default function Login() {
           <Input
             type="password"
             id="password"
+            
             className=" bg-transparent lg:w-[30vw] -mt-3"
             {...register("password", { required: true })}
             disabled={loading}
