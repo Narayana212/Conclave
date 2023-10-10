@@ -130,7 +130,7 @@ export default function Navbar({ isLogin }) {
       </div>
 
       <div className="hidden lg:flex gap-3">
-        {username !== "" ? (
+        {!(username === "" || pathname === "/login" || pathname === "/signup")? (
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
