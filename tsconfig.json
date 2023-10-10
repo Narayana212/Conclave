@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/card.jsx", "src/app/(root)/(routes)/contact/page.jsx", "src/components/ui/heading.jsx", "src/components/ui/custom-arrows.jsx"  ],
+, "src/components/card.jsx", "src/app/(root)/(routes)/contact/page.jsx", "src/components/ui/heading.jsx", "src/components/ui/custom-arrows.jsx", "src/app/(auth)/login/loading.jsx", "src/app/(root)/(routes)/tickets/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

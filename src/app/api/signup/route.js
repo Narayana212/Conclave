@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 
 export async function POST(request) {
   const requestBody = await request.json();
+ 
   const { name, email, password } = requestBody;
   try {
     const existingUser = await prisma.user.findUnique({
@@ -13,7 +14,7 @@ export async function POST(request) {
     });
     if (existingUser) {
       return NextResponse.json(
-        { message: "User already exists" },
+        { message: "Email already exists" },
         { status: 400 }
       );
     }

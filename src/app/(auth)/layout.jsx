@@ -1,7 +1,8 @@
+import Hero from '../../components/hero'
 import '../globals.css'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
-import Navbar from "../../components/navbar"
+
 
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default function AuthLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Navbar isLogin={false}/>
+      <Hero isLogin={false}/>
       {children}
       </body>
     </html>

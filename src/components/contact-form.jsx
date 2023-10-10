@@ -126,7 +126,7 @@ export default function ContactForm() {
               />
             </div>
 
-            <Button type="submit" className="self-end mt-4">
+            <Button   variant={"secondary"} type="submit" className="self-end mt-4">
               Send
             </Button>
           </form>

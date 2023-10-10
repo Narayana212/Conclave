@@ -2,7 +2,8 @@ import React from "react";
 import Heading from "./ui/heading";
 import Navbar from "./navbar";
 import { Button } from "./ui/button";
-export default function Hero() {
+import Link from "next/link";
+export default function Hero({ isLogin }) {
   return (
     <>
       <div className="h-screen w-screen    bg-[#290E13]">
@@ -15,26 +16,37 @@ export default function Hero() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div
-            className="w-full h-full opacity-90 bg-[#290E13]"
-           
-          >
-            <Navbar isLogin={true} />
+          <div className="w-full h-full opacity-90 bg-[#290E13]">
+            <Navbar isLogin={isLogin} />
             <div className="flex md:hidden flex-col items-center justify-center w-full h-full ">
               <Heading text={"BUSINESS"} styles="text-6xl " />
               <Heading text={"CONCLAVE"} styles="text-6xl" />
               <Heading text={"2023"} styles="text-6xl " />
-              <Button className="mt-3">GET TICKETS</Button>
+              <Link href="/tickets">
+                <Button className={` ${isLogin ? "flex" : "hidden"}  mt-3 `}>
+                  GET TICKETS
+                </Button>
+              </Link>
             </div>
-            <div className="hidden md:flex items-center justify-center w-full h-full  ">
+            <div className="hidden md:flex justify-center items-center w-full h-full  ">
               <div className="flex flex-col items-start">
-                <Heading text={"BUSINESS"} styles="text-9xl " />
-                <Heading text={"CONCLAVE"} styles="text-9xl" />
-                <Button className="self-center mt-3 -mr-[10rem]">GET TICKETS</Button>
+                <Heading text={"BUSINESS"} styles="text-8xl " />
+                <Heading text={"CONCLAVE"} styles="text-8xl" />
+                <Link href="/tickets">
+                  <Button
+                    className={`${
+                      isLogin ? "" : "hidden"
+                    }  mt-3 -mr-[10rem] self-center mx-auto`}
+                  >
+                    GET TICKETS
+                  </Button>
+                </Link>
               </div>
               <Heading
                 text={"2023"}
-                styles="text-8xl -ml-16 -mt-[2rem]  rotate-90 "
+                styles={` ${
+                  isLogin ? "-mt-[3.5rem]" : "-mt-[1rem]"
+                } text-7xl -ml-16  rotate-90 `}
               />
             </div>
           </div>

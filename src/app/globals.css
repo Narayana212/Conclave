@@ -104,6 +104,10 @@
   cursor: pointer !important;
 }
 
+.secondary-button{
+  background:linear-gradient(159deg, #6C1E35 -12.47%, #7C402F 87.42%);
+}
+
 .about-conclave-active::after {
   content: "";
   height: 6px;

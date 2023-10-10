@@ -33,6 +33,7 @@
     "react-hook-form": "^7.46.1",
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
+    "react-spinners": "^0.13.8",
     "slick-carousel": "^1.8.1",
     "sonner": "^1.0.3",
     "swiper": "^10.2.0",

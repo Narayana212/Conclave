@@ -12,12 +12,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
-import { Loader2, Menu} from "lucide-react";
+import { Loader2, Menu } from "lucide-react";
 import InstaSvg from "../components/svg/insta";
 import LinkedinSvg from "../components/svg/linkedin";
 import TwitterSvg from "../components/svg/twitter";
-import { Toaster,toast } from "sonner";
-
+import { Toaster, toast } from "sonner";
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
@@ -27,7 +26,7 @@ const Links = [
   { id: 5, href: "/contact", title: "Contact" },
 ];
 
-export default function Navbar({ isLogin = true }) {
+export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -38,7 +37,7 @@ export default function Navbar({ isLogin = true }) {
         router.push("/login");
         toast.success("Logout Sucessfully");
       } else {
-       toast.error("Logout failed please try a")
+        toast.error("Logout failed please try a");
       }
     } catch (error) {
       throw new Error(error.message);
@@ -52,7 +51,7 @@ export default function Navbar({ isLogin = true }) {
       if (response.ok) {
         setUsername(data.message.fullName);
       } else {
-        setUsername("guest");
+        setUsername("");
       }
     } catch (error) {
       throw new Error(error.message);
@@ -65,9 +64,8 @@ export default function Navbar({ isLogin = true }) {
 
   return (
     <div
-      className={`w-screen h-auto ${
-        isLogin ? "bg-transparent " : "bg-[#290F12]"
-      } z-50 flex items-center justify-between  lg:gap-5  py-5 px-12`}
+      className={`w-screen h-auto bg-transparent "
+      z-50 flex items-center justify-between  lg:gap-5  py-5 px-12`}
     >
       <div>
         <Link href="/">
@@ -81,56 +79,58 @@ export default function Navbar({ isLogin = true }) {
         </Link>
       </div>
       <div className="gap-5 items-start hidden lg:flex">
-        {isLogin ? (
-          <div className="flex gap-5 ">
+        <div className="flex gap-5 ">
+          {Links.map((link) => (
+            <Link key={link.id} href={link.href}>
+              <p
+                className={`hover-link overflow-hidden  relative text-white ${
+                  pathname === link.href ? "active-link" : ""
+                }`}
+              >
+                {link.title}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex lg:hidden">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Menu className="w-8 h-8 text-white" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>
+              {username == "" ? (
+                <Link href="/signup" className="cursor-pointer">
+                  Create Your Account
+                </Link>
+              ) : (
+                <p>Hi, {username}</p>
+              )}
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
             {Links.map((link) => (
               <Link key={link.id} href={link.href}>
-                <p
-                  className={`hover-link overflow-hidden  relative text-white ${
-                    pathname === link.href ? "active-link" : ""
-                  }`}
-                >
-                  {link.title}
-                </p>
+                <DropdownMenuItem>{link.title}</DropdownMenuItem>
               </Link>
             ))}
-          </div>
-        ) : null}
-      </div>
-      {isLogin ? (
-        <div className="flex lg:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Menu className="w-8 h-8 text-white" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>
-                {username == "" ? (
-                  <Loader2 className="animate-spin text-black" />
-                ) : (
-                  <p>Hi, {username}</p>
-                )}
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              {Links.map((link) => (
-                <Link key={link.id} href={link.href}>
-                  <DropdownMenuItem>{link.title}</DropdownMenuItem>
-                </Link>
-              ))}
-              <Link href="/">
-                <DropdownMenuItem onClick={() => handleLogout()}>
-                  Logout
-                </DropdownMenuItem>
-              </Link>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      ) : (
-        null
-      )}
 
-      {isLogin ? (
-        <div className="hidden lg:flex gap-3">
+            {username == "" ? (
+              <Link href="/login">
+                <DropdownMenuItem>Login</DropdownMenuItem>
+              </Link>
+            ) : (
+              <DropdownMenuItem onClick={() => handleLogout()}>
+                Logout
+              </DropdownMenuItem>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      <div className="hidden lg:flex gap-3">
+        {username !== "" ? (
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
@@ -139,11 +139,7 @@ export default function Navbar({ isLogin = true }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>
-                {username == "" ? (
-                  <Loader2 className="animate-spin text-black" />
-                ) : (
-                  <p>Hi, {username}</p>
-                )}
+                <p>Hi, {username}</p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
 
@@ -152,21 +148,27 @@ export default function Navbar({ isLogin = true }) {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link href="/">
-            <InstaSvg />
+        ) : (
+          <Link
+            href="/signup"
+            className="text-white opacity-75 transition-all hover:opacity-100 hover:font-semibold"
+          >
+            Create your account
           </Link>
+        )}
+        <Link href="/">
+          <InstaSvg />
+        </Link>
 
-          <Link href="/">
-            <LinkedinSvg />
-          </Link>
-          <Link href="/">
-            <TwitterSvg />
-          </Link>
-        </div>
-      ) : (
-        null
-      )}
-      <Toaster richColors closeButton/>
+        <Link href="/">
+          <LinkedinSvg />
+        </Link>
+        <Link href="/">
+          <TwitterSvg />
+        </Link>
+      </div>
+
+      <Toaster richColors closeButton />
     </div>
   );
 }
