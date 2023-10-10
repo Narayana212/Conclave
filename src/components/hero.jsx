@@ -29,7 +29,7 @@ export default function Hero({ isLogin }) {
               </Link>
             </div>
             <div className="hidden md:flex justify-center items-center w-full h-full  ">
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start ">
                 <Heading text={"BUSINESS"} styles="text-8xl " />
                 <Heading text={"CONCLAVE"} styles="text-8xl" />
                 <Link href="/tickets" className="self-center -mr-[8rem]">
@@ -45,7 +45,7 @@ export default function Hero({ isLogin }) {
               <Heading
                 text={"2023"}
                 styles={` ${
-                  isLogin ? "-mt-[2rem]" : ""
+                  isLogin ? "-mt-[2rem]" : "mt-2"
                 } text-7xl -ml-12  rotate-90 `}
               />
             </div>
