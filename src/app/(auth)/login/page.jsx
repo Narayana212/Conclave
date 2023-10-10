@@ -107,7 +107,7 @@ export default function Login() {
           className="text-white text-sm mt-3 hover:underline"
           href="/signup"
         >
-          Don't have account ? Sign up here
+          Don&apos;t have account ? Sign up here
         </Link>
         <Toaster richColors closeButton />
       </div>
