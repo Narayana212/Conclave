@@ -45,7 +45,7 @@ export default function Hero({ isLogin }) {
               <Heading
                 text={"2023"}
                 styles={` ${
-                  isLogin ? "-mt-[2rem]" : "-mt-[0.5rem]"
+                  isLogin ? "-mt-[2rem]" : ""
                 } text-7xl -ml-12  rotate-90 `}
               />
             </div>
