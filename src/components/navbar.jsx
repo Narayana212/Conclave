@@ -28,6 +28,7 @@ const Links = [
 
 export default function Navbar({ isLogin }) {
   const pathname = usePathname();
+  console.log(pathname)
   const router = useRouter();
   const [username, setUsername] = useState("");
   async function handleLogout() {
@@ -101,7 +102,7 @@ export default function Navbar({ isLogin }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>
-              {username == "" ? (
+              {username === "" || pathname==="/login" || pathname==="/signup" ? (
                 <Link href="/signup" className="cursor-pointer">
                   Create Your Account
                 </Link>
