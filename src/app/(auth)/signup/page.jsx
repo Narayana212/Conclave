@@ -1,10 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useRouter,redirect } from 'next/navigation'
 import {
   Form,
   FormControl,
@@ -82,9 +82,8 @@ export default function Login() {
     getUserData();
   });
 
-  if(!username){
-    router.push("/")
-
+  if(username){
+    redirect("/")
   }
 
 

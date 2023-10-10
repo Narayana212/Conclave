@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
+import { useRouter,redirect } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
@@ -64,8 +64,8 @@ export default function Login() {
     getUserData();
   });
 
-  if(username!==""){
-    router.push("/")
+  if(username){
+    redirect("/")
 
   }
 
