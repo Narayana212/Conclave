@@ -3,10 +3,11 @@ import { NextResponse } from "next/server";
 export async function GET(){
     try{
         const response=NextResponse.json({message:"Logout successful"},{status:200})
-        response.cookies.set("token","",{httpOnly:true})
+        response.cookies.set("token","")
         return response
     }catch(err){
-        console.log(err)
+        throw new Error(err.message)
+       
     }
 
 }
