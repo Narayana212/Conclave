@@ -28,7 +28,6 @@ const Links = [
 
 export default function Navbar({ isLogin }) {
   const pathname = usePathname();
-  console.log(pathname)
   const router = useRouter();
   const [username, setUsername] = useState("");
   async function handleLogout() {
@@ -117,7 +116,7 @@ export default function Navbar({ isLogin }) {
               </Link>
             ))}
 
-            {username == "" ? (
+            {username == "" || pathname==="/login" || pathname==="/signup" ? (
               <Link href="/login">
                 <DropdownMenuItem>Login</DropdownMenuItem>
               </Link>

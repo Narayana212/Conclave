@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import {
@@ -29,6 +29,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
+  const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const form = useForm({
@@ -62,6 +63,30 @@ export default function Login() {
       setLoading(false);
     }
   };
+  async function getUserData() {
+    try {
+      const response = await fetch("/api/username");
+      const data = await response.json();
+      if (response.ok) {
+        setUsername(data.message.fullName);
+      } else {
+        setUsername("");
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+
+  useEffect(() => {
+    getUserData();
+  });
+
+  if(username!==""){
+    router.push("/")
+
+  }
+
 
   return (
     <div className="h-[75vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden">
