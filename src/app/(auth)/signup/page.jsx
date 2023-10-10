@@ -29,7 +29,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const form = useForm({
@@ -82,7 +82,7 @@ export default function Login() {
     getUserData();
   });
 
-  if(username!==""){
+  if(!username){
     router.push("/")
 
   }
