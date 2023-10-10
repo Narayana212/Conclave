@@ -88,7 +88,7 @@ export default function Login() {
 
 
   return (
-    <div className="h-[75vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden">
+    <div className="h-[74vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden">
       <TwoCircles />
       <div className="flex flex-col items-center justify-center ">
         <h1 className=" text-xl self-start text-white font-bold ">Sign Up</h1>
