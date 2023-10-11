@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
+import { Avatar, AvatarFallback } from "../components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,7 +27,7 @@ const Links = [
   { id: 5, href: "/contact", title: "Contact" },
 ];
 
-export default function Navbar({ isLogin }) {
+export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const username = useUser()

@@ -1,7 +1,5 @@
 "use client";
-import { redirect, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "../../components/ui/button";
 import AboutConclave from "../../components/about-conclave";
 import PastSpeakersSlider from "../../components/past-speakers";
 import AllPastSpeakers from "../../components/all-past-speakers";
@@ -9,79 +7,7 @@ import Sponsors from "../../components/sponsors";
 import ContactForm from "../../components/contact-form";
 
 export default function Home() {
-  const router = useRouter();
   const [view, setView] = useState(false);
-  
-
-  const cancelTicket = async () => {
-    try {
-      await fetch("api/book", {
-        method: "DELETE",
-      });
-      setBook(false);
-    } catch (err) {
-      console.log(error.message);
-    }
-  };
-  const getBooking = async () => {
-    try {
-      const response = await fetch("api/bookStatus");
-      await response.json();
-      if (response.ok) {
-        setBook(true);
-      } else {
-        setBook(false);
-      }
-    } catch (err) {
-      console.error(err.messsage);
-    }
-  };
-  useEffect(() => {
-    getBooking();
-  }, []);
-
-  const getName = async () => {
-    try {
-      const response = await fetch("api/username");
-      const data = await response.json();
-      const { message } = data;
-      console.log(data);
-      setEmail(message.email);
-      setFullName(message.fullName);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getName();
-  }, []);
-
-  const bookTicket = async () => {
-    try {
-      const response = await fetch("api/book");
-      const data = await response.json();
-      if (response.ok) {
-        setBook(true);
-        router.push("/success");
-      } else {
-        console.log(data);
-      }
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch("/api/logout");
-      router.push("/login");
-    } catch (err) {
-      console.err(err.message);
-    }
-  };
-
- 
 
   return (
     <div className=" w-screen h-auto overflow-hidden flex flex-col    relative px-7 bg-[#290E13] ">
