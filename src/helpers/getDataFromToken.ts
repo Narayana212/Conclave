@@ -9,10 +9,11 @@ export const getDataFromToken = async (request: NextRequest) => {
         const token = request.cookies.get("token")?.value || '';
         console.log(token);
         const verified = await jose.jwtVerify(token, secret)
-        return verified.payload;
+        const decodedToken=verified.payload
+        return decodedToken ;
     } catch (error: any) {
       console.log(error.message)
-      return {email:"",fullName:""};
+      return {email:"",fullName:error.message};
       
         
     }

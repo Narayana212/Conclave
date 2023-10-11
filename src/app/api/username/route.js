@@ -8,7 +8,7 @@ export async function GET(request) {
     console.log("decodedToken: " + decodedToken)
     const { email,fullName } = decodedToken;
     console.log(decodedToken)
-    return NextResponse.json({ message: { email, fullName } },{status:200});
+    return NextResponse.json({ message: { email, fullName,decodedToken } },{status:200});
   } catch (err) {
     console.log(err.message)
     return NextResponse.json({message:err.message},{status:500})
