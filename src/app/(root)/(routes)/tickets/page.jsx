@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../../../components/ui/button";
-import { toast } from "sonner";
+import { toast,Toaster } from "sonner";
 import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
+import TwoCircles from "../../../../components/ui/two-circles";
 
 export default function TicketPage() {
   const [userData, setUserData] = React.useState({ fullName: "", email: "" });
@@ -24,7 +25,7 @@ export default function TicketPage() {
   }
   React.useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   async function cancelTicket() {
     try {
@@ -59,7 +60,6 @@ export default function TicketPage() {
       const responseData = await response.json();
       if (response.ok) {
         toast.success("Ticket Booked successfully");
-        console.log(responseData);
         setBookingId(responseData.message.booking.bookToken);
         setCreatedAt(responseData.message.booking.createdAt);
       } else if (response.status == 402) {
@@ -75,55 +75,72 @@ export default function TicketPage() {
     }
   }
 
-  return (
-    <div className="bg-[#290F12] w-screen flex items-center gap-3  flex-col pt-14 justify-center p-10">
-      <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A] ">
-        {userData.email && (
-          <p className="text-white ">Booking id: {bookingId}</p>
-        )}
-        {userData.email && (
-          <p className="text-white ">Created At: {createdAt}</p>
-        )}
-      </div>
+  async function getBookingStatus() {
+    try {
+      const email=userData.email
+      const response=await fetch(`/api/user/${email}`)
+      const data=await response.json()
+      if(response.ok){
+        setBookingId(data.message.bookToken)
+        setCreatedAt(data.message.createdAt)
+      }else{
+        setBookingId("")
+        setCreatedAt("")
+      }
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-      <div className="flex gap-3">
-        {!bookingId ? (
-          <Button onClick={bookTicket} variant="secondary">
-            {loading ? (
-              <div className="flex  gap-2 items-center">
-                <Loader2 className="animate-spin" />
-                <span>Booking Ticket</span>
-              </div>
-            ) : (
-              "Book Ticket"
-            )}
-          </Button>
-        ) : (
-          <Button onClick={cancelTicket} variant="secondary">
-            {cancelLoading ? (
-              <div className="flex gap-2 items-center">
-                <Loader2 className="animate-spin" />
-                <span>Cancelling Ticket</span>
-              </div>
-            ) : (
-              "Cancel Ticket"
-            )}
-          </Button>
-        )}
-        <Button onClick={cancelTicket} variant="secondary">
-          {cancelLoading ? (
-            <div className="flex gap-2 items-center">
-              <Loader2 className="animate-spin" />
-              <span>Cancelling Ticket</span>
-            </div>
-          ) : (
-            "Cancel Ticket"
+
+  useEffect(()=>{
+    getBookingStatus()
+  })
+
+  return (
+    <div className="relative bg-[#290F12]  w-screen flex items-center   flex-col pt-14 justify-center p-10 overflow-hidden">
+      <TwoCircles/>
+      <div className="w-screen flex items-center gap-3  flex-col justify-center">
+        <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A] ">
+          {userData.email && (
+            <p className="text-white ">Booking id: {bookingId}</p>
           )}
-        </Button>
+          {userData.email && (
+            <p className="text-white ">Booked At: {createdAt}</p>
+          )}
+        </div>
+
+        <div className="flex gap-3">
+          {!bookingId ? (
+            <Button onClick={bookTicket} variant="secondary">
+              {loading ? (
+                <div className="flex  gap-2 items-center">
+                  <Loader2 className="animate-spin" />
+                  <span>Booking Ticket</span>
+                </div>
+              ) : (
+                "Book Ticket"
+              )}
+            </Button>
+          ) : (
+            <Button onClick={cancelTicket} variant="secondary">
+              {cancelLoading ? (
+                <div className="flex gap-2 items-center">
+                  <Loader2 className="animate-spin" />
+                  <span>Cancelling Ticket</span>
+                </div>
+              ) : (
+                "Cancel Ticket"
+              )}
+            </Button>
+          )}
+        </div>
+        {userData.email && (
+          <p className="text-white ">Ticket will be sent to {userData.email}</p>
+        )}
       </div>
-      {userData.email && (
-        <p className="text-white ">Ticket will be sent to {userData.email}</p>
-      )}
+      <Toaster richColors/>
     </div>
   );
 }

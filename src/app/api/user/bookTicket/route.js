@@ -3,11 +3,6 @@ import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
 
-
-
-
-
-
 export async function POST(request) {
   const requestBody = await request.json();
   const { email } = requestBody;
