@@ -9,7 +9,7 @@ export default function InstaSvg() {
       viewBox="0 0 37 37"
       fill="none"
     >
-      <g clip-path="url(#clip0_153_234)">
+      <g clipPath="url(#clip0_153_234)">
         <path
           d="M28.3281 0H8.67188C3.88253 0 0 3.88253 0 8.67188V28.3281C0 33.1175 3.88253 37 8.67188 37H28.3281C33.1175 37 37 33.1175 37 28.3281V8.67188C37 3.88253 33.1175 0 28.3281 0Z"
           fill="url(#paint0_radial_153_234)"
@@ -32,10 +32,10 @@ export default function InstaSvg() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(9.82812 39.8497) rotate(-90) scale(36.6697 34.1058)"
         >
-          <stop stop-color="#FFDD55" />
-          <stop offset="0.1" stop-color="#FFDD55" />
-          <stop offset="0.5" stop-color="#FF543E" />
-          <stop offset="1" stop-color="#C837AB" />
+          <stop stopColor="#FFDD55" />
+          <stop offset="0.1" stopColor="#FFDD55" />
+          <stop offset="0.5" stopColor="#FF543E" />
+          <stop offset="1" stopColor="#C837AB" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_153_234"
@@ -45,9 +45,9 @@ export default function InstaSvg() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-6.19764 2.6653) rotate(78.681) scale(16.3916 67.5666)"
         >
-          <stop stop-color="#3771C8" />
-          <stop offset="0.128" stop-color="#3771C8" />
-          <stop offset="1" stop-color="#6600FF" stop-opacity="0" />
+          <stop stopColor="#3771C8" />
+          <stop offset="0.128" stopColor="#3771C8" />
+          <stop offset="1" stopColor="#6600FF" stopOpacity="0" />
         </radialGradient>
         <clipPath id="clip0_153_234">
           <rect width="37" height="37" fill="white" />

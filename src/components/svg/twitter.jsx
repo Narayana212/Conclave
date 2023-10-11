@@ -9,7 +9,7 @@ export default function TwitterSvg() {
       viewBox="0 0 37 37"
       fill="none"
     >
-      <g clip-path="url(#clip0_153_242)">
+      <g clipPath="url(#clip0_153_242)">
         <path
           d="M28.3281 0H8.67188C3.88253 0 0 3.88253 0 8.67188V28.3281C0 33.1175 3.88253 37 8.67188 37H28.3281C33.1175 37 37 33.1175 37 28.3281V8.67188C37 3.88253 33.1175 0 28.3281 0Z"
           fill="white"

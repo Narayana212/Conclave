@@ -3,6 +3,7 @@ import Heading from "./ui/heading";
 import Navbar from "./navbar";
 import { Button } from "./ui/button";
 import Link from "next/link";
+
 export default function Hero({ isLogin }) {
   return (
     <>
@@ -22,6 +23,7 @@ export default function Hero({ isLogin }) {
               <Heading text={"BUSINESS"} styles="text-6xl " />
               <Heading text={"CONCLAVE"} styles="text-6xl" />
               <Heading text={"2023"} styles="text-6xl " />
+
               <Link href="/tickets">
                 <Button className={` ${isLogin ? "flex" : "hidden"}  mt-3 `}>
                   GET TICKETS
@@ -33,11 +35,7 @@ export default function Hero({ isLogin }) {
                 <Heading text={"BUSINESS"} styles="text-8xl " />
                 <Heading text={"CONCLAVE"} styles="text-8xl" />
                 <Link href="/tickets" className="self-center -mr-[8rem]">
-                  <Button
-                    className={`${
-                      isLogin ? "" : "hidden"
-                    }  mt-3`}
-                  >
+                  <Button className={`${isLogin ? "" : "hidden"}  mt-3`}>
                     GET TICKETS
                   </Button>
                 </Link>

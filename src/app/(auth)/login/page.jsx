@@ -39,7 +39,7 @@ export default function Login() {
       if (response.ok) {
         
         cookie.set("jwtToken", responseData.message)
-        toast.success(responseData.message);
+        toast.success("Login successfully");
         router.push("/");
       } else {
         toast.error(responseData.message);
