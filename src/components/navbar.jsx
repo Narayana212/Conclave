@@ -46,6 +46,7 @@ export default function Navbar() {
   }
 
   if(true){
+    console.log("USERNAME RENDER IN NAV")
     console.log(username)
   }
 

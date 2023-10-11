@@ -9,8 +9,9 @@ export default function useUser() {
     try {
       const response = await fetch("/api/username");
       const data = await response.json();
-      
+
       if (response.ok) {
+        console.log(data)
         setUsername(data.message.fullName);
       } else {
         setUsername("");

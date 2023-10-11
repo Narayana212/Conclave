@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import AboutConclave from "../../components/about-conclave";
 import PastSpeakersSlider from "../../components/past-speakers";
 import AllPastSpeakers from "../../components/all-past-speakers";
