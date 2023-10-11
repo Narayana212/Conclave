@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   try {
-    const email = params.email;
+    const email = params.email.slice(1);
+    console.log(email)
 
     const existingUser = await prisma.user.findUnique({
       where: {
@@ -9,10 +10,11 @@ export async function GET(request, { params }) {
       },
     });
 
+
     if (!existingUser) {
       return NextResponse.json(
         { message: "You have not been register yet" },
-        { status: 402 }
+        { status: 400 }
       );
     }
     const existingBooking = await prisma.booking.findUnique({
@@ -22,7 +24,7 @@ export async function GET(request, { params }) {
       });
 
     if(!existingBooking) {
-        return NextResponse.json({message:"Not Booed yet"},{status:400})
+        return NextResponse.json({message:"Not Booked yet"},{status:400})
     } 
     const bookToken=existingBooking.bookToken
     const createdAt=existingBooking.createdAt

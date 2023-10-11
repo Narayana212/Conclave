@@ -78,7 +78,7 @@ export default function TicketPage() {
   async function getBookingStatus() {
     try {
       const email=userData.email
-      const response=await fetch(`/api/user/${email}`)
+      const response=await fetch(`/api/user/:${email}`)
       const data=await response.json()
       if(response.ok){
         setBookingId(data.message.bookToken)
