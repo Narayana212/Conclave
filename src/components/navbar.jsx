@@ -35,7 +35,6 @@ export default function Navbar({ isLogin }) {
     try {
       const response = await fetch("/api/logout");
       if (response.ok) {
-        setUsername("");
         router.push("/login");
         toast.success("Logout Sucessfully");
       } else {
