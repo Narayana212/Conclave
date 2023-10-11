@@ -11,7 +11,7 @@ export default function useUser() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
+        console.log("useUser",data)
         setUsername(data.message.fullName);
       } else {
         setUsername("");
