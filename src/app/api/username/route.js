@@ -7,7 +7,6 @@ export async function GET(request) {
   try {
     const decodedToken = getDataFromToken(request);
     const { email,fullName } = decodedToken;
-    console.log(fullName)
     return NextResponse.json({ message: { email, fullName } },{status:200});
   } catch (err) {
     console.log(err.message)
