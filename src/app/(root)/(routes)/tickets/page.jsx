@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "../../../../components/ui/button";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter,redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
 
@@ -50,7 +50,7 @@ export default function TicketPage() {
   }
 
   async function bookTicket() {
-    if (userData) {
+    
       try {
         setLoading(true);
         const response = await fetch("/api/user/bookTicket", {
@@ -71,9 +71,11 @@ export default function TicketPage() {
       } finally {
         setLoading(false);
       }
-    } else {
-      router.push("/signup");
-    }
+    
+  }
+
+  if(!userData.email){
+    redirect("/login")
   }
 
  
@@ -81,8 +83,8 @@ export default function TicketPage() {
   return (
     <div className="bg-[#290F12] w-screen flex items-center gap-3  flex-col pt-14 justify-center p-10">
       <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A] ">
-        {userData && <p className="text-white ">Booking id: {bookingId}</p>}
-        {userData && <p className="text-white ">Created At: {createdAt}</p>}
+        {userData.email && <p className="text-white ">Booking id: {bookingId}</p>}
+        {userData.email && <p className="text-white ">Created At: {createdAt}</p>}
       </div>
 
       <div className="flex gap-3">
@@ -120,7 +122,7 @@ export default function TicketPage() {
             )}
           </Button>
       </div>
-      {userData && (
+      {userData.email && (
         <p className="text-white ">Ticket will be sent to {userData.email}</p>
       )}
     </div>
