@@ -30,7 +30,7 @@ const Links = [
 export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   const router = useRouter();
-  const username = useUser();
+  const username = useUser()
   async function handleLogout() {
     try {
       const response = await fetch("/api/logout");
