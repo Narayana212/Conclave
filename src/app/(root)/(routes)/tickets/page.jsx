@@ -19,7 +19,6 @@ export default function TicketPage() {
   return (
     <div className="bg-[#290F12] w-screen flex items-center pt-28 justify-center">
       <Button onClick={bookTicket}>Book the Ticket</Button>
-      <p className="text-white">{username}</p>
     </div>
   );
 }

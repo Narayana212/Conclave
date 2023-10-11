@@ -45,10 +45,7 @@ export default function Navbar() {
     }
   }
 
-  if(true){
-    console.log("USERNAME RENDER IN NAV")
-    console.log(username)
-  }
+
 
 
   return (
@@ -78,7 +75,6 @@ export default function Navbar() {
                 }`}
               >
                 {link.title}
-                {username}
               </p>
             </Link>
           ))}

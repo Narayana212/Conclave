@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export async function GET(request) {
   try {
-    const decodedToken = getDataFromToken(request);
+    const decodedToken = await getDataFromToken(request);
     const { email } = decodedToken;
     const exitingUser = await prisma.user.findUnique({
       where: {

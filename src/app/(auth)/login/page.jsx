@@ -9,6 +9,7 @@ import { Input } from "../../../components/ui/input";
 import { Loader2 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 import TwoCircles from "../../../components/ui/two-circles";
+import useUser from "../../../hooks/useUser";
 
 const schema = z.object({
   email: z.string().email("Invalid email format").min(5, "Too short"),
@@ -16,7 +17,8 @@ const schema = z.object({
 });
 
 export default function Login() {
-  
+
+ 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const {
@@ -35,7 +37,7 @@ export default function Login() {
       const responseData = await response.json();
 
       if (response.ok) {
-        console.log(responseData.message)
+        
         toast.success(responseData.message);
         router.push("/");
       } else {

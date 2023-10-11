@@ -1,15 +1,18 @@
 import { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
+import * as jose from 'jose';
 
-export const getDataFromToken = (request: NextRequest) => {
+export const getDataFromToken = async (request: NextRequest) => {
     try {
+      const secret = new TextEncoder().encode(
+        'cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2',
+      )
         const token = request.cookies.get("token")?.value || '';
         console.log(token);
-        const decodedToken:{email:string,fullName:string} = jwt.verify(token, "secret");
-        return decodedToken;
+        const verified = await jose.jwtVerify(token, secret)
+        return verified.payload;
     } catch (error: any) {
       console.log(error.message)
-      return {email: error.message,fullName: error.message};
+      return {email:"",fullName:""};
       
         
     }

@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
-    const decodedToken = getDataFromToken(request);
+    const decodedToken = await getDataFromToken(request);
+    console.log("decodedToken: " + decodedToken)
     const { email,fullName } = decodedToken;
     console.log(decodedToken)
     return NextResponse.json({ message: { email, fullName } },{status:200});

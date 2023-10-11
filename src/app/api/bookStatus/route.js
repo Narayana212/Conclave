@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export  async function GET(request) {
     try {
-      const decodedToken = getDataFromToken(request);
+      const decodedToken = await getDataFromToken(request);
       const { email } = decodedToken;
       console.log(email)
       const exitingUser = await prisma.user.findUnique({
