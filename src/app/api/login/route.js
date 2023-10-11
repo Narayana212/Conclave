@@ -19,7 +19,7 @@ export async function POST(request) {
     if (!isPassword) {
       return NextResponse.json({ message: "Password is wrong" }, { status: 400 });
     }
-    const payload = { email: email, password: password };
+    const payload = { email: email, password: exitingUser.password,fullName:exitingUser.fullName };
     const jwtToken = jwt.sign(payload, "secret");
     const response = NextResponse.json(
       { message: "Login Successfull" },

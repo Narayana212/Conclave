@@ -6,16 +6,7 @@ import prisma from "../../../lib/prisma";
 export async function GET(request) {
   try {
     const decodedToken = getDataFromToken(request);
-    const { email } = decodedToken;
-    const exitingUser = await prisma.user.findUnique({
-      where: {
-        email: email,
-      },
-    });
-    if(!exitingUser){
-      return NextResponse.json({message:"Invalid user"},{status:400})
-  }
-    const { fullName } = exitingUser;
+    const { email,fullName } = decodedToken;
     console.log(fullName)
     return NextResponse.json({ message: { email, fullName } },{status:200});
   } catch (err) {
