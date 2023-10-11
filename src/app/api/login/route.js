@@ -32,9 +32,7 @@ export async function POST(request) {
       { message: jwtToken },
       { status: 200 }
     );
-    response.cookies.set("token", jwtToken, {
-      httpOnly: true,
-    });
+   
     return response;
 
 

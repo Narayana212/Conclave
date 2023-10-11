@@ -9,7 +9,7 @@ import { Input } from "../../../components/ui/input";
 import { Loader2 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 import TwoCircles from "../../../components/ui/two-circles";
-import useUser from "../../../hooks/useUser";
+import cookie from 'cookie-cutter'
 
 const schema = z.object({
   email: z.string().email("Invalid email format").min(5, "Too short"),
@@ -38,6 +38,7 @@ export default function Login() {
 
       if (response.ok) {
         
+        cookie.set("jwtToken", responseData.message)
         toast.success(responseData.message);
         router.push("/");
       } else {

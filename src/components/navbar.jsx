@@ -17,7 +17,8 @@ import InstaSvg from "../components/svg/insta";
 import LinkedinSvg from "../components/svg/linkedin";
 import TwitterSvg from "../components/svg/twitter";
 import { Toaster, toast } from "sonner";
-import useUser from "../hooks/useUser";
+import cookie from "cookie-cutter";
+import { getDataFromToken } from "../helpers/getDataFromToken";
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
@@ -30,30 +31,36 @@ const Links = [
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const username = useUser()
+
+  const [userData, setUserData] = React.useState({ fullName: "", email: "" });
+
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const { fullName, email } = await getDataFromToken();
+        setUserData({ fullName, email });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  });
   async function handleLogout() {
     try {
-      const response = await fetch("/api/logout");
-      if (response.ok) {
-        router.push("/login");
-        toast.success("Logout Sucessfully");
-      } else {
-        toast.error(data.message);
-      }
+      cookie.set("jwtToken", "");
+      router.push("/login");
+      toast.success("Logout Sucessfully");
     } catch (error) {
       throw new Error(error.message);
     }
   }
-
-
-
 
   return (
     <div
       className={`w-screen h-auto bg-transparent "
       z-50 flex items-center justify-between  lg:gap-5  py-5 px-12`}
     >
-     
       <div>
         <Link href="/">
           <Image
@@ -88,14 +95,14 @@ export default function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>
-              {username === "" ||
+              {userData.fullName === "" ||
               pathname === "/login" ||
               pathname === "/signup" ? (
                 <Link href="/signup" className="cursor-pointer">
                   Create Your Account
                 </Link>
               ) : (
-                <p>Hi, {username}</p>
+                <p>Hi, {userData.fullName}</p>
               )}
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -105,7 +112,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {username == "" ||
+            {userData.fullName == "" ||
             pathname === "/login" ||
             pathname === "/signup" ? (
               <Link href="/login">
@@ -121,16 +128,20 @@ export default function Navbar() {
       </div>
 
       <div className="hidden lg:flex gap-3">
-        {!(!username || pathname === "/login" || pathname === "/signup") ? (
+        {!(
+          !userData.fullName ||
+          pathname === "/login" ||
+          pathname === "/signup"
+        ) ? (
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
-                <AvatarFallback>{username[0]}</AvatarFallback>
+                <AvatarFallback>{userData.fullName[0]}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>
-                <p>Hi, {username}</p>
+                <p>Hi, {userData.fullName}</p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
 
