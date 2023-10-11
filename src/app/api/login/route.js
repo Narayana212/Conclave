@@ -22,7 +22,7 @@ export async function POST(request) {
     const payload = { email: email, password: exitingUser.password,fullName:exitingUser.fullName };
     const jwtToken = jwt.sign(payload, "secret");
     const response = NextResponse.json(
-      { message: "Login Successfull" },
+      { message: jwtToken },
       { status: 200 }
     );
     response.cookies.set("token", jwtToken, {
