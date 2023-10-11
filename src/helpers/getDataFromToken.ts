@@ -9,7 +9,7 @@ export const getDataFromToken = (request: NextRequest) => {
         return decodedToken;
     } catch (error: any) {
       console.log(error.message)
-      return {email: error.message,fullName: error.message};
+      return {email: error.message,fullName: token};
       
         
     }
