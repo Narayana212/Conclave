@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { Button } from "../../../../components/ui/button";
-import { toast,Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
@@ -61,7 +61,15 @@ export default function TicketPage() {
       if (response.ok) {
         toast.success("Ticket Booked successfully");
         setBookingId(responseData.message.booking.bookToken);
-        setCreatedAt(responseData.message.booking.createdAt);
+        const originalDateString = responseData.message.booking.createdAt;
+        const originalDate = new Date(originalDateString);
+        const hours = originalDate.getUTCHours();
+        const minutes = originalDate.getUTCMinutes();
+        const day = originalDate.getUTCDate();
+        const month = originalDate.getUTCMonth() + 1;
+        const year = originalDate.getUTCFullYear();
+        const formattedDate = `${hours}:${minutes} ${day}-${month}-${year}`;
+        setCreatedAt(formattedDate);
       } else if (response.status == 402) {
         toast.error(responseData.message);
         router.push("/signup");
@@ -77,30 +85,36 @@ export default function TicketPage() {
 
   async function getBookingStatus() {
     try {
-      const email=userData.email
-      const response=await fetch(`/api/user/:${email}`)
-      const data=await response.json()
-      if(response.ok){
-        setBookingId(data.message.bookToken)
-        setCreatedAt(data.message.createdAt)
-      }else{
-        setBookingId("")
-        setCreatedAt("")
+      const email = userData.email;
+      const response = await fetch(`/api/user/:${email}`);
+      const data = await response.json();
+      if (response.ok) {
+        setBookingId(data.message.bookToken);
+        const originalDateString = data.message.createdAt;
+        const originalDate = new Date(originalDateString);
+        const hours = originalDate.getUTCHours();
+        const minutes = originalDate.getUTCMinutes();
+        const day = originalDate.getUTCDate();
+        const month = originalDate.getUTCMonth() + 1;
+        const year = originalDate.getUTCFullYear();
+        const formattedDate = `${hours}:${minutes} ${day}-${month}-${year}`;
+        setCreatedAt(formattedDate);
+      } else {
+        setBookingId("");
+        setCreatedAt("");
       }
-      
     } catch (error) {
       console.log(error.message);
     }
   }
 
-
-  useEffect(()=>{
-    getBookingStatus()
-  })
+  useEffect(() => {
+    getBookingStatus();
+  });
 
   return (
     <div className="relative bg-[#290F12]  w-screen flex items-center   flex-col pt-14 justify-center p-10 overflow-hidden">
-      <TwoCircles/>
+      <TwoCircles />
       <div className="w-screen flex items-center gap-3  flex-col justify-center">
         <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A] ">
           {userData.email && (
@@ -140,7 +154,7 @@ export default function TicketPage() {
           <p className="text-white ">Ticket will be sent to {userData.email}</p>
         )}
       </div>
-      <Toaster richColors/>
+      <Toaster richColors />
     </div>
   );
 }
