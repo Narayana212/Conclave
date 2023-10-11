@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function getUser() {
+export default function useUser() {
     const [username,setUsername]=useState("")
   async function getUserData() {
     try {
@@ -24,3 +24,5 @@ export default function getUser() {
 
   return username;
 }
+
+

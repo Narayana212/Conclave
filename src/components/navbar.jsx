@@ -17,7 +17,7 @@ import InstaSvg from "../components/svg/insta";
 import LinkedinSvg from "../components/svg/linkedin";
 import TwitterSvg from "../components/svg/twitter";
 import { Toaster, toast } from "sonner";
-import getUser from "../hooks/getUser";
+import useUser from "../hooks/useUser";
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
@@ -30,7 +30,7 @@ const Links = [
 export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   const router = useRouter();
-  const username = getUser();
+  const username = useUser();
   async function handleLogout() {
     try {
       const response = await fetch("/api/logout");

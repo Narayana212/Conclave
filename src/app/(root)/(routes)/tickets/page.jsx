@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../../../../components/ui/button";
 import { toast } from "sonner";
 import {useRouter} from 'next/navigation'
-import getUser from "../../../../hooks/getUser";
+import useUser from "../../../../hooks/useUser";
 
 export default function TicketPage() {
   const router=useRouter()
-  const username= getUser();
+  const username= useUser();
   
   async function bookTicket() {
     if(username){
