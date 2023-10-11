@@ -12,7 +12,7 @@ export const getDataFromToken = async (request: NextRequest) => {
         const decodedToken=verified.payload
         return decodedToken ;
       }else{
-        return {email:token,fullName:token.value+"@"}
+        return {email:token,fullName:token+"@"}
       }
     } catch (error: any) {
       console.log(error.message)
