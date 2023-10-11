@@ -12,11 +12,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
-import { Loader2, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import InstaSvg from "../components/svg/insta";
 import LinkedinSvg from "../components/svg/linkedin";
 import TwitterSvg from "../components/svg/twitter";
 import { Toaster, toast } from "sonner";
+import getUser from "../hooks/getUser";
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
@@ -29,12 +30,12 @@ const Links = [
 export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const username = getUser();
   async function handleLogout() {
     try {
       const response = await fetch("/api/logout");
       if (response.ok) {
-        setUsername("")
+        setUsername("");
         router.push("/login");
         toast.success("Logout Sucessfully");
       } else {
@@ -45,29 +46,17 @@ export default function Navbar({ isLogin }) {
     }
   }
 
-  async function getUserData() {
-    try {
-      const response = await fetch("/api/username");
-      const data = await response.json();
-      if (response.ok) {
-        setUsername(data.message.fullName);
-      } else {
-        setUsername("");
-      }
-    } catch (error) {
-      throw new Error(error.message);
-    }
+  if(true){
+    console.log(username)
   }
 
-  useEffect(() => {
-    getUserData();
-  });
 
   return (
     <div
       className={`w-screen h-auto bg-transparent "
       z-50 flex items-center justify-between  lg:gap-5  py-5 px-12`}
     >
+     
       <div>
         <Link href="/">
           <Image
@@ -89,6 +78,7 @@ export default function Navbar({ isLogin }) {
                 }`}
               >
                 {link.title}
+                {username}
               </p>
             </Link>
           ))}
@@ -102,7 +92,9 @@ export default function Navbar({ isLogin }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>
-              {username === "" || pathname==="/login" || pathname==="/signup" ? (
+              {username === "" ||
+              pathname === "/login" ||
+              pathname === "/signup" ? (
                 <Link href="/signup" className="cursor-pointer">
                   Create Your Account
                 </Link>
@@ -117,7 +109,9 @@ export default function Navbar({ isLogin }) {
               </Link>
             ))}
 
-            {username == "" || pathname==="/login" || pathname==="/signup" ? (
+            {username == "" ||
+            pathname === "/login" ||
+            pathname === "/signup" ? (
               <Link href="/login">
                 <DropdownMenuItem>Login</DropdownMenuItem>
               </Link>
@@ -131,7 +125,7 @@ export default function Navbar({ isLogin }) {
       </div>
 
       <div className="hidden lg:flex gap-3">
-        {!(username === "" || pathname === "/login" || pathname === "/signup")? (
+        {!(!username || pathname === "/login" || pathname === "/signup") ? (
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
