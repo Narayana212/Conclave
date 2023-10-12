@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -20,6 +20,8 @@ import {
 import { Input } from "../components/ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { Toaster, toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -37,6 +39,7 @@ const formSchema = z.object({
 });
 
 export default function ContactForm() {
+  const [loading,setLoading]=useState(false)
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,7 +51,11 @@ export default function ContactForm() {
   });
 
   const handleSubmit = async (data) => {
+    setLoading(true)
     await sendEmail(data)
+
+    setLoading(false)
+    toast.success("Sent Successfully")
   };
 
   return (
@@ -147,12 +154,16 @@ export default function ContactForm() {
               />
             </div>
 
-            <Button variant={"secondary"} type="submit" className="self-end mt-4">
-              Send
+            <Button variant={"secondary"}  type="submit" className="self-end mt-4 ">
+              {loading?<div className="flex items-center gap-3">
+                <Loader2 className="animate-spin"/>
+                <span>Sending</span>
+              </div>:"Send"}
             </Button>
           </form>
         </Form>
       </motion.div>
+      <Toaster richColors/>
     </motion.div>
   );
 }
