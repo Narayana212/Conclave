@@ -1,6 +1,18 @@
+import { render } from "@react-email/components";
 import prisma from "../../../../lib/prisma";
 import { NextResponse } from "next/server";
+import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from "uuid";
+import TicketEmail from '../../../../email/ticket-email'
+import { Resend } from "resend";
+
+const transporter = nodemailer.createTransport({
+  service:"gmail",
+  auth: {
+    user: 'lr888@snu.edu.in',
+    pass: 'Narayana@2004',
+  },
+});
 
 
 export async function POST(request) {
@@ -45,9 +57,27 @@ export async function POST(request) {
       },
     });
 
+   
+
+    
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const response=await resend.emails.send({
+      from: "Contact Form <onboarding@resend.dev>",
+      to: email,
+      subject: "Message from form",
+      reply_to: "raavinarayana212@gmail.com",
+      react:<TicketEmail email={email} bookToken={bookToken}/>,
+    })
+
+
+    console.log("response",response)
+
+
+    
     return NextResponse.json({ message: {booking}}, { status: 200 });
   } catch (error) {
-    console.log(error.message);
+    console.log("error from ticket post",error);
     return NextResponse.json(
       { message: "Something went wrong" },
       { status: 500 }
