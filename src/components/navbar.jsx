@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion"; 
 import Link from "next/link";
 import Image from "next/image";
@@ -35,22 +35,23 @@ export default function Navbar() {
 
   const [userData, setUserData] = React.useState({ fullName: "", email: "" });
 
-  React.useEffect(() => {
-    async function fetchData() {
-      try {
-        const { fullName, email } = await getDataFromToken();
-        if(fullName === '"exp" claim timestamp check failed') {
-          setUserData({fullName:"",email:""})
-        }else{
-          setUserData({fullName,email})
-        }
-      } catch (error) {
-        console.error(error);
+  async function fetchData() {
+    try {
+      const { fullName, email } = await getDataFromToken();
+      if(fullName === '"exp" claim timestamp check failed') {
+        setUserData({fullName:"",email:""})
+      }else{
+        setUserData({fullName,email})
       }
+    } catch (error) {
+      console.error(error);
     }
+  }
 
+
+  useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   async function handleLogout() {
     try {
