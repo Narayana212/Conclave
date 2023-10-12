@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { motion } from "framer-motion"; // Import motion from framer-motion
 import Heading from "./ui/heading";
@@ -73,13 +73,14 @@ export default function Hero({ isLogin }) {
                 </motion.div>
               </Link>
             </div>
-            <motion.div
-              className={` ${
-                isLogin ? "-mt-[2rem]" : "mt-2"
-              } text-7xl -ml-12 rotate-90`}
-              variants={textVariants}
-            >
-              <Heading text={"2023"} styles={"rotate-90"} />
+            <motion.div variants={textVariants}>
+              <Heading
+                text={"2023"}
+                styles={` ${
+                  isLogin ? "-mt-[4rem]" : "-mt-[1rem]"
+                } text-7xl -ml-12 rotate-90`}
+                
+              />
             </motion.div>
           </motion.div>
         </div>
