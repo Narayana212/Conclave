@@ -39,7 +39,11 @@ export default function Navbar() {
     async function fetchData() {
       try {
         const { fullName, email } = await getDataFromToken();
-        setUserData({ fullName, email });
+        if(fullName === '"exp" claim timestamp check failed') {
+          setUserData({fullName:"",email:""})
+        }else{
+          setUserData({fullName,email})
+        }
       } catch (error) {
         console.error(error);
       }
