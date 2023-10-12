@@ -31,22 +31,7 @@ export default function Sponsors() {
               />
             </motion.div>
           ))}
-          {sponsors.map((sponsor) => (
-            <motion.div
-              key={sponsor.id}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src={sponsor.src}
-                alt={sponsor.name}
-                width={"150"}
-                height={"150"}
-              />
-            </motion.div>
-          ))}
+        
         </Marquee>
       </div>
     </motion.div>
