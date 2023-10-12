@@ -161,7 +161,7 @@ export default function Login() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Link className="text-white text-sm mt-3 hover:underline" href="/signup">
-            Don't have an account? Sign up here
+            Don&apos;t have an account? Sign up here
           </Link>
         </motion.div>
         <Toaster richColors closeButton />
