@@ -2,14 +2,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter,redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Loader2 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 import TwoCircles from "../../../components/ui/two-circles";
-import cookie from 'cookie-cutter'
+import cookie from "cookie-cutter";
+import { motion } from "framer-motion";
 
 const schema = z.object({
   email: z.string().email("Invalid email format").min(5, "Too short"),
@@ -17,8 +18,6 @@ const schema = z.object({
 });
 
 export default function Login() {
-
- 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const {
@@ -37,8 +36,7 @@ export default function Login() {
       const responseData = await response.json();
 
       if (response.ok) {
-        
-        cookie.set("jwtToken", responseData.message)
+        cookie.set("jwtToken", responseData.message);
         toast.success("Login successfully");
         router.push("/");
       } else {
@@ -50,23 +48,57 @@ export default function Login() {
       setLoading(false);
     }
   };
-  
 
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const slideInUpVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
 
   return (
-    <div className="h-[65vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden">
-      <TwoCircles/>
-      <div className="flex flex-col items-center justify-center ">
-        <h1 className=" text-xl self-start text-white font-bold ml-5">
-          Login
-        </h1>
-        <form
+    <motion.div
+      className="h-[65vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInVariants}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <TwoCircles />
+      </motion.div>
+      <motion.div
+        className="flex flex-col items-center justify-center"
+        initial="hidden"
+        animate="visible"
+        variants={slideInUpVariants}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h1 className=" text-xl self-start text-white font-bold ml-5">Login</h1>
+        <motion.form
           className="flex flex-col text-white border-black px-5 py-2 mt-5 rounded-lg gap-5"
           onSubmit={handleSubmit(onSubmit)}
+          initial="hidden"
+          animate="visible"
+          variants={slideInUpVariants}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <label htmlFor="email" className="text-[#F8A254] text-sm">
+          <motion.label
+            htmlFor="email"
+            className="text-[#F8A254] text-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             Email
-          </label>
+          </motion.label>
           <Input
             type="email"
             id="email"
@@ -76,16 +108,28 @@ export default function Login() {
             disabled={loading}
           />
           {errors.email && (
-            <p className="text-red-500">{errors.email.message}</p>
+            <motion.p
+              className="text-red-500"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              {errors.email.message}
+            </motion.p>
           )}
 
-          <label htmlFor="password" className="text-[#F8A254] text-sm mt-2">
+          <motion.label
+            htmlFor="password"
+            className="text-[#F8A254] text-sm mt-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
             Password
-          </label>
+          </motion.label>
           <Input
             type="password"
             id="password"
-            
             className=" bg-transparent lg:w-[30vw] -mt-3"
             {...register("password", { required: true })}
             disabled={loading}
@@ -109,16 +153,19 @@ export default function Login() {
               "Login"
             )}
           </Button>
-        </form>
+        </motion.form>
 
-        <Link
-          className="text-white text-sm mt-3 hover:underline"
-          href="/signup"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Don&apos;t have account ? Sign up here
-        </Link>
+          <Link className="text-white text-sm mt-3 hover:underline" href="/signup">
+            Don't have an account? Sign up here
+          </Link>
+        </motion.div>
         <Toaster richColors closeButton />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
