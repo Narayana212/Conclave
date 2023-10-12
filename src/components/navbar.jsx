@@ -1,6 +1,7 @@
 "use client";
-import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion"; 
+import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Avatar, AvatarFallback } from "../components/ui/avatar";
@@ -46,20 +47,24 @@ export default function Navbar() {
 
     fetchData();
   });
+
   async function handleLogout() {
     try {
       cookie.set("jwtToken", "");
       router.push("/login");
-      toast.success("Logout Sucessfully");
+      toast.success("Logout Successfully");
     } catch (error) {
       throw new Error(error.message);
     }
   }
 
   return (
-    <div
-      className={`w-screen h-auto bg-transparent "
-      z-50 flex items-center justify-between  lg:gap-5  py-5 px-12`}
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.5 }}
+      className={`w-screen h-auto bg-transparent z-50 flex items-center justify-between lg:gap-5 py-5 px-12`}
     >
       <div>
         <Link href="/">
@@ -76,13 +81,17 @@ export default function Navbar() {
         <div className="flex gap-5 ">
           {Links.map((link) => (
             <Link key={link.id} href={link.href}>
-              <p
-                className={`hover-link overflow-hidden  relative text-white ${
+              <motion.p
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.5 }}
+                className={`hover-link overflow-hidden relative text-white ${
                   pathname === link.href ? "active-link" : ""
                 }`}
               >
                 {link.title}
-              </p>
+              </motion.p>
             </Link>
           ))}
         </div>
@@ -119,7 +128,13 @@ export default function Navbar() {
                 <DropdownMenuItem>Login</DropdownMenuItem>
               </Link>
             ) : (
-              <DropdownMenuItem onClick={() => handleLogout()}>
+              <DropdownMenuItem
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
+                onClick={() => handleLogout()}
+              >
                 Logout
               </DropdownMenuItem>
             )}
@@ -141,11 +156,24 @@ export default function Navbar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>
-                <p>Hi, {userData.fullName}</p>
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  Hi, {userData.fullName}
+                </motion.p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
 
-              <DropdownMenuItem onClick={() => handleLogout()}>
+              <DropdownMenuItem
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
+                onClick={() => handleLogout()}
+              >
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -171,6 +199,6 @@ export default function Navbar() {
       </div>
 
       <Toaster richColors closeButton />
-    </div>
+    </motion.div>
   );
 }

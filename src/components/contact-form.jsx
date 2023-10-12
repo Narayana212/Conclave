@@ -1,9 +1,9 @@
-"use client";
-
+"use client"
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { motion } from "framer-motion"; // Import motion from framer-motion
 
 import {
   Form,
@@ -50,16 +50,34 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13]">
-      <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24">
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.5 }}
+      className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13]"
+    >
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -50 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
+      >
         <Image src='/main.png' alt="logo" width={"200"} height={"200"}  className="mix-blend-lighten"/>
         <h1 className="text-[#F8A254] lg:text-xl  font-medium ">
           Shiv Nadar Institution of Eminence
         </h1>
         <h1 className="text-[#F8A254] lg:text-xl font-medium">+91-120-7170100</h1>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col w-full lg:w-1/2 order-1 lg:order-2">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 50 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col w-full lg:w-1/2 order-1 lg:order-2"
+      >
         <h1 className="text-white text-2xl font-bold">Contact Us</h1>
         <Form {...form} className="w-full">
           <form
@@ -126,12 +144,12 @@ export default function ContactForm() {
               />
             </div>
 
-            <Button   variant={"secondary"} type="submit" className="self-end mt-4">
+            <Button variant={"secondary"} type="submit" className="self-end mt-4">
               Send
             </Button>
           </form>
         </Form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

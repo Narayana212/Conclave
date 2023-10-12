@@ -1,55 +1,89 @@
+"use client"
 import React from "react";
+import { motion } from "framer-motion"; // Import motion from framer-motion
 import Heading from "./ui/heading";
 import Navbar from "./navbar";
 import { Button } from "./ui/button";
+
 import Link from "next/link";
 
 export default function Hero({ isLogin }) {
-  return (
-    <>
-      <div className="h-screen w-screen    bg-[#290E13]">
-        <div
-          className="w-screen h-full"
-          style={{
-            backgroundImage: `url("/banner.png")`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="w-full h-full opacity-90 bg-[#290E13]">
-            <Navbar isLogin={isLogin} />
-            <div className="flex md:hidden flex-col items-center justify-center w-full h-full ">
-              <Heading text={"BUSINESS"} styles="text-6xl " />
-              <Heading text={"CONCLAVE"} styles="text-6xl" />
-              <Heading text={"2023"} styles="text-6xl " />
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5 } },
+  };
 
-              <Link href="/tickets">
-                <Button className={` ${isLogin ? "flex" : "hidden"}  mt-3 `}>
-                  GET TICKETS
-                </Button>
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  return (
+    <motion.div
+      className="h-screen w-screen bg-[#290E13]"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <div
+        className="w-screen h-full"
+        style={{
+          backgroundImage: `url("/banner.png")`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="w-full h-full opacity-90 bg-[#290E13]">
+          <Navbar isLogin={isLogin} />
+          <motion.div
+            className="flex md:hidden flex-col items-center justify-center w-full h-full "
+            variants={textVariants}
+          >
+            <Heading text={"BUSINESS"} styles="text-6xl " />
+            <Heading text={"CONCLAVE"} styles="text-6xl" />
+            <Heading text={"2023"} styles="text-6xl " />
+            <Link href="/tickets">
+              <motion.div
+                className={` ${isLogin ? "flex" : "hidden"}  mt-3 `}
+                variants={buttonVariants}
+              >
+                <Button>GET TICKETS</Button>
+              </motion.div>
+            </Link>
+          </motion.div>
+          <motion.div
+            className="hidden md:flex justify-center items-center w-full h-full"
+            variants={textVariants}
+          >
+            <div className="flex flex-col items-start">
+              <Heading text={"BUSINESS"} styles="text-8xl" />
+              <Heading text={"CONCLAVE"} styles="text-8xl" />
+              <Link href="/tickets" className="self-center -mr-[8rem]">
+                <motion.div
+                  className={`${isLogin ? "" : "hidden"}  mt-3`}
+                  variants={buttonVariants}
+                >
+                  <Button>GET TICKETS</Button>
+                </motion.div>
               </Link>
             </div>
-            <div className="hidden md:flex justify-center items-center w-full h-full  ">
-              <div className="flex flex-col items-start ">
-                <Heading text={"BUSINESS"} styles="text-8xl " />
-                <Heading text={"CONCLAVE"} styles="text-8xl" />
-                <Link href="/tickets" className="self-center -mr-[8rem]">
-                  <Button className={`${isLogin ? "" : "hidden"}  mt-3`}>
-                    GET TICKETS
-                  </Button>
-                </Link>
-              </div>
-              <Heading
-                text={"2023"}
-                styles={` ${
-                  isLogin ? "-mt-[2rem]" : "mt-2"
-                } text-7xl -ml-12  rotate-90 `}
-              />
-            </div>
-          </div>
+            <motion.div
+              className={` ${
+                isLogin ? "-mt-[2rem]" : "mt-2"
+              } text-7xl -ml-12 rotate-90`}
+              variants={textVariants}
+            >
+              <Heading text={"2023"} styles={"rotate-90"} />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }

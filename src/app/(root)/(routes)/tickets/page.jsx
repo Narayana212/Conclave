@@ -6,6 +6,7 @@ import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
 import TwoCircles from "../../../../components/ui/two-circles";
+import {motion} from "framer-motion"
 
 export default function TicketPage() {
   const [userData, setUserData] = React.useState({ fullName: "", email: "" });
@@ -23,7 +24,8 @@ export default function TicketPage() {
       console.error(error);
     }
   }
-  React.useEffect(() => {
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -37,7 +39,7 @@ export default function TicketPage() {
       const responseData = await response.json();
 
       if (response.ok) {
-        toast.success("Ticket Cancel successfully");
+        toast.success("Ticket Cancelled successfully");
         setBookingId("");
         setCreatedAt("");
       } else {
@@ -113,48 +115,68 @@ export default function TicketPage() {
   });
 
   return (
-    <div className="relative bg-[#290F12]  w-screen flex items-center   flex-col pt-14 justify-center p-10 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative bg-[#290F12] w-screen flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
+    >
       <TwoCircles />
-      <div className="w-screen flex items-center gap-3  flex-col justify-center">
-        <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A] ">
+      <div className="w-screen flex items-center gap-3 flex-col justify-center">
+        <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A]">
           {userData.email && (
-            <p className="text-white ">Booking id: {bookingId}</p>
+            <p className="text-white">Booking id: {bookingId}</p>
           )}
           {userData.email && (
-            <p className="text-white ">Booked At: {createdAt}</p>
+            <p className="text-white">Booked At: {createdAt}</p>
           )}
         </div>
 
         <div className="flex gap-3">
           {!bookingId ? (
-            <Button onClick={bookTicket} variant="secondary">
-              {loading ? (
-                <div className="flex  gap-2 items-center">
-                  <Loader2 className="animate-spin" />
-                  <span>Booking Ticket</span>
-                </div>
-              ) : (
-                "Book Ticket"
-              )}
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button onClick={bookTicket} variant="secondary">
+                {loading ? (
+                  <div className="flex gap-2 items-center">
+                    <Loader2 className="animate-spin" />
+                    <span>Booking Ticket</span>
+                  </div>
+                ) : (
+                  "Book Ticket"
+                )}
+              </Button>
+            </motion.div>
           ) : (
-            <Button onClick={cancelTicket} variant="secondary">
-              {cancelLoading ? (
-                <div className="flex gap-2 items-center">
-                  <Loader2 className="animate-spin" />
-                  <span>Cancelling Ticket</span>
-                </div>
-              ) : (
-                "Cancel Ticket"
-              )}
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button onClick={cancelTicket} variant="secondary">
+                {cancelLoading ? (
+                  <div className="flex gap-2 items-center">
+                    <Loader2 className="animate-spin" />
+                    <span>Cancelling Ticket</span>
+                  </div>
+                ) : (
+                  "Cancel Ticket"
+                )}
+              </Button>
+            </motion.div>
           )}
         </div>
         {userData.email && (
-          <p className="text-white ">Ticket will be sent to {userData.email}</p>
+          <p className="text-white">Ticket will be sent to {userData.email}</p>
         )}
       </div>
       <Toaster richColors />
-    </div>
+    </motion.div>
   );
 }
