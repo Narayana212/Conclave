@@ -64,11 +64,8 @@ export default function Navbar() {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      transition={{ duration: 0.5 }}
+    <div
+      
       className={`w-screen h-auto bg-transparent z-50 flex items-center justify-between lg:gap-5 py-5 px-12`}
     >
       <div>
@@ -204,6 +201,6 @@ export default function Navbar() {
       </div>
 
       <Toaster richColors closeButton />
-    </motion.div>
+    </div>
   );
 }
