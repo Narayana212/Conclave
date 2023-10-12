@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion"; // Import motion from framer-motion
+import {sendEmail} from '../actions/send-email'
+
 
 import {
   Form,
@@ -45,8 +47,8 @@ export default function ContactForm() {
     },
   });
 
-  const handleSubmit = (data) => {
-    console.log("Form Data:", data);
+  const handleSubmit = async (data) => {
+    await sendEmail(data)
   };
 
   return (
@@ -83,6 +85,7 @@ export default function ContactForm() {
           <form
             className="space-y-8"
             onSubmit={form.handleSubmit(handleSubmit)}
+            
           >
             <div className="w-full flex flex-col lg:flex-row  gap-8 lg:gap-2 mt-5">
               <FormField
