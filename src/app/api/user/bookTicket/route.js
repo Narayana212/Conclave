@@ -1,18 +1,11 @@
 import { render } from "@react-email/components";
 import prisma from "../../../../lib/prisma";
 import { NextResponse } from "next/server";
-import nodemailer from 'nodemailer';
+import Plunk from '@plunk/node';
 import { v4 as uuidv4 } from "uuid";
 import TicketEmail from '../../../../email/ticket-email'
-import { Resend } from "resend";
 
-const transporter = nodemailer.createTransport({
-  service:"gmail",
-  auth: {
-    user: 'lr888@snu.edu.in',
-    pass: 'Narayana@2004',
-  },
-});
+
 
 
 export async function POST(request) {
@@ -38,7 +31,7 @@ export async function POST(request) {
       },
     });
 
-    console.log(existingBooking);
+   
 
     if (existingBooking) {
       return NextResponse.json(
@@ -56,20 +49,23 @@ export async function POST(request) {
         createdAt: new Date(),
       },
     });
+    
 
+    
+    
+    const ticketHtml=render(<TicketEmail email={email} bookToken={bookToken}/>)
+    const plunk = new Plunk(process.env.PLUNK_API_KEY);
+
+    
    
 
     
-    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const response=await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+    const response=await plunk.emails.send({
       to: email,
-      subject: "Message from form",
-      reply_to: "raavinarayana212@gmail.com",
-      react:<TicketEmail email={email} bookToken={bookToken}/>,
-    })
-
+      subject: "Hello world",
+      body: ticketHtml,
+    });
 
     console.log("response",response)
 
