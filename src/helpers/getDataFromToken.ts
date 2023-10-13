@@ -13,11 +13,11 @@ export const getDataFromToken = async () => {
         const decodedToken=verified.payload
         return decodedToken ;
       }else{
-        return {email:token,fullName:""}
+        return {email:token,fullName:"",id:""}
       }
     } catch (error: any) {
       console.log(error.message)
-      return {email:"",fullName:error.message};
+      return {email:"",fullName:error.message,id:""};
       
         
     }

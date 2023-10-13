@@ -27,5 +27,14 @@ model Booking {
 }
 
 
+model UserBooking {
+  rollNumber String  @id @unique
+  email String @unique
+  fullName String 
+  imageUrl String
+  isBooked Boolean @default(false)
+}
+
+
 
 

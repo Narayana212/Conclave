@@ -12,6 +12,11 @@ export async function GET(request, { params }) {
         email: email,
       },
     });
+    const existingRequestBooking = await prisma.userBooking.findUnique({
+      where: {
+        email:email,
+      },
+    });
 
 
     if (!existingUser) {
@@ -19,6 +24,9 @@ export async function GET(request, { params }) {
         { message: "You have not been register yet" },
         { status: 400 }
       );
+    }
+    if(existingRequestBooking&&!existingRequestBooking.isBooked){
+      return NextResponse.json({message:{bookToken:"pending",createdAt:""}})
     }
     const existingBooking = await prisma.booking.findUnique({
         where: {

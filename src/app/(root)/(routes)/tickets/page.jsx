@@ -6,10 +6,10 @@ import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
 import TwoCircles from "../../../../components/ui/two-circles";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function TicketPage() {
-  const [userData, setUserData] = React.useState({ fullName: "", email: "" });
+  const [userData, setUserData] = React.useState({ fullName: "", email: "" ,id:""});
   const [loading, setLoading] = React.useState(false);
   const [cancelLoading, setCancelLoading] = React.useState(false);
   const [bookingId, setBookingId] = React.useState();
@@ -18,71 +18,39 @@ export default function TicketPage() {
 
   async function fetchData() {
     try {
-      const { fullName, email } = await getDataFromToken();
-      if(fullName === '"exp" claim timestamp check failed') {
-        setUserData({fullName:"",email:""})
-      }else{
-        setUserData({fullName,email})
+      const { fullName, email,id } = await getDataFromToken();
+      if (fullName === '"exp" claim timestamp check failed') {
+        setUserData({ fullName: "", email: "" ,id:""});
+      } else {
+        setUserData({ fullName, email,id });
       }
     } catch (error) {
       console.error(error);
     }
   }
 
-
   useEffect(() => {
     fetchData();
   }, []);
 
-  async function cancelTicket() {
-    try {
-      setCancelLoading(true);
-      const response = await fetch("/api/user/bookTicket", {
-        method: "DELETE",
-        body: JSON.stringify(userData),
-      });
-      const responseData = await response.json();
+ 
 
-      if (response.ok) {
-        toast.success("Ticket Cancelled successfully");
-        setBookingId("");
-        setCreatedAt("");
-      } else {
-        toast.error(responseData.message);
-      }
-    } catch (error) {
-      console.error(error.message);
-    } finally {
-      setCancelLoading(false);
-    }
-  }
+  const promise = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-  async function bookTicket() {
+  function bookTicket() {
     try {
       setLoading(true);
-      const response = await fetch("/api/user/bookTicket", {
-        method: "POST",
-        body: JSON.stringify(userData),
-      });
-      const responseData = await response.json();
-      if (response.ok) {
-        toast.success("Ticket Booked successfully");
-        setBookingId(responseData.message.booking.bookToken);
-        const originalDateString = responseData.message.booking.createdAt;
-        const originalDate = new Date(originalDateString);
-        const hours = originalDate.getUTCHours();
-        const minutes = originalDate.getUTCMinutes();
-        const day = originalDate.getUTCDate();
-        const month = originalDate.getUTCMonth() + 1;
-        const year = originalDate.getUTCFullYear();
-        const formattedDate = `${hours}:${minutes} ${day}-${month}-${year}`;
-        setCreatedAt(formattedDate);
-      } else if (response.status == 402) {
-        toast.error(responseData.message);
-        router.push("/signup");
-      } else {
-        toast.error(responseData.message);
+
+      if (!userData.email) {
+        toast.error("You have not registered");
+        return router.push("/signup");
       }
+      toast.promise(promise, {
+        loading: "Going to Payment Page...",
+        success: "Redirected Payment Page",
+        error: "Error",
+      });
+      return router.push(`/payment/${userData.id}`);
     } catch (error) {
       console.error(error);
     } finally {
@@ -139,7 +107,7 @@ export default function TicketPage() {
         </div>
 
         <div className="flex gap-3">
-          {!bookingId ? (
+          {!(bookingId=="pending") ? (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -150,10 +118,10 @@ export default function TicketPage() {
                 {loading ? (
                   <div className="flex gap-2 items-center">
                     <Loader2 className="animate-spin" />
-                    <span>Booking Ticket</span>
+                    <span>Processing</span>
                   </div>
                 ) : (
-                  "Book Ticket"
+                  "Procced to Payment"
                 )}
               </Button>
             </motion.div>
@@ -164,15 +132,9 @@ export default function TicketPage() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <Button onClick={cancelTicket} variant="secondary">
-                {cancelLoading ? (
-                  <div className="flex gap-2 items-center">
-                    <Loader2 className="animate-spin" />
-                    <span>Cancelling Ticket</span>
-                  </div>
-                ) : (
-                  "Cancel Ticket"
-                )}
+              <Button  variant="secondary">
+                Confirmation Pending
+                
               </Button>
             </motion.div>
           )}

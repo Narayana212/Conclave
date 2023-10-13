@@ -19,7 +19,7 @@ export async function POST(request) {
     if (!isPassword) {
       return NextResponse.json({ message: "Password is wrong" }, { status: 400 });
     }
-    const payload = { email: email, password: exitingUser.password,fullName:exitingUser.fullName };
+    const payload = { id:exitingUser.userId,email: email, password: exitingUser.password,fullName:exitingUser.fullName };
     const alg = "HS256";
     const secret = new TextEncoder().encode(
       'cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2',
