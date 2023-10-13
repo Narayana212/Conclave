@@ -6,18 +6,72 @@ import TicketEmail from "../../../email/ticket-email";
 
 
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders });
+}
+
 
 export async function GET(request){
   try {
 
     const Bookings = await prisma.userBooking.findMany({
+      where:{
+        isBooked:false
+      }
     
     });
 
-    return NextResponse.json({message:Bookings},{status:200})
+    return NextResponse.json({message:Bookings},{headers:corsHeaders})
 
     
 
+  } catch (error) {
+    console.log("error from ticket post", error.message);
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
+    
+  }
+}
+
+
+export async function PUT(request){
+  try {
+
+    const requestBody = await request.json();
+    const { rollNumber} = requestBody;
+
+
+    const existingBooking = await prisma.userBooking.update({
+      where: {
+        rollNumber,
+      },
+      data:{
+        isBooked:true
+
+      }
+    });
+    const Bookings = await prisma.userBooking.findMany({
+      where:{
+        isBooked:false
+      }
+    
+    });
+
+
+    return  NextResponse.json({message:Bookings},{headers:corsHeaders})
+
+
+
+
+    
   } catch (error) {
     console.log("error from ticket post", error.message);
     return NextResponse.json(

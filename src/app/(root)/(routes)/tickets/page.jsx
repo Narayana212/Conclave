@@ -7,6 +7,7 @@ import { getDataFromToken } from "../../../../helpers/getDataFromToken";
 import { Loader2 } from "lucide-react";
 import TwoCircles from "../../../../components/ui/two-circles";
 import { motion } from "framer-motion";
+import {sendTicketEmail} from "../../../../actions/send-ticket-email"
 
 export default function TicketPage() {
   const [userData, setUserData] = React.useState({ fullName: "", email: "" ,id:""});
@@ -107,37 +108,45 @@ export default function TicketPage() {
         </div>
 
         <div className="flex gap-3">
-          {!(bookingId=="pending") ? (
-            <motion.div
+            {bookingId !== "pending" ? (
+              !bookingId ? (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Button onClick={bookTicket} variant="secondary">
+                    {loading ? (
+                      <div className="flex gap-2 items-center">
+                        <Loader2 className="animate-spin" />
+                        <span>Processing</span>
+                      </div>
+                    ) : (
+                      "Proceed to Payment" // Corrected the spelling error
+                    )}
+                  </Button>
+                </motion.div>
+              ) : <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <Button onClick={bookTicket} variant="secondary">
-                {loading ? (
-                  <div className="flex gap-2 items-center">
-                    <Loader2 className="animate-spin" />
-                    <span>Processing</span>
-                  </div>
-                ) : (
-                  "Procced to Payment"
-                )}
-              </Button>
+              <Button variant="secondary" onClick={async()=>sendTicketEmail({bookingId,userData})}>Sent Ticket to {userData.email}</Button>
             </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Button  variant="secondary">
-                Confirmation Pending
-                
-              </Button>
-            </motion.div>
-          )}
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Button variant="secondary">Confirmation Pending</Button>
+              </motion.div>
+            )}
+          
+         
         </div>
         {userData.email && (
           <p className="text-white">Ticket will be sent to {userData.email}</p>
