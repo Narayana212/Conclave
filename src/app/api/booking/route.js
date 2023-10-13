@@ -91,7 +91,7 @@ export async function POST(request) {
     const ticketHtml = render(
       <TicketEmail
         email={email}
-        bookToken={`hi ${fullName} Payment Request will confirm your payment soon`}
+        bookToken={`Hi ${fullName} Payment Request Received will confirm your payment soon..`}
       />
     );
     const plunk = new Plunk(process.env.PLUNK_API_KEY);

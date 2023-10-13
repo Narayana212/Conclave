@@ -16,12 +16,12 @@ export default function ContactEmail({email,bookToken}) {
   return (
     <Html>
       <Head />
-      <Preview>Here is your ticket to Conclave</Preview>
+      <Preview>Payment Request Received</Preview>
       <Tailwind>
         <Body className="bg-gray-100 ">
           <Section>
             <Heading className="leading-tight">
-              Here is your ticket to Conclave
+            Payment Request Received
             </Heading>
             <Text>{bookToken}</Text>
             <Hr/>
