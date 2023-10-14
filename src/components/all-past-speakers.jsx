@@ -18,7 +18,7 @@ export default function AllPastSpeakers() {
         SPEAKERS
       </h1>
       <div className="bg-[#F8A254] w-[100px] h-[5px] mt-1 rounded-[11px]" />
-      <div className="flex w-full px-10 pt-10 gap-8 justify-center flex-wrap">
+      <div className="flex w-full lg:px-10 pt-10 lg:gap-[6rem] justify-center flex-wrap">
         {speakers.map((speaker) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
