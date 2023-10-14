@@ -4,8 +4,8 @@ export default function LinkedinSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="37"
-      height="37"
+      width="30"
+      height="30"
       viewBox="0 0 37 37"
       fill="none"
     >

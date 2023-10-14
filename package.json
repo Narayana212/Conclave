@@ -22,6 +22,7 @@
     "aos": "^2.3.4",
     "autoprefixer": "10.4.14",
     "bcrypt": "^5.1.0",
+    "circletype": "^2.3.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cookie-cutter": "^0.2.0",
@@ -62,7 +63,8 @@
     "@types/react": "18.2.18",
     "i": "^0.3.7",
     "npm": "^9.8.1",
-    "prisma": "^5.1.1"
+    "prisma": "^5.1.1",
+    "typescript": "5.2.2"
   },
   "keywords": [],
   "author": "",

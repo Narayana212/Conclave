@@ -45,12 +45,12 @@ export default function Hero({ isLogin }) {
             className="flex md:hidden flex-col items-center justify-center w-full h-full "
             variants={textVariants}
           >
-            <Heading text={"BUSINESS"} styles="text-6xl " />
-            <Heading text={"CONCLAVE"} styles="text-6xl" />
-            <Heading text={"2023"} styles="text-6xl " />
+            <Heading text={"BUSINESS"} styles="text-5xl xs:text-6xl " />
+            <Heading text={"CONCLAVE"} styles="text-5xl xs:text-6xl" />
+            <Heading text={"2023"} styles="text-5xl xs:text-6xl " />
             <Link href="/tickets">
               <motion.div
-                className={` ${isLogin ? "flex" : "hidden"}  mt-3 `}
+                className={` ${isLogin ? "flex" : "hidden"}  mt-10 `}
                 variants={buttonVariants}
               >
                 <Button>GET TICKETS</Button>
@@ -62,11 +62,11 @@ export default function Hero({ isLogin }) {
             variants={textVariants}
           >
             <div className="flex flex-col items-start">
-              <Heading text={"BUSINESS"} styles="text-8xl" />
-              <Heading text={"CONCLAVE"} styles="text-8xl" />
+              <Heading text={"BUSINESS"} styles="md:text-8xl lg:text-9xl" />
+              <Heading text={"CONCLAVE"} styles="md:text-8xl lg:text-9xl" />
               <Link href="/tickets" className="self-center -mr-[8rem]">
                 <motion.div
-                  className={`${isLogin ? "" : "hidden"}  mt-3`}
+                  className={`${isLogin ? "" : "hidden"}  mt-10`}
                   variants={buttonVariants}
                 >
                   <Button>GET TICKETS</Button>
@@ -76,10 +76,9 @@ export default function Hero({ isLogin }) {
             <motion.div variants={textVariants}>
               <Heading
                 text={"2023"}
-                styles={` ${
-                  isLogin ? "-mt-[4rem]" : "-mt-[1rem]"
-                } text-7xl -ml-12 rotate-90`}
-                
+                styles={` ${isLogin ? "-mt-[4rem]" : "-mt-[1rem]"
+                  } md:text-7xl  lg:text-8xl -ml-12 rotate-90`}
+
               />
             </motion.div>
           </motion.div>

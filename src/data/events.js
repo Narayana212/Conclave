@@ -1,6 +1,6 @@
 const events=[{
     id:1,
-    title:"Speaker Session",
+    title:"Keynote Session",
     time:"11.00-1.00",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
 },{

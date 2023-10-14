@@ -64,7 +64,7 @@ export default function ContactForm() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.5 }}
-      className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13]"
+      className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13] pb-16"
     >
       <motion.div
         initial={{ opacity: 0, x: -50 }}
@@ -74,7 +74,7 @@ export default function ContactForm() {
         className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
       >
         <Image src='/main.png' alt="logo" width={"200"} height={"200"}  className="mix-blend-lighten"/>
-        <h1 className="text-[#F8A254] lg:text-xl  font-medium ">
+        <h1 className="text-[#F8A254] lg:text-xl  font-medium mt-6">
           Shiv Nadar Institution of Eminence
         </h1>
         <h1 className="text-[#F8A254] lg:text-xl font-medium">+91-120-7170100</h1>
