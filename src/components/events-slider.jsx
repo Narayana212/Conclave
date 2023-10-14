@@ -137,6 +137,42 @@ export default function EventSlider() {
           >
             Corporate Gala&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
+          <p
+            className={`${activeSlideIndex === 0 ? "text-[#F8A254]" : "text-white"
+              }`}
+          >
+            Keynote Session&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <p
+            className={`${activeSlideIndex === 1 ? "text-[#F8A254]" : "text-white"
+              } `}
+          >
+            Off - Beat Roundtable&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <p
+            className={`${activeSlideIndex === 2 ? "text-[#F8A254]" : "text-white"
+              } `}
+          >
+            Internship fairs&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <p
+            className={`${activeSlideIndex === 3 ? "text-[#F8A254]" : "text-white"
+              } `}
+          >
+            Canop Conversations&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <p
+            className={`${activeSlideIndex === 4 ? "text-[#F8A254]" : "text-white"
+              } `}
+          >
+            Workshops&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <p
+            className={`${activeSlideIndex === 5 ? "text-[#F8A254]" : "text-white"
+              } `}
+          >
+            Corporate Gala&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
         </div>
       </div>
     </div>
