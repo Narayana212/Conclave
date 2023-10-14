@@ -100,42 +100,7 @@ export default function EventSlider() {
           </div>
         </div>
         <div className={`flex flex-wrap gap-8 pt-10 text-sm sm:text-base md:text-lg lg:text-xl text-white font-normal tracking-widest relative ${styles.circleText}`} id="circleText">
-          <p
-            className={`${activeSlideIndex === 0 ? "text-[#F8A254]" : "text-white"
-              } helloooo`}
-          >
-            Keynote Session&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p
-            className={`${activeSlideIndex === 1 ? "text-[#F8A254]" : "text-white"
-              } `}
-          >
-            Off - Beat Roundtable&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p
-            className={`${activeSlideIndex === 2 ? "text-[#F8A254]" : "text-white"
-              } `}
-          >
-            Internship fairs&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p
-            className={`${activeSlideIndex === 3 ? "text-[#F8A254]" : "text-white"
-              } `}
-          >
-            Canop Conversations&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p
-            className={`${activeSlideIndex === 4 ? "text-[#F8A254]" : "text-white"
-              } `}
-          >
-            Workshops&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p
-            className={`${activeSlideIndex === 5 ? "text-[#F8A254]" : "text-white"
-              } `}
-          >
-            Corporate Gala&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
+       
           <p
             className={`${activeSlideIndex === 0 ? "text-[#F8A254]" : "text-white"
               }`}

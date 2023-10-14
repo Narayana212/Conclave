@@ -5,12 +5,12 @@ import { render } from "@react-email/components";
 import TicketEmail from "../email/ticket-email";
 
 const plunk = new Plunk(process.env.PLUNK_API_KEY);
-export const sendTicketEmail = async ({bookToken,userData}) => {
+export const sendTicketEmail = async ({bookingId,userData}) => {
 
   const ticketHtml = render(
     <TicketEmail
       email={userData.email}
-      bookToken={`Hi ${userData.fullName} Payment Request is confirmed here is booking ${bookToken}..`}
+      bookToken={`Hi ${userData.fullName} Payment Request is confirmed here is booking ${bookingId}..`}
     />
   );
 

@@ -187,16 +187,14 @@ export default function Navbar() {
           </Link>
         )}
         <div className="flex items-center gap-4">
-          <Link href="/">
+          <Link href="https://instagram.com/snioebusinessconclave?igshid=NTc4MTIwNjQ2YQ" target="_blank">
             <InstaSvg />
           </Link>
 
-          <Link href="/">
+          <Link href="https://www.linkedin.com/company/snioe-business-conclave/" target="_blank">
             <LinkedinSvg />
           </Link>
-          <Link href="/">
-            <TwitterSvg />
-          </Link>
+          
         </div>
       </div>
 
