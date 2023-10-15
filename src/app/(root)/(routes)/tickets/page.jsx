@@ -171,46 +171,45 @@ export default function TicketPage() {
                 </p>
               </div>
               <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
                   Delegate kit with 10+ items worth Rs. 500+
                 </p>
               </div>
               <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
-                Delegate Handbook Complimentary buffet lunch
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-7 h-7 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                Complimentary drink and appetizer at the Corporate Gala
+                  Delegate Handbook
                 </p>
               </div>
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
-                Access to DJ Night by AminJaz
-
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-7 h-7 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                Complimentary drink and appetizer at the Corporate Gala
+                  Complimentary buffet lunch
                 </p>
               </div>
               <div className="flex  gap-3 ">
                 <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
-                Networking opportunities with speakers and external delegates
+                  Complimentary drink and appetizer at the Corporate Gala
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Access to DJ Night by AminJaz
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Networking opportunities with speakers and external delegates
                 </p>
               </div>
               <div className="flex  gap-3 ">
                 <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
-                Eligible for applications at the Internship Fair
+                  Eligible for applications at the Internship Fair
                 </p>
               </div>
             </div>
