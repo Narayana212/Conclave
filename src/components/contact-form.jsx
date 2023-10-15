@@ -96,7 +96,7 @@ export default function ContactForm() {
           />
         </div>
 
-        <h1 className="text-[#F8A254] lg:text-lg font-medium text-xs">
+        <h1 className="text-[#F8A254] lg:text-lg font-medium text-[0.5rem]">
         Feel free to contact Adi Satya Arora, Head Of Directors at <hr className="bg-transparent w-0"/>+91 93152 33567
         </h1>
       </motion.div>
