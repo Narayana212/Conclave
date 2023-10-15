@@ -6,21 +6,27 @@ export async function GET(request, { params }) {
   try {
     const email = params.email.slice(1);
 
+    console.log("email", email); // Getting value
     const existingUser = await prisma.user.findUnique({
       where: {
-        email: email,
+        email,
       },
     });
+    console.log("existingUser", existingUser);
+
+    console.log("email1",email)
 
     const existingRequestBooking = await prisma.userBooking.findUnique({
       where: {
-        email: email,
+        email,
       },
     });
 
+    console.log("existingRequestBooking", existingRequestBooking);
+
     if (!existingUser) {
       return NextResponse.json(
-        { message: "You have not been register yet" },
+        { message: "You have not been registered yet" },
         { status: 400 }
       );
     }
@@ -38,8 +44,7 @@ export async function GET(request, { params }) {
     });
 
     console.log(existingBooking);
-    console.log(existingRequestBooking)
-
+    console.log(existingRequestBooking);
 
     if (
       !existingBooking &&
@@ -67,13 +72,11 @@ export async function GET(request, { params }) {
       );
     }
 
-    
-
-    const bookToken = existingBooking?existingBooking.bookToken:"";
-    const createdAt = existingBooking?existingBooking.createdAt:"";
+    const bookToken = existingBooking ? existingBooking.bookToken : "";
+    const createdAt = existingBooking ? existingBooking.createdAt : "";
     return NextResponse.json({ message: { bookToken, createdAt } });
   } catch (error) {
-    console.log(error.message);
-    return NextResponse.json({ message: "something went wrong"},{status:500})
+    console.error(error.message);
+    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 }

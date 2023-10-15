@@ -96,14 +96,58 @@ export default function TicketPage() {
       setLoading(false);
     }
   }
+  function bookThreeTicket() {
+    try {
+      setLoading(true);
+
+      if (!userData.email) {
+        toast.error("You have not registered");
+        return router.push("/signup");
+      }
+      toast.promise(promise, {
+        loading: "Going to Payment Page...",
+        success: "Redirected Payment Page",
+        error: "Error",
+      });
+      return router.push(`/payment/${userData.id}/2`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  function bookFourTicket() {
+    try {
+      setLoading(true);
+
+      if (!userData.email) {
+        toast.error("You have not registered");
+        return router.push("/signup");
+      }
+      toast.promise(promise, {
+        loading: "Going to Payment Page...",
+        success: "Redirected Payment Page",
+        error: "Error",
+      });
+      return router.push(`/payment/${userData.id}/3`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
 
   async function getBookingStatus() {
     try {
+     
       const email = userData.email;
-      const response = await fetch(`/api/user/:${email}`);
+      
+      const response = await fetch(`/api/user/:${userData.email}`);
       const data = await response.json();
 
       if (response.ok) {
+
         setBookingId(data.message.bookToken);
 
         const originalDateString = data.message.createdAt;
@@ -179,7 +223,7 @@ export default function TicketPage() {
       ) : (
         <Tabs defaultValue="account" className=" pl-12 lg:pl-0">
           <TabsList>
-            <TabsTrigger value="account">For SNU Students</TabsTrigger>
+            <TabsTrigger value="account">For SNU Students {bookingId}</TabsTrigger>
             <TabsTrigger value="password">For Non-SNU Students</TabsTrigger>
           </TabsList>
           <TabsContent
@@ -416,11 +460,11 @@ export default function TicketPage() {
             <div>
               {withAccommodation ? (
                 <div className="flex mr-10 mt-4 justify-center ">
-                  <Button variant="secondary">₹1000 for 1 ticket</Button>{" "}
+                  <Button variant="secondary" onClick={bookFourTicket}>₹1000 for 1 ticket</Button>{" "}
                 </div>
               ) : (
                 <div className="flex  mr-10 mt-4 justify-center ">
-                  <Button variant="secondary">₹800 for 1 ticket</Button>
+                  <Button variant="secondary" onClick={bookThreeTicket}>₹800 for 1 ticket</Button>
                 </div>
               )}
             </div>

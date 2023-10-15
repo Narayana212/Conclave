@@ -1,34 +1,32 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../../../../components/ui/form";
-import { Input } from "../../../../../components/ui/input";
-import { Button } from "../../../../../components/ui/button";
-import ImageUpload from "../../../../../components/ui/image-upload";
-import { getDataFromToken } from "../../../../../helpers/getDataFromToken";
-import Heading from "../../../../../components/ui/heading";
 import { Toaster, toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import Heading from "../../../../../../components/ui/heading";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "../../../../../../components/ui/form";
+  import { Input } from "../../../../../../components/ui/input";
+  import { Button } from "../../../../../../components/ui/button";
+  import ImageUpload from "../../../../../../components/ui/image-upload";
+  import { getDataFromToken } from "../../../../../../helpers/getDataFromToken";
+  
 
 const userSchema = z.object({
   fullName: z.string(),
   email: z.string().min(5, "Too short"),
-  rollNumber: z
-    .string()
-    .min(10, "Invalid Roll Number")
-    .max(10, "Invalid Roll Number"),
+  college: z
+    .string(),
   images: z
     .array(z.object({ url: z.string() }))
     .refine((images) => images.length > 0, "Image is required to Upload"),
@@ -61,7 +59,7 @@ export default function PaymentPage() {
   const onSubmit = async (data) => {
     try {
       setLoading(true)
-      const body={...data,email2:userData.email,type:"SNU STUDENT 1"}
+      const body={...data,email2:userData.email,type:"NON SNU STUDENT 1 Ticket WITHOUT ACCOMDATION"}
       const response = await fetch("/api/booking", {
         method: "POST",
         body: JSON.stringify(body),
@@ -81,14 +79,14 @@ export default function PaymentPage() {
       console.log(error.message)
     }finally{
       setLoading(false)
-      form.reset()
+      
     }
   };
 
   const defaultValues = {
     fullName: "",
     email: "",
-    rollNumber: "",
+    college: "",
     images: [],
   };
 
@@ -152,16 +150,16 @@ export default function PaymentPage() {
               )}
             />
             <FormField
-              name="rollNumber"
+              name="college"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#F8A254]">Roll Number</FormLabel>
+                  <FormLabel className="text-[#F8A254]">Name of College/School/Organization</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       className="bg-transparent text-white"
-                      placeholder="2*********"
+                      placeholder=""
                     />
                   </FormControl>
                   <FormMessage />

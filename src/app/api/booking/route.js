@@ -3,6 +3,7 @@ import Plunk from "@plunk/node";
 import prisma from "../../../lib/prisma";
 import { render } from "@react-email/components";
 import TicketEmail from "../../../email/ticket-email";
+import {v4 as uuid} from "uuid"
 
 
 
@@ -46,12 +47,12 @@ export async function PUT(request){
   try {
 
     const requestBody = await request.json();
-    const { rollNumber} = requestBody;
+    const { email} = requestBody;
 
 
     const existingBooking = await prisma.userBooking.update({
       where: {
-        rollNumber,
+        email,
       },
       data:{
         isBooked:true
@@ -86,11 +87,12 @@ export async function PUT(request){
 
 export async function POST(request) {
   const requestBody = await request.json();
-  const { email,email2, rollNumber, images,fullName } = requestBody;
+  const { email, rollNumber, images,fullName,college ,type} = requestBody;
+  console.log(requestBody)
   try {
     const existingUser = await prisma.user.findUnique({
       where: {
-        email: email2,
+        email: email,
       },
     });
 
@@ -117,11 +119,15 @@ export async function POST(request) {
     }
 
 
+    
+
     const existingRequestBooking = await prisma.userBooking.findUnique({
       where: {
-        rollNumber: rollNumber,
+       email:email,
       },
     });
+
+    console.log(existingRequestBooking)
 
     if(existingRequestBooking){
       return NextResponse.json(
@@ -129,15 +135,17 @@ export async function POST(request) {
         { status: 422 }
       )
     }
-
-    
-
-
+    const rollNumber1 = rollNumber?rollNumber:uuid()
+    console.log("rollNumber1: " + rollNumber1)
+    console.log("email",email)
+    console.log("college",college)
     const booking = await prisma.userBooking.create({
       data: {
         email,
-        rollNumber,
+        rollNumber: rollNumber1,
         fullName,
+        type,
+        college,
         imageUrl:images[0].url
       },
     });
