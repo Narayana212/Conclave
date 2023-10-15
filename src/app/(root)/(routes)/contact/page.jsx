@@ -15,7 +15,7 @@ const CORES = [
   },
   {
     id: 2,
-    name: "Ria Kachhal"    ,
+    name: "Ria Kachhal",
     designation: "President",
     src: "/core11.png",
   },
@@ -59,38 +59,38 @@ export default function ContactPage() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex flex-wrap gap-x-10 gap-y-10 max-w-screen">
+      <div className="flex flex-wrap gap-x-24 pt-5 md:pt-10 mx-auto px-20 max-w-[1300px] gap-y-10 justify-center">
         {CORES.map((core, index) => (
           <motion.div
-            className="flex flex-col  gap-10 justify-center cursor-pointer transition-all relative ease-in-out delay-150"
+            className="flex flex-col gap-10 justify-center cursor-pointer transition-all relative ease-in-out delay-150"
             key={core.id}
             variants={itemVariants}
           >
-            <div className="flex flex-col lg:ml-[3rem] lg:mr-[3rem] mr-[2rem] ml-[2rem] justify-center relative ">
-            <div className="flex ">
-              <div
-                className="flex items-end justify-center px-5 pt-5 relative h-[320px] w-[300px] mx-auto mb-4 overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
-                  borderRadius: "3.5rem 0 0 0",
-                }}
-              >
-                <img
-                  src={core.src}
-                  alt="test"
-                  className={`w-full   ${core.id===1?"scale-100 hover:scale-[1.10]":""}  ${core.id===2?"scale-[1.2] hover:scale-[1.35]":""} ${core.id===3?"scale-[1.4] hover:scale-[1.5]":""} ${core.id===4?"scale-[] hover:scale-[1.10]":""} ${core.id===5?"scale-[1] hover:scale-[1.10]":""} overflow-hidden transition-all`}
+            <div className="flex flex-col justify-center relative">
+              <div className="flex relative">
+                <div
+                  className="flex items-end justify-center px-5 pt-5 relative w-[230px] h-[260px] md:w-[220px] md:h-[250px] lg:h-[280px] lg:w-[250px]  xl:h-[310px] xl:w-[280px] mx-auto overflow-hidden"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
+                    borderRadius: "3.5rem 0 0 0",
+                  }}
+                >
+                  <img
+                    src={core.src}
+                    alt="test"
+                    className={`w-full   ${core.id === 1 ? "scale-100 hover:scale-[1.05] translate-y-3" : ""}  ${core.id === 2 ? "scale-[1.2] hover:scale-[1.25]" : ""} ${core.id === 3 ? "scale-[1.4] hover:scale-[1.45]" : ""} ${core.id === 4 ? "scale-100 hover:scale-[1.05] translate-y-6" : ""} ${core.id === 5 ? "scale-[1] hover:scale-[1.05] translate-y-5" : ""} overflow-hidden transition-all`}
+                  />
+                </div>
+                <Heading
+                  text={core.name}
+                  transform={'rotate(90deg) translateY(-110%) translateX(100%)'}
+                  styles={`opacity-80 absolute z-10 whitespace-nowrap text-2xl lg:text-[1.65rem] xl:text-[2rem] origin-top-right right-0 top-0 rotate-90 overflow-hidden`}
                 />
               </div>
-
-              <Heading
-                text={core.name}
-                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[11.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[12.75rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[10.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[12rem]":""} ${core.id===5?"top-[7rem] left-[11.5rem]":""} overflow-hidden`}
-              />
-            </div>
-            <h1 className="text-[#F8A254] font-bold -mr-16 text-xl">
-              {core.designation}
-            </h1>
+              <h1 className="text-[#F8A254] font-semibold text-xl mt-2">
+                {core.designation}
+              </h1>
             </div>
           </motion.div>
         ))}

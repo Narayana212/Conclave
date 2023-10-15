@@ -63,41 +63,41 @@ export default function ContactForm() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.5 }}
-      className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 w-screen bg-[#290E13] pb-16"
+      className="h-auto flex flex-col gap-5 lg:flex-row mt-12 py-7 px-6 md:px-10 bg-[#290E13] pb-16"
     >
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -50 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
+        className="flex flex-col-reverse gap-y-0 mt-4 lg:mt-0 lg:flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
       >
-        <div className="flex flex-col">
+        <div className="flex flex-row flex-wrap justify-start lg:flex-col">
           <Image
             src="/main.png"
             alt="logo"
             width={"150"}
             height={"150"}
-            className="mix-blend-lighten"
+            className="mix-blend-lighten object-contain"
           />
           <Image
             src="/logoin.png"
             alt="logo"
             width={"150"}
             height={"150"}
-            className="mix-blend-lighten"
+            className="mix-blend-lighten object-contain"
           />
           <Image
             src="/logosn1.png"
             alt="logo"
             width={"150"}
             height={"150"}
-            className="mix-blend-lighten"
+            className="mix-blend-lighten object-contain"
           />
         </div>
 
-        <h1 className="text-[#F8A254] lg:text-lg font-medium text-[0.5rem]">
-        Feel free to contact Adi Satya Arora, Head Of Directors at <hr className="bg-transparent w-0"/>+91 93152 33567
+        <h1 className="text-white lg:text-lg font-medium z-[1000]">
+          <span className="text-[#F8A254]">Feel free to contact</span><br></br>Adi Satya Arora, Head Of Directors <br></br>+91 93152 33567
         </h1>
       </motion.div>
 
@@ -119,12 +119,12 @@ export default function ContactForm() {
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full flex-1">
                     <FormLabel className="text-[#F8A254]">First Name</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        className="bg-transparent text-white w-4/6  lg:w-full"
+                        className="bg-transparent text-white w-full flex-1"
                       />
                     </FormControl>
                     <FormMessage />
@@ -135,12 +135,12 @@ export default function ContactForm() {
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full flex-1">
                     <FormLabel className="text-[#F8A254]">Last Name</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        className="bg-transparent text-white w-4/6 lg:w-full"
+                        className="bg-transparent text-white w-full"
                       />
                     </FormControl>
                     <FormMessage />
@@ -149,30 +149,30 @@ export default function ContactForm() {
               />
             </div>
 
-            <div className="w-4/6">
+            <div className="w-full">
               <FormField
                 control={form.control}
                 name="emailId"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full">
                     <FormLabel className="text-[#F8A254]">Email Id</FormLabel>
                     <FormControl>
-                      <Input {...field} className="bg-transparent text-white" />
+                      <Input {...field} className="bg-transparent text-white w-full" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            <div className="w-4/6">
+            <div className="w-full">
               <FormField
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full">
                     <FormLabel className="text-[#F8A254]">Message</FormLabel>
                     <FormControl>
-                      <Input {...field} className="bg-transparent text-white" />
+                      <Input {...field} className="bg-transparent text-white w-full" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export default function Heading({ text, styles }) {
+export default function Heading({ text, styles, transform }) {
   return (
     <h1
       style={{
@@ -9,8 +9,9 @@ export default function Heading({ text, styles }) {
         backgroundClip: "text",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
+        transform: transform,
       }}
-      className={twMerge(styles, "font-bold opacity-80")}
+      className={twMerge("font-bold opacity-80", styles)}
     >
       {text}
     </h1>
