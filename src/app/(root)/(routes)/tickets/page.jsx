@@ -163,7 +163,7 @@ export default function TicketPage() {
             value="account"
             className="flex  gap-x-4 gap-y-2 flex-col  "
           >
-            <div className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md">
+            <div className=" bg-[#7B283A] mr-12 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md">
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
