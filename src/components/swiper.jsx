@@ -61,7 +61,7 @@ export default function Swiper() {
                   borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image src={core.src} alt="speaker" width={130} height={150} />
+                <Image src={core.src} alt="speaker" width={130} height={150}  className="  cursor-pointer hover:scale-110 transition-all"/>
               </div>
               <h1 className="text-[#F8A254] font-bold text-sm mt-1">{core.name}</h1>
               <p className="text-white text-sm">{core.description}</p>

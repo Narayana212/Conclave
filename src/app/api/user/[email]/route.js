@@ -67,10 +67,13 @@ export async function GET(request, { params }) {
       );
     }
 
-    const bookToken = existingBooking.bookToken;
-    const createdAt = existingBooking.createdAt;
+    
+
+    const bookToken = existingBooking?existingBooking.bookToken:"";
+    const createdAt = existingBooking?existingBooking.createdAt:"";
     return NextResponse.json({ message: { bookToken, createdAt } });
   } catch (error) {
     console.log(error.message);
+    return NextResponse.json({ message: "something went wrong"},{status:500})
   }
 }

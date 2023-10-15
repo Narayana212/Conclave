@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/card.jsx", "src/app/(root)/(routes)/contact/page.jsx", "src/components/ui/heading.jsx", "src/components/ui/custom-arrows.jsx", "src/app/(auth)/login/loading.jsx", "src/app/(root)/(routes)/tickets/page.jsx", "src/middleware.js", "src/app/(root)/(routes)/events/page.jsx", "src/hook/useUser.jsx", "src/app/(root)/(routes)/tickets/loading.jsx", "src/app/(root)/loading.jsx", "src/app/(root)/(routes)/payment/page.jsx", "src/app/(root)/(routes)/payment/[id]/page.jsx"  ],
+, "src/components/card.jsx", "src/app/(root)/(routes)/contact/page.jsx", "src/components/ui/heading.jsx", "src/components/ui/custom-arrows.jsx", "src/app/(auth)/login/loading.jsx", "src/app/(root)/(routes)/tickets/page.jsx", "src/middleware.js", "src/app/(root)/(routes)/events/page.jsx", "src/hook/useUser.jsx", "src/app/(root)/(routes)/tickets/loading.jsx", "src/app/(root)/loading.jsx", "src/app/(root)/(routes)/payment/page.jsx", "src/app/(root)/(routes)/payment/[id]/page.jsx", "src/app/(root)/(routes)/payment/[id]/1/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

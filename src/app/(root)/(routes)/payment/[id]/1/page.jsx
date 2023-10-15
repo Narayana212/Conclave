@@ -1,11 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Toaster, toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import Heading from "../../../../../../components/ui/heading";
 import {
   Form,
   FormControl,
@@ -13,14 +15,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../../../../components/ui/form";
-import { Input } from "../../../../../components/ui/input";
-import { Button } from "../../../../../components/ui/button";
-import ImageUpload from "../../../../../components/ui/image-upload";
-import { getDataFromToken } from "../../../../../helpers/getDataFromToken";
-import Heading from "../../../../../components/ui/heading";
-import { Toaster, toast } from "sonner";
-import { Loader2 } from "lucide-react";
+} from "../../../../../../components/ui/form";
+import { Input } from "../../../../../../components/ui/input";
+import { Button } from "../../../../../../components/ui/button";
+import ImageUpload from "../../../../../../components/ui/image-upload";
 
 const userSchema = z.object({
   fullName: z.string(),
@@ -29,6 +27,13 @@ const userSchema = z.object({
     .string()
     .min(10, "Invalid Roll Number")
     .max(10, "Invalid Roll Number"),
+  fullName1: z.string(),
+  email1: z.string().min(5, "Too short"),
+  rollNumber1: z
+    .string()
+    .min(10, "Invalid Roll Number")
+    .max(10, "Invalid Roll Number"),
+
   images: z
     .array(z.object({ url: z.string() }))
     .refine((images) => images.length > 0, "Image is required to Upload"),
@@ -37,7 +42,7 @@ const userSchema = z.object({
 export default function PaymentPage() {
   const router = useRouter();
 
-  const [loading,setLoading]=React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   const [userData, setUserData] = React.useState({ fullName: "", email: "" });
 
@@ -60,9 +65,9 @@ export default function PaymentPage() {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true)
-      const body={...data,email2:userData.email}
-      const response = await fetch("/api/booking", {
+      setLoading(true);
+      const body = { ...data, email2: userData.email };
+      const response = await fetch("/api/twobooking", {
         method: "POST",
         body: JSON.stringify(body),
       });
@@ -70,18 +75,17 @@ export default function PaymentPage() {
       const responseData = await response.json();
       if (response.ok) {
         toast.success("Sent Successfully will conform your payment soon");
-        router.push("/tickets")
-      } else if(response.status===402){
+        router.push("/tickets");
+      } else if (response.status === 402) {
         toast.error(responseData.message);
-        router.push("/signup")
-      }else{
+      } else {
         toast.error(responseData.message);
       }
     } catch (error) {
-      console.log(error.message)
-    }finally{
-      setLoading(false)
-      form.reset()
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+      
     }
   };
 
@@ -89,6 +93,9 @@ export default function PaymentPage() {
     fullName: "",
     email: "",
     rollNumber: "",
+    fullName1:"",
+    email1: "",
+    rollNumber1: "",
     images: [],
   };
 
@@ -121,7 +128,9 @@ export default function PaymentPage() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#F8A254]">Name</FormLabel>
+                  <FormLabel className="text-[#F8A254]">
+                    Full Name of Delegate1
+                  </FormLabel>
                   <FormControl>
                     <Input
                       className="bg-transparent  text-white"
@@ -138,14 +147,15 @@ export default function PaymentPage() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#F8A254]">Email</FormLabel>
+                  <FormLabel className="text-[#F8A254]">
+                    SNU Email ID of Delegate1
+                  </FormLabel>
                   <FormControl>
                     <Input
                       className="bg-transparent  text-white"
                       {...field}
                       placeholder={userData.email}
                     />
-                    
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -156,7 +166,66 @@ export default function PaymentPage() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#F8A254]">Roll Number</FormLabel>
+                  <FormLabel className="text-[#F8A254]">
+                    SNU Roll Number of Delegate1
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      className="bg-transparent text-white"
+                      placeholder="2*********"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+                        <FormField
+              name="fullName1"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">
+                    Full Name of Delegate2
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.fullName}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="email1"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">
+                    SNU Email ID of Delegate2
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.email}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="rollNumber1"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">
+                    SNU Roll Number of Delegate2
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -174,7 +243,7 @@ export default function PaymentPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[#F8A254]">
-                    Screen Shot of Payment
+                    Screenshot of Payment of 1400
                   </FormLabel>
                   <FormControl>
                     <ImageUpload
@@ -197,7 +266,14 @@ export default function PaymentPage() {
             />
 
             <Button type="submit" variant={"secondary"}>
-              {loading?<div className="flex items-center gap-2"><Loader2 className="animate-spin"/>Submiting</div>:"Submit"}
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <Loader2 className="animate-spin" />
+                  Submiting
+                </div>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
         </Form>

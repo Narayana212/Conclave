@@ -4,10 +4,16 @@ import { Button } from "../../../../components/ui/button";
 import { toast, Toaster } from "sonner";
 import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
-import { Heading1, Loader2 } from "lucide-react";
+import { Check, CornerDownLeft, Heading1, Loader2, Ticket } from "lucide-react";
 import TwoCircles from "../../../../components/ui/two-circles";
 import { motion } from "framer-motion";
 import { sendTicketEmail } from "../../../../actions/send-ticket-email";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../../components/ui/tabs";
 
 export default function TicketPage() {
   const [userData, setUserData] = React.useState({
@@ -54,6 +60,26 @@ export default function TicketPage() {
         error: "Error",
       });
       return router.push(`/payment/${userData.id}`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  function bookTwoTicket() {
+    try {
+      setLoading(true);
+
+      if (!userData.email) {
+        toast.error("You have not registered");
+        return router.push("/signup");
+      }
+      toast.promise(promise, {
+        loading: "Going to Payment Page...",
+        success: "Redirected Payment Page",
+        error: "Error",
+      });
+      return router.push(`/payment/${userData.id}/1`);
     } catch (error) {
       console.error(error);
     } finally {
@@ -118,8 +144,8 @@ export default function TicketPage() {
       className="relative bg-[#290F12] w-screen flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
     >
       <TwoCircles />
-      <div className="w-screen flex items-center gap-3 flex-col justify-center">
-        <div className="lg:w-[650px] p-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A]">
+      {bookingId !== "" ? (
+        <div className="lg:w-[650px] p-3 mb-3 -ml-12 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A]">
           {userData.email && (
             <p className="text-white">Booking id: {bookingId}</p>
           )}
@@ -127,61 +153,92 @@ export default function TicketPage() {
             <p className="text-white">Booked At: {createdAt}</p>
           )}
         </div>
+      ) : (
+        <Tabs defaultValue="account" className="w-[400px]">
+          <TabsList>
+            <TabsTrigger value="account">For SNU Students</TabsTrigger>
+            <TabsTrigger value="password">For Non-SNU Students</TabsTrigger>
+          </TabsList>
+          <TabsContent
+            value="account"
+            className="flex  gap-x-4 gap-y-2 flex-col  "
+          >
+            <div className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.55] flex flex-col items-start  rounded-md">
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Access to all 6 events
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Delegate kit with 10+ items worth Rs. 500+
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Delegate Handbook Complimentary buffet lunch
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-7 h-7 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Complimentary drink and appetizer at the Corporate Gala
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Access to DJ Night by AminJaz
 
-        <div className="flex gap-3">
-          {bookingId !== "pending" ? (
-            !bookingId ? (
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-7 h-7 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Complimentary drink and appetizer at the Corporate Gala
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Networking opportunities with speakers and external delegates
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                Eligible for applications at the Internship Fair
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-7  items-center">
+              <Button
+                variant="secondary"
+                className="text-xs"
+                onClick={bookTicket}
               >
-                <Button onClick={bookTicket} variant="secondary">
-                  {loading ? (
-                    <div className="flex gap-2 items-center">
-                      <Loader2 className="animate-spin" />
-                      <span>Processing</span>
-                    </div>
-                  ) : (
-                    "Proceed to Payment" // Corrected the spelling error
-                  )}
-                </Button>
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                ₹800 for 1 ticket
+              </Button>
+              <Button
+                variant="secondary"
+                className="flex gap-1 text-xs"
+                onClick={bookTwoTicket}
               >
-                <Button
-                  variant="secondary"
-                  onClick={() => sendTicket({ bookingId, userData })}
-                >
-                  {cancelLoading ? (
-                    "Sending"
-                  ) : (
-                    <h1>Send ticket to {userData.email}</h1>
-                  )}
-                </Button>
-              </motion.div>
-            )
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Button variant="secondary">Confirmation Pending</Button>
-            </motion.div>
-          )}
-        </div>
-        {userData.email && (
-          <p className="text-white">Ticket will be sent to {userData.email}</p>
-        )}
-      </div>
+                <span className="ml-2 font-semibold">₹1400</span>
+                <span className="text-gray-400 line-through">₹1600</span>
+                <span className="">for 2 tickets</span>
+              </Button>
+            </div>
+          </TabsContent>
+          <TabsContent value="password">
+            <div className=" bg-[#7B283A] mr-12 h-[35rem] aspect-[1/1.8]"></div>
+          </TabsContent>
+        </Tabs>
+      )}
+
       <Toaster richColors />
     </motion.div>
   );
