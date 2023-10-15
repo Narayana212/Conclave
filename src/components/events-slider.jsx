@@ -9,11 +9,13 @@ import Image from "next/image";
 import CircleType from 'circletype';
 import ReactCurvedText from 'react-curved-text';
 import styles from "./styles/event-circle.module.css";
+import useWindowSize from "../helpers/useWindowDimensions";
 
 
 export default function EventSlider() {
   const pointCoords = useRef(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const { height, width } = useWindowSize();
   const bgCircleRef = useRef(null);
   const bottomWrapper = useRef(null);
   const sliderRef = useRef(null);
@@ -141,7 +143,7 @@ export default function EventSlider() {
         </div>
         <div className="absolute left-1/2 -translate-x-1/2">
           <div className="w-[740px] h-[740px] sm:w-[1100px] mt-2 sm:mt-0 sm:h-[1100px] mx-auto transition-all duration-300" id="rotatable-div" style={{
-            transform: `rotate(${rotateAngle}deg) scale(${window.innerWidth >= 640 ? 1 : 0.9})`,
+            transform: `rotate(${rotateAngle}deg) scale(${width >= 640 ? 1 : 0.9})`,
             transformOrigin: "center center"
           }}>
             {
@@ -150,16 +152,16 @@ export default function EventSlider() {
                   transform: "translateX(-50%)"
                 }}>
                   <ReactCurvedText
-                    width={window.innerWidth >= 640 ? 1100 : 740}
-                    height={window.innerWidth >= 640 ? 1100 : 740}
-                    cx={window.innerWidth >= 640 ? 550 : 370}
-                    cy={window.innerWidth >= 640 ? 550 : 370}
-                    rx={window.innerWidth >= 640 ? 450 : 340}
-                    ry={window.innerWidth >= 640 ? 450 : 340}
-                    startOffset={calcOffest(i, window.innerWidth)}
+                    width={width >= 640 ? 1100 : 740}
+                    height={width >= 640 ? 1100 : 740}
+                    cx={width >= 640 ? 550 : 370}
+                    cy={width >= 640 ? 550 : 370}
+                    rx={width >= 640 ? 450 : 340}
+                    ry={width >= 640 ? 450 : 340}
+                    startOffset={calcOffest(i, width)}
                     reversed={true}
                     text={event.title}
-                    textProps={{ style: { fontSize: window.innerWidth >= 640 ? 19 : 15 } }}
+                    textProps={{ style: { fontSize: width >= 640 ? 19 : 15 } }}
                     textPathProps={{
                       fill: events[activeSlideIndex % events.length].title == event.title ? "#F8A254" : "#ffffff"
                     }}
