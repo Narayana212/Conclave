@@ -154,7 +154,7 @@ export default function TicketPage() {
           )}
         </div>
       ) : (
-        <Tabs defaultValue="account" className="w-[400px]  mx-auto">
+        <Tabs defaultValue="account" className="w-[400px] pl-5 ">
           <TabsList>
             <TabsTrigger value="account">For SNU Students</TabsTrigger>
             <TabsTrigger value="password">For Non-SNU Students</TabsTrigger>
