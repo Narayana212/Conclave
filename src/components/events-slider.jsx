@@ -9,13 +9,11 @@ import Image from "next/image";
 import CircleType from 'circletype';
 import ReactCurvedText from 'react-curved-text';
 import styles from "./styles/event-circle.module.css";
-import useWindowDimensions from "../helpers/useWindowDimensions";
 
 
 export default function EventSlider() {
   const pointCoords = useRef(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  // const { height, width } = useWindowDimensions();
   const bgCircleRef = useRef(null);
   const bottomWrapper = useRef(null);
   const sliderRef = useRef(null);
