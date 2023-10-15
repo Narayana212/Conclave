@@ -15,7 +15,7 @@ import useWindowDimensions from "../helpers/useWindowDimensions";
 export default function EventSlider() {
   const pointCoords = useRef(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const { height, width } = useWindowDimensions();
+  // const { height, width } = useWindowDimensions();
   const bgCircleRef = useRef(null);
   const bottomWrapper = useRef(null);
   const sliderRef = useRef(null);
@@ -152,16 +152,16 @@ export default function EventSlider() {
                   transform: "translateX(-50%)"
                 }}>
                   <ReactCurvedText
-                    width={width >= 640 ? 1100 : 740}
-                    height={width >= 640 ? 1100 : 740}
-                    cx={width >= 640 ? 550 : 370}
-                    cy={width >= 640 ? 550 : 370}
-                    rx={width >= 640 ? 450 : 340}
-                    ry={width >= 640 ? 450 : 340}
-                    startOffset={calcOffest(i, width)}
+                    width={window.innerWidth >= 640 ? 1100 : 740}
+                    height={window.innerWidth >= 640 ? 1100 : 740}
+                    cx={window.innerWidth >= 640 ? 550 : 370}
+                    cy={window.innerWidth >= 640 ? 550 : 370}
+                    rx={window.innerWidth >= 640 ? 450 : 340}
+                    ry={window.innerWidth >= 640 ? 450 : 340}
+                    startOffset={calcOffest(i, window.innerWidth)}
                     reversed={true}
                     text={event.title}
-                    textProps={{ style: { fontSize: width >= 640 ? 19 : 15 } }}
+                    textProps={{ style: { fontSize: window.innerWidth >= 640 ? 19 : 15 } }}
                     textPathProps={{
                       fill: events[activeSlideIndex % events.length].title == event.title ? "#F8A254" : "#ffffff"
                     }}
