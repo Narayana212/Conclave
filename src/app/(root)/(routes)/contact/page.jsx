@@ -69,7 +69,7 @@ export default function ContactPage() {
             <div className="flex flex-col lg:ml-[3rem] lg:mr-[3rem] mr-[2rem] ml-[2rem] justify-center relative ">
             <div className="flex ">
               <div
-                className="flex items-end justify-center px-5 pt-5 relative h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
+                className="flex items-end justify-center px-5 pt-5 relative h-[320px] w-[300px] mx-auto mb-4 overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
@@ -79,15 +79,13 @@ export default function ContactPage() {
                 <img
                   src={core.src}
                   alt="test"
-
-                  
-                  className={`w-full   ${core.id===1?"scale-125 hover:scale-[1.35]":""}  ${core.id===2?"scale-[1.35] hover:scale-[1.45]":""} ${core.id===3?"scale-[1.50] hover:scale-[1.60]":""} ${core.id===4?"scale-[1.35] hover:scale-[1.45]":""} ${core.id===5?"scale-[1.25] hover:scale-[1.35]":""} overflow-hidden transition-all`}
+                  className={`w-full   ${core.id===1?"scale-100 hover:scale-[1.10]":""}  ${core.id===2?"scale-[1.2] hover:scale-[1.35]":""} ${core.id===3?"scale-[1.4] hover:scale-[1.5]":""} ${core.id===4?"scale-[] hover:scale-[1.10]":""} ${core.id===5?"scale-[1] hover:scale-[1.10]":""} overflow-hidden transition-all`}
                 />
               </div>
 
               <Heading
                 text={core.name}
-                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[5.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[6.5rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[4.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[5.5rem]":""} ${core.id===5?"top-[7rem] left-[5.5rem]":""} overflow-hidden`}
+                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[11.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[12.75rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[10.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[11.5rem]":""} ${core.id===5?"top-[7rem] left-[11.5rem]":""} overflow-hidden`}
               />
             </div>
             <h1 className="text-[#F8A254] font-bold -mr-16 text-xl">
