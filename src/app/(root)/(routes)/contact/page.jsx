@@ -65,7 +65,7 @@ export default function ContactPage() {
             key={core.id}
             variants={itemVariants}
           >
-            <div className="flex flex-col ml-[3rem] mr-[3rem] justify-center relative ">
+            <div className="flex flex-col lg:ml-[3rem] lg:mr-[3rem] mr-[2rem] ml-[2rem] justify-center relative ">
             <div className="flex ">
               <div
                 className="flex  items-center  px-5 pt-5  h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
