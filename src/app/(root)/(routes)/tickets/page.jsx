@@ -4,7 +4,14 @@ import { Button } from "../../../../components/ui/button";
 import { toast, Toaster } from "sonner";
 import { useRouter, redirect } from "next/navigation";
 import { getDataFromToken } from "../../../../helpers/getDataFromToken";
-import { Check, CornerDownLeft, Heading1, Loader2, Ticket, X } from "lucide-react";
+import {
+  Check,
+  CornerDownLeft,
+  Heading1,
+  Loader2,
+  Ticket,
+  X,
+} from "lucide-react";
 import TwoCircles from "../../../../components/ui/two-circles";
 import { motion } from "framer-motion";
 import { sendTicketEmail } from "../../../../actions/send-ticket-email";
@@ -179,10 +186,13 @@ export default function TicketPage() {
             value="account"
             className="flex  gap-x-4 gap-y-2 flex-col  "
           >
-            <motion.div initial={{ opacity: 0 }}
+            <motion.div
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }} className=" bg-[#7B283A] mr-12 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.25] flex flex-col items-start  rounded-md">
+              transition={{ duration: 0.5 }}
+              className=" bg-[#7B283A] mr-12 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.25] flex flex-col items-start  rounded-md"
+            >
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
                 <p className="text-white font-semibold text-sm ">
@@ -255,132 +265,141 @@ export default function TicketPage() {
             value="password"
             className="flex flex-col justify-center"
           >
-            {withAccommodation?(
-              <motion.div className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md" initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Access to all 6 events
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Delegate kit with 10+ items worth Rs. 500+
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Delegate Handbook
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Complimentary buffet lunch
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Complimentary drink and appetizer at the Corporate Gala
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Access to DJ Night by AminJaz
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Networking opportunities with speakers and external delegates
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Eligible for applications at the Internship Fair
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className=" font-bold text-white  text-sm ">
-                  Shared accommodation on campus 
-                </p>
-              </div>
-            </motion.div>
-            ):(
-              <motion.div initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }} className=" transition-all bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md">
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Access to all 6 events
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Delegate kit with 10+ items worth Rs. 500+
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Delegate Handbook
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Complimentary buffet lunch
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Complimentary drink and appetizer at the Corporate Gala
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Access to DJ Night by AminJaz
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Networking opportunities with speakers and external delegates
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Eligible for applications at the Internship Fair
-                </p>
-              </div>
-              <div className="flex  gap-3 ">
-                <X className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Shared accommodation on campus 
-                </p>
-              </div>
-            </motion.div>
+            {withAccommodation ? (
+              <motion.div
+                className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to all 6 events
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Delegate kit with 10+ items worth Rs. 500+
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Delegate Handbook
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Complimentary buffet lunch
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Complimentary drink and appetizer at the Corporate Gala
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to DJ Night by AminJaz
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Networking opportunities with speakers and external
+                    delegates
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Eligible for applications at the Internship Fair
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className=" font-bold text-white  text-sm ">
+                    Shared accommodation on campus
+                  </p>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className=" transition-all bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md"
+              >
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to all 6 events
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Delegate kit with 10+ items worth Rs. 500+
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Delegate Handbook
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Complimentary buffet lunch
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Complimentary drink and appetizer at the Corporate Gala
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to DJ Night by AminJaz
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Networking opportunities with speakers and external
+                    delegates
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Eligible for applications at the Internship Fair
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <X className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Shared accommodation on campus
+                  </p>
+                </div>
+              </motion.div>
             )}
             <div className="flex items-center justify-center mt-2 mr-10 space-x-2 transition-all">
-              <Switch
-                id="airplane-mode"
-                onClick={() => setWithAccommodation(!withAccommodation)}
-              />
+              <label class="switch">
+                <input type="checkbox" onChange={() => setWithAccommodation(!withAccommodation)} />
+                <span class="slider round"></span>
+              </label>
+
               <label
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -393,11 +412,17 @@ export default function TicketPage() {
                   ? "With Accommodation"
                   : "Slide to avail Accommodation"}
               </label>
-
             </div>
             <div>
-            {withAccommodation?<div className="flex mr-10 mt-4 justify-center "><Button variant="secondary">₹1000 for 1 ticket</Button> </div>:<div  className="flex  mr-10 mt-4 justify-center "><Button variant="secondary">₹800 for 1 ticket</Button></div>}
-
+              {withAccommodation ? (
+                <div className="flex mr-10 mt-4 justify-center ">
+                  <Button variant="secondary">₹1000 for 1 ticket</Button>{" "}
+                </div>
+              ) : (
+                <div className="flex  mr-10 mt-4 justify-center ">
+                  <Button variant="secondary">₹800 for 1 ticket</Button>
+                </div>
+              )}
             </div>
           </TabsContent>
         </Tabs>
