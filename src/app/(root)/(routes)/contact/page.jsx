@@ -85,7 +85,7 @@ export default function ContactPage() {
 
               <Heading
                 text={core.name}
-                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[11.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[12.75rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[10.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[11.5rem]":""} ${core.id===5?"top-[7rem] left-[11.5rem]":""} overflow-hidden`}
+                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[11.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[12.75rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[10.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[12rem]":""} ${core.id===5?"top-[7rem] left-[11.5rem]":""} overflow-hidden`}
               />
             </div>
             <h1 className="text-[#F8A254] font-bold -mr-16 text-xl">
