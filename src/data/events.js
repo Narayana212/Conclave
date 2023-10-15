@@ -5,7 +5,7 @@ const events = [{
     description: "The Keynote Session, led by yours truly, Mr. Kishore Jayaraman, the President of Rolls Royce India, showcases a distinguished business personality, offering priceless insights and perspectives. Emphasizing innovation, adaptability, and forward-thinking, this keynote session strives to empower attendees to welcome change, maintain agility, and seize emerging trends. Get ready to be inspired, enlightened, and armed with strategic knowledge to confidently navigate the intricate future. The Keynote Session stands as the pinnacle of the Conclave, guiding the audience on an intellectual voyage steered by visionaries, nurturing novel ideas and propelling innovation forward."
 }, {
     id: 2,
-    title: "Workshops",
+    title: "Workshop",
     time: "12:30 PM - 1:15 PM",
     description: "Mr. Pratish Nair is set to grace the workshop stage at The Workshop during the Conclave. This event promises an interactive and immersive learning experience, equipping students with practical skills and knowledge to bolster their professional development. We are thrilled to introduce an exceptional workshop, offering attendees invaluable insights, tools, and strategies to thrive in their careers. Join us for this enriching opportunity to learn from a seasoned expert, acquire practical skills, and gain a competitive advantage in the dynamic world of business."
 }, {
