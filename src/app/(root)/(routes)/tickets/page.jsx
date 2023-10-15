@@ -441,7 +441,7 @@ export default function TicketPage() {
             )}
             <div className="flex items-center justify-center mt-2 mr-10 space-x-2 transition-all">
               <label class="switch">
-                <input type="checkbox" onChange={() => setWithAccommodation(!withAccommodation)} />
+                <input type="checkbox" onChange={() => setWithAccommodation(!withAccommodation)} checked={withAccommodation} />
                 <span class="slider round"></span>
               </label>
 
