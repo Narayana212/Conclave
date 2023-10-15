@@ -130,12 +130,13 @@ export default function EventSlider() {
         ))}
       </Slider>
       <div className="relative h-[280px] sm:h-[400px] opacity-1 transition-all duration-500 ease-in overflow-y-clip tracking-widest" ref={bottomWrapper}>
-        <div className="absolute  border-white border overflow-x-hidden aspect-square top-[6rem] sm:top-[8rem] left-1/2 -translate-x-1/2 p-8 sm:p-12  min-w-[570px] sm:min-w-[820px] rounded-full" ref={bgCircleRef}>
-          <div className={`w-full h-full rounded-full  ${styles.coloredCircle}`}/>
-           
-          
+        <div className="absolute border-white border overflow-x-hidden aspect-square top-[6rem] sm:top-[8rem] left-1/2 -translate-x-1/2 p-8 sm:p-12  min-w-[570px] sm:min-w-[820px] rounded-full" ref={bgCircleRef}>
+          <div className={`w-full h-full rounded-full ${styles.coloredCircle}`}>
+            <p className="text-base sm:text-2xl text-white mx-auto w-fit top-16 sm:top-24 font-semibold relative">
+              Our Tapestry of Events
+            </p>
+          </div>
         </div>
-        <p className=" absolute text-center lg:text-2xl bottom-[20%] lg:bottom-[5rem] font-bold text-[#290E13] left-[28%] lg:left-[35%]">Our Tapestry of Events</p>
         <div className="absolute left-1/2 -translate-x-1/2">
           <div className="w-[740px] h-[740px] sm:w-[1100px] mt-2 sm:mt-0 sm:h-[1100px] mx-auto  transition-all duration-300" id="rotatable-div" style={{
             transform: `rotate(${rotateAngle}deg) scale(${width >= 640 ? 1 : 0.9})`,
