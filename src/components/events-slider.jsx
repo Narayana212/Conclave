@@ -135,9 +135,9 @@ export default function EventSlider() {
            
           
         </div>
-        <p className=" absolute lg:text-2xl bottom-[4rem] lg:bottom-[5rem] font-bold text-[#290E13] left-[25%] lg:left-[36%]">Our Tapestry of Events</p>
+        <p className=" absolute text-center lg:text-2xl bottom-[20%] lg:bottom-[5rem] font-bold text-[#290E13] left-[28%] lg:left-[35%]">Our Tapestry of Events</p>
         <div className="absolute left-1/2 -translate-x-1/2">
-          <div className="w-[740px] h-[740px] sm:w-[1100px] mt-2 sm:mt-0 sm:h-[1100px] mx-auto transition-all duration-300" id="rotatable-div" style={{
+          <div className="w-[740px] h-[740px] sm:w-[1100px] mt-2 sm:mt-0 sm:h-[1100px] mx-auto  transition-all duration-300" id="rotatable-div" style={{
             transform: `rotate(${rotateAngle}deg) scale(${width >= 640 ? 1 : 0.9})`,
             transformOrigin: "center center"
           }}>
