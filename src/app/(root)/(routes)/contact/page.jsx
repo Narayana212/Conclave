@@ -52,14 +52,14 @@ export default function ContactPage() {
 
   return (
     <motion.div
-      className="h-auto w-screen bg-[#290E13] pl-16 pr-[12rem] overflow-hidden relative lg:pt-12 pt-6"
+      className="h-auto w-screen bg-[#290E13]  pl-5 overflow-hidden relative lg:pt-12 pt-6"
       initial={{ opacity: 0, y: -20 }}
       id="contact"
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex flex-wrap   gap-x-10 gap-y-10 max-w-screen">
+      <div className="flex flex-wrap gap-x-10 gap-y-10 max-w-screen">
         {CORES.map((core, index) => (
           <motion.div
             className="flex flex-col  gap-10 justify-center cursor-pointer transition-all relative ease-in-out delay-150"
