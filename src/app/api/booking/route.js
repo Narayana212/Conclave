@@ -47,12 +47,12 @@ export async function PUT(request){
   try {
 
     const requestBody = await request.json();
-    const { rollNumber} = requestBody;
+    const { email} = requestBody;
 
 
     const existingBooking = await prisma.userBooking.update({
       where: {
-        rollNumber,
+        email,
       },
       data:{
         isBooked:true
