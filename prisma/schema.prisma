@@ -28,11 +28,14 @@ model Booking {
 
 
 model UserBooking {
-  rollNumber String  @id @unique
+  id String  @id @default(uuid()) @unique
+  rollNumber String @unique @default(uuid())
+  college String  @default("Shiv Nadar University")
   email String @unique
   fullName String 
   imageUrl String
   isBooked Boolean @default(false)
+  type String
 }
 
 

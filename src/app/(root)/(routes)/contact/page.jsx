@@ -11,19 +11,19 @@ const CORES = [
     id: 1,
     name: "Sadhika Uppal",
     designation: "Chairperson",
-    src: "/test.png",
+    src: "/core1.png",
   },
   {
     id: 2,
     name: "Ria Kachhal"    ,
     designation: "President",
-    src: "/test.png",
+    src: "/core4.png",
   },
   {
     id: 3,
     name: "Mansi Kulshreshtha",
     designation: "Vice President",
-    src: "/test.png",
+    src: "/core3.png",
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const CORES = [
     id: 5,
     name: "Kushaan Sethi",
     designation: "Executive Director",
-    src: "/test.png",
+    src: "/core2.png",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <div className="flex flex-col lg:ml-[3rem] lg:mr-[3rem] mr-[2rem] ml-[2rem] justify-center relative ">
             <div className="flex ">
               <div
-                className="flex  items-center  px-5 pt-5  h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
+                className="flex items-end justify-center px-5 pt-5 relative h-[270px] w-[200px] mx-auto mb-4 overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
@@ -78,8 +78,8 @@ export default function ContactPage() {
                 <Image
                   src={core.src}
                   alt="test"
-                  width={"130"}
-                  height={"100"}
+                  width={"200"}
+                  height={"200"}
                   className="hover:scale-110 transition-all"
                 />
               </div>

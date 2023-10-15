@@ -12,6 +12,9 @@ export async function POST(request) {
         email: email,
       },
     });
+
+    console.log("existing",exitingUser)
+
     if (!exitingUser) {
       return NextResponse.json({ message: "You have not been register yet" }, { status: 402 });
     }

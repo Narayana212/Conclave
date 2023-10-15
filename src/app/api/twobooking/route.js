@@ -155,6 +155,7 @@ export async function POST(request) {
         email,
         rollNumber,
         fullName,
+        type:`2 Tickets with ${email1}`,
         imageUrl:images[0].url
       },
     });
@@ -164,6 +165,7 @@ export async function POST(request) {
           email:email1,
           rollNumber:rollNumber1,
           fullName:fullName1,
+          type:`2 Tickets with ${email2}`,
           imageUrl:images[0].url
         },
       });
@@ -197,7 +199,7 @@ export async function POST(request) {
     console.log("response", response);
     console.log("response", response1);
 
-    return NextResponse.json({ message: { booking } }, { status: 200 });
+    return NextResponse.json({ message: { booking ,booking1} }, { status: 200 });
   } catch (error) {
     console.log("error from ticket post", error.message);
     return NextResponse.json(

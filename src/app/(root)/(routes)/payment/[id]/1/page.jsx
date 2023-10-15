@@ -19,6 +19,7 @@ import {
 import { Input } from "../../../../../../components/ui/input";
 import { Button } from "../../../../../../components/ui/button";
 import ImageUpload from "../../../../../../components/ui/image-upload";
+import { getDataFromToken } from "../../../../../../helpers/getDataFromToken";
 
 const userSchema = z.object({
   fullName: z.string(),
@@ -243,7 +244,7 @@ export default function PaymentPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[#F8A254]">
-                    Screenshot of Payment of 1400
+                    Screenshot of Payment of 1400/-
                   </FormLabel>
                   <FormControl>
                     <ImageUpload
