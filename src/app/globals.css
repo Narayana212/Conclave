@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-block {
+  transform: translateX(-50%) rotate(80.5deg);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -70,6 +84,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -104,8 +119,8 @@
   cursor: pointer !important;
 }
 
-.secondary-button{
-  background:linear-gradient(159deg, #6C1E35 -12.47%, #7C402F 87.42%);
+.secondary-button {
+  background: linear-gradient(159deg, #6C1E35 -12.47%, #7C402F 87.42%);
 }
 
 .about-conclave-active::after {

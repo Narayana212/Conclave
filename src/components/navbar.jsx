@@ -66,7 +66,7 @@ export default function Navbar() {
   return (
     <div
 
-      className={`w-screen h-auto bg-transparent z-50 flex items-center justify-between lg:gap-5 py-5 px-12`}
+      className={`w-screen h-auto bg-transparent z-50 flex items-center justify-between lg:gap-5 py-5 px-6 sm:px-12`}
     >
 
       <Link href="/">
