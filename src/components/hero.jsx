@@ -50,7 +50,7 @@ export default function Hero({ isLogin }) {
             <Heading text={"CONCLAVE"} styles="text-5xl xs:text-6xl" />
             <Heading text={"2023"} styles="text-5xl xs:text-6xl " />
             <p className="text-white flex  items-center gap-2 mt-2"><CalendarDays/>28-10-2023</p>
-            <p className="text-white flex  items-center gap-2 mt-2"><MapPin/>SNU Nodia Campus</p>
+            <p className="text-white flex  items-center gap-2 mt-2"><MapPin/>SNIoE, Delhi NCR</p>
             <Link href="/tickets">
               <motion.div
                 className={` ${isLogin ? "flex" : "hidden"}  mt-5 `}
@@ -68,7 +68,7 @@ export default function Hero({ isLogin }) {
               <Heading text={"BUSINESS"} styles="md:text-8xl lg:text-9xl" />
               <Heading text={"CONCLAVE"} styles="md:text-8xl lg:text-9xl" />
               <p className="text-white flex self-end items-center gap-2 mt-2"><CalendarDays/>28-10-2023</p>
-            <p className="text-white flex self-end items-start gap-2 mt-2"><MapPin/>SNU Nodia Campus</p>
+            <p className="text-white flex self-end items-start gap-2 mt-2"><MapPin/>SNIoE, Delhi NCR</p>
               <Link href="/tickets" className="self-center -mr-[8rem]">
 
                 <motion.div
