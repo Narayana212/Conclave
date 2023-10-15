@@ -141,11 +141,11 @@ export default function TicketPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative bg-[#290F12] w-screen flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
+      className="relative bg-[#290F12] w-screen mx-auto  flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
     >
       <TwoCircles />
       {bookingId !== "" ? (
-        <div className="lg:w-[650px] p-3 mb-3 -ml-12 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A]">
+        <div className="lg:w-[650px] p-3 mb-3 relative md:w-[550px] sm:w-[450px] w-[350px] aspect-[9.35/3] rounded-md bg-[#7B283A]">
           {userData.email && (
             <p className="text-white">Booking id: {bookingId}</p>
           )}
