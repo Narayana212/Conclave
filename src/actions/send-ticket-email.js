@@ -7,12 +7,18 @@ import TicketEmail from "../email/ticket-email";
 const plunk = new Plunk(process.env.PLUNK_API_KEY);
 export const sendTicketEmail = async ({bookingId,userData}) => {
 
+
+  console.log("email",userData)
   const ticketHtml = render(
     <TicketEmail
       email={userData.email}
       bookToken={`Hi ${userData.fullName} Payment Request is confirmed here is booking ${bookingId}..`}
     />
   );
+
+  
+
+  
 
   const response = await plunk.emails.send({
     to: userData.email,
