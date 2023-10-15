@@ -49,22 +49,22 @@ export default function Swiper() {
       <Slider {...settings} className="pt-10 px-5 lg:px-10 ">
         {speakers.map((core) => (
           <div
-            className="flex  justify-center items-center ml-10 "
+            className="flex  justify-center   items-center ml-10 "
             key={core.id}
           >
             <div className="flex flex-col justify-center items-start h-[400px] w-[200px]">
               <div
-                className="flex items-center justify-center relative h-[270px] w-[200px] overflow-hidden rounded-lg"
+                className="flex items-end justify-center px-5 pt-5 relative h-[270px] w-[200px] mx-auto mb-4 overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
                   borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image src={core.src} alt="speaker" width={130} height={100} />
+                <Image src={core.src} alt="speaker" width={130} height={150} />
               </div>
-              <h1 className="text-[#F8A254] font-bold mt-2">{core.name}</h1>
-              <p className="text-white">{core.description}</p>
+              <h1 className="text-[#F8A254] font-bold text-sm mt-1">{core.name}</h1>
+              <p className="text-white text-sm">{core.description}</p>
             </div>
           </div>
         ))}

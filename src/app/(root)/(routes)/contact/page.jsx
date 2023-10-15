@@ -9,26 +9,32 @@ import ContactForm from "../../../../components/contact-form";
 const CORES = [
   {
     id: 1,
-    name: "NAME",
-    designation: "DESIGNATION ",
+    name: "Sadhika Uppal",
+    designation: "Chairperson",
     src: "/test.png",
   },
   {
     id: 2,
-    name: "NAME",
-    designation: "DESIGNATION ",
+    name: "Ria Kachhal"    ,
+    designation: "President",
     src: "/test.png",
   },
   {
     id: 3,
-    name: "NAME",
-    designation: "DESIGNATION ",
+    name: "Mansi Kulshreshtha",
+    designation: "Vice President",
     src: "/test.png",
   },
   {
     id: 4,
-    name: "NAME",
-    designation: "DESIGNATION ",
+    name: "Rushali Aggarwal",
+    designation: "Managing Director",
+    src: "/test.png",
+  },
+  {
+    id: 5,
+    name: "Kushaan Sethi",
+    designation: "Executive Director",
     src: "/test.png",
   },
 ];
@@ -52,16 +58,17 @@ export default function ContactPage() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex flex-wrap justify-center sm:justify-between gap-x-36 gap-y-16 max-w-screen">
+      <div className="flex flex-wrap   gap-x-10 gap-y-10 max-w-screen">
         {CORES.map((core, index) => (
           <motion.div
-            className="flex flex-col cursor-pointer transition-all ease-in-out delay-150"
+            className="flex flex-col  gap-10 justify-center cursor-pointer transition-all relative ease-in-out delay-150"
             key={core.id}
             variants={itemVariants}
           >
-            <div className="flex">
+            <div className="flex flex-col ml-[3rem] mr-[3rem] justify-center relative ">
+            <div className="flex ">
               <div
-                className="flex items-end justify-center px-5 pt-5 relative h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
+                className="flex  items-center  px-5 pt-5  h-[300px] w-[200px] mx-auto mb-4 overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(180deg, #840F52 0%, #B26D43 100%)",
@@ -79,12 +86,13 @@ export default function ContactPage() {
 
               <Heading
                 text={core.name}
-                styles="opacity-60 text-4xl rotate-90 -ml-52 -mt-20 overflow-hidden"
+                styles={`opacity-60 absolute whitespace-nowrap  text-4xl rotate-90 ${core.id===1?"top-[7.5rem] left-[5.5rem]":""}  ${core.id===2?"top-[5.5rem] left-[6.5rem]":""} ${core.id===3?"top-[7.5rem] text-[1.75rem] left-[4.5rem]":""} ${core.id===4?"top-[6.5rem] text-[1.75rem] left-[5.5rem]":""} ${core.id===5?"top-[7rem] left-[5.5rem]":""} overflow-hidden`}
               />
             </div>
             <h1 className="text-[#F8A254] font-bold -mr-16 text-xl">
               {core.designation}
             </h1>
+            </div>
           </motion.div>
         ))}
       </div>

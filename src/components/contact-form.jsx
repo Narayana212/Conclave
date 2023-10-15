@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion"; // Import motion from framer-motion
-import {sendEmail} from '../actions/send-email'
-
+import { sendEmail } from "../actions/send-email";
 
 import {
   Form,
@@ -39,7 +38,7 @@ const formSchema = z.object({
 });
 
 export default function ContactForm() {
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,11 +50,11 @@ export default function ContactForm() {
   });
 
   const handleSubmit = async (data) => {
-    setLoading(true)
-    await sendEmail(data)
+    setLoading(true);
+    await sendEmail(data);
 
-    setLoading(false)
-    toast.success("Sent Successfully")
+    setLoading(false);
+    toast.success("Sent Successfully");
   };
 
   return (
@@ -73,11 +72,33 @@ export default function ContactForm() {
         transition={{ duration: 0.5 }}
         className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
       >
-        <Image src='/main.png' alt="logo" width={"200"} height={"200"}  className="mix-blend-lighten"/>
-        <h1 className="text-[#F8A254] lg:text-xl  font-medium mt-6">
-          Shiv Nadar Institution of Eminence
+        <div className="flex">
+          <Image
+            src="/main.png"
+            alt="logo"
+            width={"150"}
+            height={"150"}
+            className="mix-blend-lighten"
+          />
+          <Image
+            src="/logoin.png"
+            alt="logo"
+            width={"150"}
+            height={"150"}
+            className="mix-blend-lighten"
+          />
+          <Image
+            src="/logosn1.png"
+            alt="logo"
+            width={"150"}
+            height={"150"}
+            className="mix-blend-lighten"
+          />
+        </div>
+
+        <h1 className="text-[#F8A254] lg:text-lg font-medium">
+        Feel free to contact Adi Satya Arora, Head Of Directors at <hr className="bg-transparent w-0"/>+91 93152 33567
         </h1>
-        <h1 className="text-[#F8A254] lg:text-xl font-medium">+91-120-7170100</h1>
       </motion.div>
 
       <motion.div
@@ -92,7 +113,6 @@ export default function ContactForm() {
           <form
             className="space-y-8"
             onSubmit={form.handleSubmit(handleSubmit)}
-            
           >
             <div className="w-full flex flex-col lg:flex-row  gap-8 lg:gap-2 mt-5">
               <FormField
@@ -102,7 +122,10 @@ export default function ContactForm() {
                   <FormItem>
                     <FormLabel className="text-[#F8A254]">First Name</FormLabel>
                     <FormControl>
-                      <Input {...field} className="bg-transparent text-white w-4/6  lg:w-full" />
+                      <Input
+                        {...field}
+                        className="bg-transparent text-white w-4/6  lg:w-full"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -115,7 +138,10 @@ export default function ContactForm() {
                   <FormItem>
                     <FormLabel className="text-[#F8A254]">Last Name</FormLabel>
                     <FormControl>
-                      <Input {...field} className="bg-transparent text-white w-4/6 lg:w-full" />
+                      <Input
+                        {...field}
+                        className="bg-transparent text-white w-4/6 lg:w-full"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -154,16 +180,24 @@ export default function ContactForm() {
               />
             </div>
 
-            <Button variant={"secondary"}  type="submit" className="self-end mt-4 ">
-              {loading?<div className="flex items-center gap-3">
-                <Loader2 className="animate-spin"/>
-                <span>Sending</span>
-              </div>:"Send"}
+            <Button
+              variant={"secondary"}
+              type="submit"
+              className="self-end mt-4 "
+            >
+              {loading ? (
+                <div className="flex items-center gap-3">
+                  <Loader2 className="animate-spin" />
+                  <span>Sending</span>
+                </div>
+              ) : (
+                "Send"
+              )}
             </Button>
           </form>
         </Form>
       </motion.div>
-      <Toaster richColors/>
+      <Toaster richColors />
     </motion.div>
   );
 }

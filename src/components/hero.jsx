@@ -33,13 +33,13 @@ export default function Hero({ isLogin }) {
       <div
         className="w-screen h-full"
         style={{
-          backgroundImage: `url("/banner.png")`,
+          backgroundImage: `url("/banner1.JPG")`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full h-full opacity-90 bg-[#290E13]">
+        <div className="w-full h-full opacity-[0.85] bg-[#290E13]">
           <Navbar isLogin={isLogin} />
           <motion.div
             className="flex md:hidden flex-col items-center justify-center w-full h-full "

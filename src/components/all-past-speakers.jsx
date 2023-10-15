@@ -13,12 +13,10 @@ export default function AllPastSpeakers() {
       className="flex flex-col pt-10"
     >
       <h1 className="text-white font-bold text-3xl">
-        PAST
-        <hr className="w-0" />
-        SPEAKERS
+        OUR SPEAKERS
       </h1>
-      <div className="bg-[#F8A254] w-[100px] h-[5px] mt-1 rounded-[11px]" />
-      <div className="flex w-full lg:px-10 pt-10 lg:gap-[6rem] justify-center flex-wrap">
+      <div className="bg-[#F8A254] w-[200px] h-[5px] mt-1 rounded-[11px]" />
+      <div className="flex w-full lg:px-10 pt-10 lg:gap-x-[6rem] justify-center flex-wrap">
         {speakers.map((speaker) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -44,9 +42,9 @@ export default function AllPastSpeakers() {
                   height={"100"}
                 />
               </div>
-              <h1 className="text-[#F8A254] font-bold mt-1">{speaker.name}</h1>
-              <h1 className="text-white text-semibold">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              <h1 className="text-[#F8A254] font-bold text-sm mt-2">{speaker.name}</h1>
+              <h1 className="text-white text-semibold text-sm">
+                {speaker.description}
               </h1>
             </div>
           </motion.div>

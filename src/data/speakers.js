@@ -1,45 +1,45 @@
 const speakers = [
     {
       id: 1,
-      name: "RAJINIKANTH",
+      name: "MR. KISHORE JAYARAMAN",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "President, Rolls Royce, India and South Asia ",
+      src: "/speakers/3.png",
     },
     {
       id: 2,
-      name: "RAJINIKANTH",
+      name: "MR. AMIN JAZAYERI",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "Host, Untriggered Podcast and Established DJ",
+      src: "/speakers/1.png",
     },
     {
       id: 3,
-      name: "RAJINIKANTH",
+      name: "MR. PRATISH NAIR",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "Founder & CEO at Miles SOBA and AGENCY M",
+      src: "/speakers/4.png",
     },
     {
       id: 4,
-      name: "RAJINIKANTH",
+      name: "MS. SHRADHA AGARWAL",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "CEO, Grapes | IMPACT 50 Most Influential Women’ 22",
+      src: "/speakers/6.png",
     },
     {
       id: 5,
-      name: "RAJINIKANTH",
+      name: "DR. RADHIKA BATRA",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "CEO, Every Infant Matters | GOI & UN’s Top 75 Women Transforming India ",
+      src: "/speakers/5.png",
     },
     {
       id: 6,
-      name: "RAJINIKANTH",
+      name: "MR. AMULYA SAH",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      src: "/test.png",
+        "Sr. VP and CHRO, Invest India",
+      src: "/speakers/2.png",
     },
   ];
 

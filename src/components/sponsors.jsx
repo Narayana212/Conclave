@@ -13,7 +13,7 @@ export default function Sponsors() {
       transition={{ duration: 0.5 }}
       className="pt-10 overflow-hidden px-10 w-full relative p-20"
     >
-      <div className="flex space-x-4 w-full justify-center">
+      <div className="flex space-x-4 w-full justify-center items-center">
         <Marquee>
           {sponsors.map((sponsor) => (
             <motion.div
@@ -28,6 +28,7 @@ export default function Sponsors() {
                 alt={sponsor.name}
                 width={"150"}
                 height={"150"}
+                className="mix-blend-overlay"
               />
             </motion.div>
           ))}
