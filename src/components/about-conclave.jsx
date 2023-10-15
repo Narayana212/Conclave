@@ -47,7 +47,7 @@ export default function AboutConclave() {
           
         >
           The SNIOE Business Conclave is an annual flagship event organized by Inspiria, the esteemed Business Society of Shiv Nadar University. This prestigious conclave serves as a platform for students and industry leaders to come together, exchange ideas, and explore various aspects of the business world. The conclave aims to provide an all-rounded experience that equips one with knowledge, networks, and inspiration. Whether you&apos;re a student, a budding entrepreneur, or a seasoned professional, our event offers something for everyone. We have curated this year&apos;s conclave, keeping in mind our motto- &apos;Business and Beyond&apos;. It's not just about what you'll take away from it but also about the connections you'll build, the inspiration you'll find, and the ideas that will shape your business journey. 
-This year, the celebrations are a notch bigger, better and grander as we celebrate a decade of our legacy at Inspiria. 
+This year, the celebrations are a notch bigger, better, and grander as we celebrate a decade of our legacy at Inspiria. 
 
         </motion.p>
         
