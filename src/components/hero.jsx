@@ -101,7 +101,7 @@ export default function Hero({ isLogin }) {
             <div className="flex flex-col items-start">
               <Heading text={"BUSINESS"} styles="md:text-8xl lg:text-9xl" />
               <Heading text={"CONCLAVE"} styles="md:text-8xl lg:text-9xl" />
-             <div className="flex gap-4 self-center ml-20"> <p
+             <div className="flex gap-4 self-center ml-[10rem]"> <p
                 style={{
                   background:
                     "linear-gradient(161deg, #AC016A -11.7%, #FBA150 101.48%)",
@@ -139,7 +139,7 @@ export default function Hero({ isLogin }) {
               <Heading
                 text={"2023"}
                 styles={` ${
-                  isLogin ? "-mt-[5rem]" : "-mt-[4.5rem]"
+                  isLogin ? "-mt-[5rem]" : "-mt-[3rem]"
                 } md:text-7xl  lg:text-8xl -ml-14 rotate-90`}
               />
             </motion.div>
