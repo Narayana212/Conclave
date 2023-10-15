@@ -141,7 +141,7 @@ export default function EventSlider() {
         </div>
         <div className="absolute left-1/2 -translate-x-1/2">
           <div className="w-[740px] h-[740px] sm:w-[1100px] mt-2 sm:mt-0 sm:h-[1100px] mx-auto transition-all duration-300" id="rotatable-div" style={{
-            transform: `rotate(${rotateAngle}deg) scale(${width >= 640 ? 1 : 0.9})`,
+            transform: `rotate(${rotateAngle}deg) scale(${window.innerWidth >= 640 ? 1 : 0.9})`,
             transformOrigin: "center center"
           }}>
             {
