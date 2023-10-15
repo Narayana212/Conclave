@@ -23,10 +23,10 @@ import { getDataFromToken } from "../helpers/getDataFromToken";
 
 const Links = [
   { id: 1, href: "/", title: "Home" },
-  { id: 2, href: "/events", title: "Events" },
-  { id: 3, href: "/tickets", title: "Tickets" },
-  { id: 4, href: "/sponsors", title: "Sponsors" },
-  { id: 5, href: "/contact", title: "Contact" },
+  { id: 2, href: "/events#events", title: "Events" },
+  { id: 3, href: "/tickets#tickets", title: "Tickets" },
+  { id: 4, href: "/sponsors#sponosors", title: "Sponsors" },
+  { id: 5, href: "/contact#contact", title: "Contact" },
 ];
 
 export default function Navbar() {
@@ -56,7 +56,7 @@ export default function Navbar() {
   async function handleLogout() {
     try {
       cookie.set("jwtToken", "");
-      router.push("/login");
+      router.push("/login#login");
       toast.success("Logout Successfully");
     } catch (error) {
       throw new Error(error.message);
@@ -180,7 +180,7 @@ export default function Navbar() {
           </DropdownMenu>
         ) : (
           <Link
-            href="/signup"
+            href="/signup#signup"
             className="text-white opacity-75 transition-all hover:opacity-100 hover:font-semibold"
           >
             Create Account

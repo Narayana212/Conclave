@@ -4,7 +4,7 @@ import Sponsors from "../../../../components/sponsors";
 
 export default function SponsorsPage() {
   return (
-    <div className="bg-[#290E13] px-8 pt-5 w-screen">
+    <div className="bg-[#290E13] px-8 pt-5 w-screen" id="#sponsors">
       <h1 className="text-white font-bold text-3xl">
         OUR SPONSORS
       </h1>

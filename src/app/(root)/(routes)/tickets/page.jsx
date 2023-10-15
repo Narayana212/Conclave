@@ -196,6 +196,7 @@ export default function TicketPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className="relative bg-[#290F12] w-screen mx-auto  flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
+      id="tickets"
     >
       <TwoCircles />
       {bookingId !== "" ? (

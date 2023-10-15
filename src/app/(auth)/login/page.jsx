@@ -64,6 +64,7 @@ export default function Login() {
       className="h-[65vh] w-screen flex  gap-5 items-start pt-12 relative justify-center bg-[#290F12] overflow-hidden"
       initial="hidden"
       animate="visible"
+      id="login"
       variants={fadeInVariants}
     >
       <motion.div

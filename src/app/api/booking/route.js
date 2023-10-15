@@ -47,16 +47,14 @@ export async function PUT(request){
   try {
 
     const requestBody = await request.json();
-    const { email} = requestBody;
-
-
+    const { id} = requestBody;
     const existingBooking = await prisma.userBooking.update({
       where: {
-        email,
+        id
+
       },
       data:{
         isBooked:true
-
       }
     });
     const Bookings = await prisma.userBooking.findMany({

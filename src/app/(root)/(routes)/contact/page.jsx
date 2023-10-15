@@ -54,6 +54,7 @@ export default function ContactPage() {
     <motion.div
       className="h-auto w-screen bg-[#290E13] pl-16 pr-[12rem] overflow-hidden relative lg:pt-12 pt-6"
       initial={{ opacity: 0, y: -20 }}
+      id="contact"
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
