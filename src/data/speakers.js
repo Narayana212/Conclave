@@ -11,7 +11,7 @@ const speakers = [
       name: "MR. AMIN JAZAYERI",
       description:
         "Host, Untriggered Podcast and Established DJ",
-      src: "/speakers/1.png",
+      src: "/core16.png",
     },
     {
       id: 3,

@@ -11,13 +11,13 @@ const CORES = [
     id: 1,
     name: "Sadhika Uppal",
     designation: "Chairperson",
-    src: "/core1.png",
+    src: "/coe10.png",
   },
   {
     id: 2,
     name: "Ria Kachhal"    ,
     designation: "President",
-    src: "/core4.png",
+    src: "/core11.png",
   },
   {
     id: 3,
@@ -29,13 +29,13 @@ const CORES = [
     id: 4,
     name: "Rushali Aggarwal",
     designation: "Managing Director",
-    src: "/core9.png",
+    src: "/core12.png",
   },
   {
     id: 5,
     name: "Kushaan Sethi",
     designation: "Executive Director",
-    src: "/core2.png",
+    src: "/core13.png",
   },
 ];
 
@@ -76,12 +76,12 @@ export default function ContactPage() {
                   borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image
+                <img
                   src={core.src}
                   alt="test"
-                  width={"200"}
-                  height={"400"}
-                  className="hover:scale-110 transition-all"
+
+                  
+                  className={`w-full   ${core.id===1?"scale-125 hover:scale-[1.35]":""}  ${core.id===2?"scale-[1.35] hover:scale-[1.45]":""} ${core.id===3?"scale-[1.50] hover:scale-[1.60]":""} ${core.id===4?"scale-[1.35] hover:scale-[1.45]":""} ${core.id===5?"scale-[1.25] hover:scale-[1.35]":""} overflow-hidden transition-all`}
                 />
               </div>
 

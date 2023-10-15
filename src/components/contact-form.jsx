@@ -72,7 +72,7 @@ export default function ContactForm() {
         transition={{ duration: 0.5 }}
         className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 lg:ml-24"
       >
-        <div className="flex flex-wrap">
+        <div className="flex flex-col">
           <Image
             src="/main.png"
             alt="logo"

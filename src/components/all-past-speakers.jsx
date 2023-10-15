@@ -36,11 +36,11 @@ export default function AllPastSpeakers() {
                   borderRadius: "3.5rem 0 0 0",
                 }}
               >
-                <Image
+                <img
                   src={speaker.src}
                   alt="test"
-                  width={"130"}
-                  height={"100"}
+                  className={`${speaker.id===2?"scale-[1.75] hover:scale-[1.85]":""} scale-125  cursor-pointer hover:scale-[1.35] transition-all`}
+                  
                 />
               </div>
               <h1 className="text-[#F8A254] font-bold text-sm mt-2">{speaker.name}</h1>
