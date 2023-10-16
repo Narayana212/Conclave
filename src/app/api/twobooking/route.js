@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import Plunk from "@plunk/node";
 import prisma from "../../../lib/prisma";
 import { render } from "@react-email/components";
-import TicketEmail from "../../../email/ticket-email";
-
+import {TicketEmail} from "../../../email/ticket-email";
 
 
 const corsHeaders = {
