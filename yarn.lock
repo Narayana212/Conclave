@@ -921,6 +921,13 @@
   dependencies:
     react "18.2.0"
 
+"@react-email/link@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/@react-email/link/-/link-0.0.5.tgz"
+  integrity sha512-z+QW9f4gXBdyfhl7iYMY3td+rXKeZYK/2AGElEMsxVoywn5D0b6cF8m5w2jbf0U2V3enT+zy9yc1R6AyT59NOg==
+  dependencies:
+    react "18.2.0"
+
 "@react-email/preview@0.0.5":
   version "0.0.5"
   resolved "https://registry.npmjs.org/@react-email/preview/-/preview-0.0.5.tgz"
@@ -928,20 +935,20 @@
   dependencies:
     react "18.2.0"
 
-"@react-email/render@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/@react-email/render/-/render-0.0.6.tgz"
-  integrity sha512-6zs7WZbd37TcPT1OmMPH/kcBpv0QSi+k3om7LyDnbdIcrbwOO/OstVwUaa/6zgvDvnq9Y2wOosbru7j5kUrW9A==
+"@react-email/render@^0.0.7", "@react-email/render@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/@react-email/render/-/render-0.0.7.tgz"
+  integrity sha512-hMMhxk6TpOcDC5qnKzXPVJoVGEwfm+U5bGOPH+MyTTlx0F02RLQygcATBKsbP7aI/mvkmBAZoFbgPIHop7ovug==
   dependencies:
     html-to-text "9.0.3"
     pretty "2.0.0"
     react "18.2.0"
     react-dom "18.2.0"
 
-"@react-email/render@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.npmjs.org/@react-email/render/-/render-0.0.7.tgz"
-  integrity sha512-hMMhxk6TpOcDC5qnKzXPVJoVGEwfm+U5bGOPH+MyTTlx0F02RLQygcATBKsbP7aI/mvkmBAZoFbgPIHop7ovug==
+"@react-email/render@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/@react-email/render/-/render-0.0.6.tgz"
+  integrity sha512-6zs7WZbd37TcPT1OmMPH/kcBpv0QSi+k3om7LyDnbdIcrbwOO/OstVwUaa/6zgvDvnq9Y2wOosbru7j5kUrW9A==
   dependencies:
     html-to-text "9.0.3"
     pretty "2.0.0"

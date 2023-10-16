@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import Plunk from "@plunk/node";
 import prisma from "../../../lib/prisma";
-import { render } from "@react-email/components";
-import TicketEmail from "../../../email/ticket-email";
+import { render } from "@react-email/render";
+import {TicketEmail} from "../../../email/ticket-email";
 import {v4 as uuid} from "uuid"
 
 
@@ -148,17 +148,15 @@ export async function POST(request) {
       },
     });
 
-    const ticketHtml = render(
-      <TicketEmail
-        email={email}
-        bookToken={`Hi ${fullName} Payment Request Received will confirm your payment soon..`}
-      />
-    );
+
+    
+
+    const ticketHtml = render(<TicketEmail/>);
     const plunk = new Plunk(process.env.PLUNK_API_KEY);
 
     const response = await plunk.emails.send({
       to: email,
-      subject: "Payment request Received",
+      subject: "We have received your ticket request! | Business Conclave 2023",
       body: ticketHtml,
     });
 
