@@ -163,14 +163,12 @@ export async function POST(request) {
 
     const ticketHtml = render(
       <TicketEmail
-        email={email}
-        bookToken={`Hi ${fullName} Payment Request Received will confirm your payment soon..`}
+       
       />
     );
     const ticketHtml1 = render(
         <TicketEmail
-          email={email1}
-          bookToken={`Hi ${fullName1} Payment Request Received will confirm your payment soon..`}
+          
         />
       );
     
