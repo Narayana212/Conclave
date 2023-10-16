@@ -92,16 +92,12 @@ export async function POST(request) {
         email: email,
       },
     });
-    const existingUser1 = await prisma.user.findUnique({
-        where: {
-          email: email1,
-        },
-      });
+   
 
 
-    if (existingUser===null || existingUser1===null) {
+    if (existingUser===null) {
       return NextResponse.json(
-        { message: "Emails/Email have not been register yet" },
+        { message: "You have not been register yet" },
         { status: 402 }
       );
     }
@@ -113,15 +109,11 @@ export async function POST(request) {
         userId: existingUser.userId,
       },
     });
-    const existingBooking1 = await prisma.booking.findUnique({
-        where: {
-          userId: existingUser1.userId,
-        },
-      });
+    
 
-    if (existingBooking1 || existingBooking) {
+    if (existingBooking) {
       return NextResponse.json(
-        { message: "One of them booked Ticket already" },
+        { message: "You booked Ticket already" },
         { status: 403 }
       );
     }
