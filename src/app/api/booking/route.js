@@ -27,8 +27,14 @@ export async function GET(request){
       }
     
     });
+    const Bookings1 = await prisma.userBooking.findMany({
+      where:{
+        isBooked:true
+      }
+    
+    });
 
-    return NextResponse.json({message:Bookings},{headers:corsHeaders})
+    return NextResponse.json({Bookings,Bookings1},{headers:corsHeaders})
 
     
 
