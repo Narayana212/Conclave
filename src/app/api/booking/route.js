@@ -91,8 +91,7 @@ export async function PUT(request){
 
 export async function POST(request) {
   const requestBody = await request.json();
-  const { email, rollNumber, images,fullName,college ,type} = requestBody;
-  console.log(requestBody)
+  const { email, rollNumber, images,fullName,college ,type,phoneNumber} = requestBody
   try {
     const existingUser = await prisma.user.findUnique({
       where: {
@@ -150,6 +149,7 @@ export async function POST(request) {
         fullName,
         type,
         college,
+        phoneNumber,
         imageUrl:images[0].url
       },
     });

@@ -23,7 +23,7 @@ import { Toaster, toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
 const userSchema = z.object({
-  fullName: z.string(),
+  fullName: z.string().min(2, "Too short"),
   email: z.string().min(5, "Too short"),
   rollNumber: z
     .string()
@@ -32,12 +32,17 @@ const userSchema = z.object({
   images: z
     .array(z.object({ url: z.string() }))
     .refine((images) => images.length > 0, "Image is required to Upload"),
+
+  phoneNumber: z
+    .string()
+    .min(10, "Invalid Phone Number")
+    .max(10, "Invalid Phone Number"),
 });
 
 export default function PaymentPage() {
   const router = useRouter();
 
-  const [loading,setLoading]=React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   const [userData, setUserData] = React.useState({ fullName: "", email: "" });
 
@@ -60,8 +65,8 @@ export default function PaymentPage() {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true)
-      const body={...data,email2:userData.email,type:"SNU STUDENT 1"}
+      setLoading(true);
+      const body = { ...data, email2: userData.email, type: "SNU STUDENT 1" };
       const response = await fetch("/api/booking", {
         method: "POST",
         body: JSON.stringify(body),
@@ -70,18 +75,18 @@ export default function PaymentPage() {
       const responseData = await response.json();
       if (response.ok) {
         toast.success("Sent Successfully will conform your payment soon");
-        router.push("/tickets")
-      } else if(response.status===402){
+        router.push("/tickets");
+      } else if (response.status === 402) {
         toast.error(responseData.message);
-        router.push("/signup")
-      }else{
+        router.push("/signup");
+      } else {
         toast.error(responseData.message);
       }
     } catch (error) {
-      console.log(error.message)
-    }finally{
-      setLoading(false)
-      form.reset()
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+      form.reset();
     }
   };
 
@@ -90,6 +95,7 @@ export default function PaymentPage() {
     email: "",
     rollNumber: "",
     images: [],
+    phoneNumber:""
   };
 
   const form = useForm({
@@ -145,7 +151,23 @@ export default function PaymentPage() {
                       {...field}
                       placeholder={userData.email}
                     />
-                    
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="phoneNumber"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">Phone No.</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.email}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -197,7 +219,14 @@ export default function PaymentPage() {
             />
 
             <Button type="submit" variant={"secondary"}>
-              {loading?<div className="flex items-center gap-2"><Loader2 className="animate-spin"/>Submiting</div>:"Submit"}
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <Loader2 className="animate-spin" />
+                  Submiting
+                </div>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
         </Form>

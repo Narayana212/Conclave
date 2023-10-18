@@ -85,7 +85,7 @@ export async function PUT(request){
 
 export async function POST(request) {
   const requestBody = await request.json();
-  const { email,email2,email1, rollNumber1,rollNumber, images,fullName1,fullName } = requestBody;
+  const { email,email2,email1, rollNumber1,rollNumber, images,fullName1,fullName,phoneNumber,phoneNumber1} = requestBody;
   try {
     const existingUser = await prisma.user.findUnique({
       where: {
@@ -147,7 +147,8 @@ export async function POST(request) {
         rollNumber,
         fullName,
         type:`2 Tickets with ${email1}`,
-        imageUrl:images[0].url
+        imageUrl:images[0].url,
+        phoneNumber,
       },
     });
 
@@ -157,7 +158,8 @@ export async function POST(request) {
           rollNumber:rollNumber1,
           fullName:fullName1,
           type:`2 Tickets with ${email2}`,
-          imageUrl:images[0].url
+          imageUrl:images[0].url,
+          phoneNumber:phoneNumber1
         },
       });
 

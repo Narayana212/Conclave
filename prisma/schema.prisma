@@ -36,6 +36,7 @@ model UserBooking {
   imageUrl String
   isBooked Boolean @default(false)
   type String
+  phoneNumber String @default("9999999999")
 }
 
 

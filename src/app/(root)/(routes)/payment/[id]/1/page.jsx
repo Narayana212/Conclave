@@ -34,6 +34,14 @@ const userSchema = z.object({
     .string()
     .min(10, "Invalid Roll Number")
     .max(10, "Invalid Roll Number"),
+  phoneNumber: z
+    .string()
+    .min(10, "Invalid Phone Number")
+    .max(10, "Invalid Phone Number"),
+  phoneNumber1: z
+    .string()
+    .min(10, "Invalid Phone Number")
+    .max(10, "Invalid Phone Number"),
 
   images: z
     .array(z.object({ url: z.string() }))
@@ -86,7 +94,6 @@ export default function PaymentPage() {
       console.log(error.message);
     } finally {
       setLoading(false);
-      
     }
   };
 
@@ -94,10 +101,12 @@ export default function PaymentPage() {
     fullName: "",
     email: "",
     rollNumber: "",
-    fullName1:"",
+    fullName1: "",
     email1: "",
     rollNumber1: "",
     images: [],
+    phoneNumber: "",
+    phoneNumber1: "",
   };
 
   const form = useForm({
@@ -163,6 +172,25 @@ export default function PaymentPage() {
               )}
             />
             <FormField
+              name="phoneNumber"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">
+                    Phone No. of Delegate1
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.email}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
               name="rollNumber"
               control={form.control}
               render={({ field }) => (
@@ -181,7 +209,7 @@ export default function PaymentPage() {
                 </FormItem>
               )}
             />
-                        <FormField
+            <FormField
               name="fullName1"
               control={form.control}
               render={({ field }) => (
@@ -207,6 +235,25 @@ export default function PaymentPage() {
                 <FormItem>
                   <FormLabel className="text-[#F8A254]">
                     SNU Email ID of Delegate2
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.email}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="phoneNumber1"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">
+                    Phone No. of Delegate2
                   </FormLabel>
                   <FormControl>
                     <Input

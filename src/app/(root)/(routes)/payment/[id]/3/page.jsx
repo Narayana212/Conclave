@@ -30,6 +30,10 @@ const userSchema = z.object({
   images: z
     .array(z.object({ url: z.string() }))
     .refine((images) => images.length > 0, "Image is required to Upload"),
+    phoneNumber: z
+    .string()
+    .min(10, "Invalid Phone Number")
+    .max(10, "Invalid Phone Number")  
 });
 
 export default function PaymentPage() {
@@ -88,6 +92,7 @@ export default function PaymentPage() {
     email: "",
     college: "",
     images: [],
+    phoneNumber:""
   };
 
   const form = useForm({
@@ -137,6 +142,24 @@ export default function PaymentPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[#F8A254]">Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-transparent  text-white"
+                      {...field}
+                      placeholder={userData.email}
+                    />
+                    
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="phoneNumber"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F8A254]">Phone No.</FormLabel>
                   <FormControl>
                     <Input
                       className="bg-transparent  text-white"
