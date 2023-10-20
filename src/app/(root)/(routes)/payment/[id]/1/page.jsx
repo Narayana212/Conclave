@@ -291,7 +291,7 @@ export default function PaymentPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[#F8A254]">
-                    Screenshot of Payment of 1400/-
+                    Screenshot of Payment of 1200/-
                   </FormLabel>
                   <FormControl>
                     <ImageUpload

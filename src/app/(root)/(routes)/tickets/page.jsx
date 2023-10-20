@@ -293,15 +293,15 @@ export default function TicketPage() {
                 className="text-xs"
                 onClick={bookTicket}
               >
-                ₹800 for 1 ticket
+                ₹650 for 1 ticket
               </Button>
               <Button
                 variant="secondary"
                 className="flex gap-1 text-xs"
                 onClick={bookTwoTicket}
               >
-                <span className="ml-2 font-semibold">₹1400</span>
-                <span className="text-gray-400 line-through">₹1600</span>
+                <span className="ml-2 font-semibold">₹1200</span>
+                <span className="text-gray-400 line-through">₹1300</span>
                 <span className="">for 2 tickets</span>
               </Button>
             </div>
