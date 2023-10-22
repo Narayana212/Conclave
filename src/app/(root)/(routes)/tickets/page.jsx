@@ -413,7 +413,7 @@ export default function TicketPage() {
                   </p>
                 </div>
                 <div className="flex  gap-3 ">
-                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <X className="w-5 h-5 text-[#F8A254]  font-semibold" />
                   <p className="text-white font-semibold text-sm ">
                     Access to DJ Night by AminJaz
                   </p>
