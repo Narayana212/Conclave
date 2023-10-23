@@ -136,18 +136,36 @@ export default function TicketPage() {
       setLoading(false);
     }
   }
+  function bookTwoTicket() {
+    try {
+      setLoading(true);
 
+      if (!userData.email) {
+        toast.error("You have not registered");
+        return router.push("/signup");
+      }
+      toast.promise(promise, {
+        loading: "Going to Payment Page...",
+        success: "Redirected Payment Page",
+        error: "Error",
+      });
+      return router.push(`/payment/${userData.id}/4`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  
 
   async function getBookingStatus() {
     try {
-     
       const email = userData.email;
-      
+
       const response = await fetch(`/api/user/:${userData.email}`);
       const data = await response.json();
 
       if (response.ok) {
-
         setBookingId(data.message.bookToken);
 
         const originalDateString = data.message.createdAt;
@@ -224,7 +242,7 @@ export default function TicketPage() {
       ) : (
         <Tabs defaultValue="account" className=" pl-12 lg:pl-0">
           <TabsList>
-            <TabsTrigger value="account">For SNU Students {bookingId}</TabsTrigger>
+            <TabsTrigger value="account">For SNU Students </TabsTrigger>
             <TabsTrigger value="password">For Non-SNU Students</TabsTrigger>
           </TabsList>
           <TabsContent
@@ -236,7 +254,7 @@ export default function TicketPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className=" bg-[#7B283A] mr-12 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.25] flex flex-col items-start  rounded-md"
+              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.25] flex flex-col items-start  rounded-md"
             >
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
@@ -287,7 +305,7 @@ export default function TicketPage() {
                 </p>
               </div>
             </motion.div>
-            <div className="flex gap-5  items-center">
+            <div className="flex gap-5 flex-wrap justify-center -ml-3 w-[23rem] items-center">
               <Button
                 variant="secondary"
                 className="text-xs"
@@ -301,8 +319,16 @@ export default function TicketPage() {
                 onClick={bookTwoTicket}
               >
                 <span className="ml-2 font-semibold">₹1200</span>
-                <span className="text-gray-400 line-through">₹1300</span>
                 <span className="">for 2 tickets</span>
+              </Button>
+              <Button
+                variant="secondary"
+                className="flex gap-1 text-xs"
+                onClick={bookTwoTicket}
+              >
+                <span className="ml-2 font-semibold">₹1650</span>
+
+                <span className="">for 3 tickets</span>
               </Button>
             </div>
           </TabsContent>
@@ -348,12 +374,7 @@ export default function TicketPage() {
                     Complimentary drink and appetizer at the Corporate Gala
                   </p>
                 </div>
-                <div className="flex  gap-3 ">
-                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                  <p className="text-white font-semibold text-sm ">
-                    Access to DJ Night by AminJaz
-                  </p>
-                </div>
+
                 <div className="flex  gap-3 ">
                   <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
                   <p className="text-white font-semibold text-sm ">
@@ -368,8 +389,14 @@ export default function TicketPage() {
                   </p>
                 </div>
                 <div className="flex  gap-3 ">
+                  <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to DJ Night by AminJaz
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
                   <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
-                  <p className=" font-bold text-white  text-sm ">
+                  <p className=" font-semibold text-white  text-sm ">
                     Shared accommodation on campus
                   </p>
                 </div>
@@ -412,12 +439,7 @@ export default function TicketPage() {
                     Complimentary drink and appetizer at the Corporate Gala
                   </p>
                 </div>
-                <div className="flex  gap-3 ">
-                  <X className="w-5 h-5 text-[#F8A254]  font-semibold" />
-                  <p className="text-white font-semibold text-sm ">
-                    Access to DJ Night by AminJaz
-                  </p>
-                </div>
+
                 <div className="flex  gap-3 ">
                   <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
                   <p className="text-white font-semibold text-sm ">
@@ -432,6 +454,12 @@ export default function TicketPage() {
                   </p>
                 </div>
                 <div className="flex  gap-3 ">
+                  <X className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Access to DJ Night by AminJaz
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
                   <X className="w-6 h-6 text-[#F8A254]  font-semibold" />
                   <p className="text-white font-semibold text-sm ">
                     Shared accommodation on campus
@@ -441,7 +469,11 @@ export default function TicketPage() {
             )}
             <div className="flex items-center justify-center mt-2 mr-10 space-x-2 transition-all">
               <label class="switch">
-                <input type="checkbox" onChange={() => setWithAccommodation(!withAccommodation)} checked={withAccommodation} />
+                <input
+                  type="checkbox"
+                  onChange={() => setWithAccommodation(!withAccommodation)}
+                  checked={withAccommodation}
+                />
                 <span class="slider round"></span>
               </label>
 
@@ -461,11 +493,15 @@ export default function TicketPage() {
             <div>
               {withAccommodation ? (
                 <div className="flex mr-10 mt-4 justify-center ">
-                  <Button variant="secondary" onClick={bookFourTicket}>₹1000 for 1 ticket</Button>{" "}
+                  <Button variant="secondary" onClick={bookFourTicket}>
+                    ₹1000 for 1 ticket
+                  </Button>{" "}
                 </div>
               ) : (
                 <div className="flex  mr-10 mt-4 justify-center ">
-                  <Button variant="secondary" onClick={bookThreeTicket}>₹800 for 1 ticket</Button>
+                  <Button variant="secondary" onClick={bookThreeTicket}>
+                    ₹800 for 1 ticket
+                  </Button>
                 </div>
               )}
             </div>
