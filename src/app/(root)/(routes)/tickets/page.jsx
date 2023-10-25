@@ -212,7 +212,7 @@ export default function TicketPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative bg-[#290F12] w-screen mx-auto  flex items-center flex-col pt-14 justify-center p-10 overflow-hidden"
+      className="relative bg-[#290F12] w-screen mx-auto  flex items-center flex-col pt-14 justify-center  p-10 overflow-hidden"
       id="tickets"
     >
       <TwoCircles />
@@ -239,11 +239,13 @@ export default function TicketPage() {
           )}
         </div>
       ) : (
-        <Tabs defaultValue="account" className=" pl-12 lg:pl-0">
+      <Tabs defaultValue="account"  className="w-[500px] sm:w-[520px] pl-12 lg:pl-0">
           <TabsList>
-            <TabsTrigger value="account">For SNU Students </TabsTrigger>
-            <TabsTrigger value="account1">For SNS Students</TabsTrigger>
-            <TabsTrigger value="password">For External Students</TabsTrigger>
+            <TabsTrigger  value="account">
+            <p className="text-xs sm:text-sm">  For SNU Students </p>
+              </TabsTrigger>
+            <TabsTrigger value="account1"> <p className="text-xs sm:text-sm">  For SNU Students </p></TabsTrigger>
+            <TabsTrigger value="password"> <p className="text-xs sm:text-sm">  For SNU Students </p></TabsTrigger>
           </TabsList>
           <TabsContent
             value="account"
@@ -341,7 +343,7 @@ export default function TicketPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[22rem]  py-5 px-3 aspect-[1.4] flex flex-col items-start  rounded-md"
+              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[22rem]   py-5 px-3 aspect-[1.4] flex flex-col items-start  rounded-md"
             >
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
