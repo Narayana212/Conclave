@@ -156,7 +156,6 @@ export default function TicketPage() {
       setLoading(false);
     }
   }
-  
 
   async function getBookingStatus() {
     try {
@@ -243,7 +242,8 @@ export default function TicketPage() {
         <Tabs defaultValue="account" className=" pl-12 lg:pl-0">
           <TabsList>
             <TabsTrigger value="account">For SNU Students </TabsTrigger>
-            <TabsTrigger value="password">For Non-SNU Students</TabsTrigger>
+            <TabsTrigger value="account1">For SNS Students</TabsTrigger>
+            <TabsTrigger value="password">For External Students</TabsTrigger>
           </TabsList>
           <TabsContent
             value="account"
@@ -254,7 +254,7 @@ export default function TicketPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1/1.25] flex flex-col items-start  rounded-md"
+              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[27rem]  py-5 px-3 aspect-[1.13] flex flex-col items-start  rounded-md"
             >
               <div className="flex  gap-3 ">
                 <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
@@ -305,7 +305,7 @@ export default function TicketPage() {
                 </p>
               </div>
             </motion.div>
-            <div className="flex gap-5 flex-wrap justify-center -ml-3 w-[23rem] items-center">
+            <div className="flex gap-5 flex-wrap self-center justify-center -ml-[2.5rem] w-[23rem] items-center">
               <Button
                 variant="secondary"
                 className="text-xs"
@@ -333,12 +333,76 @@ export default function TicketPage() {
             </div>
           </TabsContent>
           <TabsContent
+            value="account1"
+            className="flex  gap-x-4 gap-y-2 flex-col  "
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className=" bg-[#7B283A] mr-12 mt-3 gap-y-5 h-[22rem]  py-5 px-3 aspect-[1.4] flex flex-col items-start  rounded-md"
+            >
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Access to all 6 events
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Delegate kit with 10+ items worth Rs. 500+
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Delegate Handbook
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Complimentary buffet lunch
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Complimentary drink and appetizer at the Corporate Gala
+                </p>
+              </div>
+              
+              <div className="flex  gap-3 ">
+                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Networking opportunities with speakers and external delegates
+                </p>
+              </div>
+              <div className="flex  gap-3 ">
+                <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
+                <p className="text-white font-semibold text-sm ">
+                  Eligible for applications at the Internship Fair
+                </p>
+              </div>
+            </motion.div>
+
+            <Button
+              variant="secondary"
+              className="text-xs self-center -ml-[2.5rem] s3"
+              onClick={bookTwoTicket}
+            >
+              ₹800 for 1 ticket
+            </Button>
+          </TabsContent>
+          <TabsContent
             value="password"
             className="flex flex-col justify-center"
           >
             {withAccommodation ? (
               <motion.div
-                className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md"
+                className=" bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1.03] flex flex-col items-start  rounded-md"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -407,7 +471,7 @@ export default function TicketPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className=" transition-all bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1/1.4] flex flex-col items-start  rounded-md"
+                className=" transition-all bg-[#7B283A] mr-12 gap-y-5 h-[30rem]  py-5 px-3 aspect-[1.03] flex flex-col items-start  rounded-md"
               >
                 <div className="flex  gap-3 ">
                   <Check className="w-5 h-5 text-[#F8A254]  font-semibold" />
@@ -500,7 +564,7 @@ export default function TicketPage() {
               ) : (
                 <div className="flex  mr-10 mt-4 justify-center ">
                   <Button variant="secondary" onClick={bookThreeTicket}>
-                    ₹800 for 1 ticket
+                    ₹650 for 1 ticket
                   </Button>
                 </div>
               )}
