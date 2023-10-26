@@ -369,12 +369,7 @@ export default function TicketPage() {
                   Complimentary buffet lunch
                 </p>
               </div>
-              <div className="flex  gap-3 ">
-                <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                <p className="text-white font-semibold text-sm ">
-                  Complimentary drink and appetizer at the Corporate Gala
-                </p>
-              </div>
+              
               
               <div className="flex  gap-3 ">
                 <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
@@ -499,12 +494,7 @@ export default function TicketPage() {
                     Complimentary buffet lunch
                   </p>
                 </div>
-                <div className="flex  gap-3 ">
-                  <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
-                  <p className="text-white font-semibold text-sm ">
-                    Complimentary drink and appetizer at the Corporate Gala
-                  </p>
-                </div>
+                
 
                 <div className="flex  gap-3 ">
                   <Check className="w-8 h-8 text-[#F8A254]  font-semibold" />
@@ -517,6 +507,12 @@ export default function TicketPage() {
                   <Check className="w-6 h-6 text-[#F8A254]  font-semibold" />
                   <p className="text-white font-semibold text-sm ">
                     Eligible for applications at the Internship Fair
+                  </p>
+                </div>
+                <div className="flex  gap-3 ">
+                  <X className="w-8 h-8 text-[#F8A254]  font-semibold" />
+                  <p className="text-white font-semibold text-sm ">
+                    Complimentary drink and appetizer at the Corporate Gala
                   </p>
                 </div>
                 <div className="flex  gap-3 ">
