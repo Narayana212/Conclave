@@ -245,7 +245,7 @@ export default function TicketPage() {
             <p className="text-xs sm:text-sm">  For SNU Students </p>
               </TabsTrigger>
             <TabsTrigger value="account1"> <p className="text-xs sm:text-sm">  For SNS Students </p></TabsTrigger>
-            <TabsTrigger value="password"> <p className="text-xs sm:text-sm">  For External Students </p></TabsTrigger>
+            <TabsTrigger value="password"> <p className="text-xs sm:text-xs">  For Non-SNU Students </p></TabsTrigger>
           </TabsList>
           <TabsContent
             value="account"
