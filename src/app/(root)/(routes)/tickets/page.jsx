@@ -240,7 +240,7 @@ export default function TicketPage() {
         </div>
       ) : (
                                           
-               <p className="text-white text-2xl">Registers Closed </p>
+               <p className="text-white text-2xl">Registeration Closed </p>
               
       )}
 
